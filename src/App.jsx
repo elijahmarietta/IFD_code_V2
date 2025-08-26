@@ -921,7 +921,7 @@ const App = () => {
             // When the chat is not minimized (default)
             ) : (
                 <div className="mainContent">
-                    <div className="conversationLoadingResponse">
+                    {/* <div className="conversationLoadingResponse"> */}
                         <b className="invitationToConverse">How can we help you?</b>
                         <p className="landingSubtitle">Please provide detailed information in the form below:</p>
                         <div className='chatBody' ref={chatBodyRef}>
@@ -1120,7 +1120,7 @@ const App = () => {
                                 </p>
                             </div>
                         )}
-                    </div>
+                   
                 </div>
                     {/* Sidebar menu on chat interface, includong decorative AI curls graphic */}
                     {/* <div className="rectangleSideBar">

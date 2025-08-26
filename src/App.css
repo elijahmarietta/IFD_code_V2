@@ -1,0 +1,1502 @@
+/*Static Home Elements*/
+
+.homeStatic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    background-color: #fff;
+    text-align: left;
+    font-size: 1.625rem;
+    padding: 2rem 1rem;
+    color: #5d5d5d;
+    font-family: Inter;
+    box-sizing: border-box;
+}
+
+.mainContent{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Animation for colored left AI curls */
+
+@keyframes fadeInOut {
+  0% { width: 450px; opacity: 0;}
+  50% { width: 500px; opacity: 1;}
+  100% { width: 450px; opacity: 0; }
+}
+
+.leftAICurls {
+    animation: fadeInOut 5s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* Animation for gray left AI curls */
+
+@keyframes fadeInOut2 {
+  0% { width: 440px; opacity: 0; }
+  20% { width: 440px; }
+  50% { width: 500px; opacity: 1; }
+  80% { width: 440px; }
+  100% { width: 440px; opacity: 0; }
+}
+
+.grayLeftAICurls {
+    animation: fadeInOut2 5s ease-in-out infinite;
+}
+
+/* Animation for colored right AI curls */
+
+@keyframes fadeInOut3 {
+  0% { width: 490px; opacity: 0; }
+  50% { width: 540px; opacity: 1; }
+  0% { width: 490px; opacity: 0; }
+  50% { width: 540px; opacity: 1; }
+  100% { width: 490px; opacity: 0; }
+}
+
+.rightAICurls {
+    width: 490px;
+    opacity: 0;
+    animation: fadeInOut3 7s ease-in-out infinite;
+    animation-delay: 1s;
+    z-index: 1;
+}
+
+/* Animation for gray right AI curls */
+
+@keyframes fadeInOut4 {
+  0% { width: 480px; opacity: 0; }
+  20% { width: 480px; }
+  50% { width: 540px, opacity: 1; }
+  80% { width: 480px; }
+  100% { width: 480px; opacity: 0; }
+}
+
+.grayRightAICurls {
+    opacity: 0;
+    width: 480px;
+    animation: fadeInOut4 7s ease-in-out infinite;
+    animation-delay: 1s;
+}
+
+.leftAICurls, .grayLeftAICurls, .rightAICurls, .grayRightAICurls  {
+    position: absolute;
+    height: auto;
+}
+
+.leftAICurls, .grayLeftAICurls {
+    left: 0;
+    top: 0;
+}
+
+.rightAICurls, .grayRightAICurls {
+    right: 0;
+    top: 0;
+}
+
+.invitationToConverse {
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+    font-size: 2rem;
+    color: #19426c;
+    max-width: 90%;
+    text-align: center;
+}
+
+.logoIcon {
+    width: 100px;
+    height: auto;
+    margin-bottom: 2rem;
+    margin-top: 11rem;
+}
+
+/*Intent Box styling on the landing page*/
+.landingIntentBox {
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    height: 10rem;
+    width: 150vh;
+    padding: .75rem;
+    border: 3px solid #939393;
+    font-family: Inter;
+    background-color: #fff;
+    border-radius: 35px;
+    box-sizing: border-box;
+    gap: 0rem;
+}
+
+.landingIntentBox.active, .landingIntentBoxChat.active {
+    border: 2px solid #cdcdcd;
+}
+
+.intentTextarea{
+    flex: 1;
+    resize: none;
+    width: 100%;
+    font-size: 1rem;
+    padding-left: 11px;
+    padding-top: 15px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #333;
+    font-family: inherit;
+    max-height: 20vh;
+}
+
+.sendBtn {
+    background: none;
+    border: none;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: bottom;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    margin-top: 6.3rem;
+    margin-right: 6px;
+    padding-left: 10px;;
+}
+
+.sendBtn img{
+    width: 32px;
+    height: 32px;
+    transition: filter 0.2s ease;
+}
+
+/* Microphone button styling for speech-to-text */
+.micBtn, .micBtnChat {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.micBtn {
+    margin-top: 6.3rem;
+}
+
+.micBtnChat {
+    padding: 1rem 0.2rem;
+}
+
+.micBtn img, .micBtnChat img {
+    width: 35px;
+    height: 35px;
+    transition: filter 0.2s ease;
+}
+
+.micBtn:hover img, .micBtnChat:hover img {
+    filter: brightness(1.2);
+}
+
+/* Chat interface styling */
+.conversationLoadingResponse{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff;
+    text-align: left;
+    font-size: 1.625rem;
+    padding: 2rem 1rem;
+    color: #5d5d5d;
+    font-family: Inter;
+    box-sizing: border-box; 
+}
+
+/* Minimize and exit button styling */
+
+.miniexit {
+    position: absolute;
+    top: 0;
+    right: 0.4rem;
+  	background-color: #ffffff;
+  	width: 300vh;
+  	height: 63px;
+  	display: flex;
+  	flex-direction: row;
+  	align-items: center;
+  	justify-content: flex-end;
+  	padding-top: 10px;
+    padding-bottom: 10px;
+  	box-sizing: border-box;
+  	gap: 0.1rem;
+}
+
+.miniBtn {
+  	top: 0;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.exitBtn {
+  	top: 0;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* Chat message styling */
+.chatMessages{
+    display: flex;
+    align-self: flex-end;
+    flex-direction: column;
+    gap: 1rem;
+    width: 80%;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+.chatMessage {
+  	border-radius: 9px;
+  	background-color: #009845;
+  	line-height: 1.5;
+  	align-self: flex-end;
+  	padding: 1rem 1.5rem;
+  	font-size: 0.85rem;
+    color: #fff;
+    max-width: 40%;
+    word-break: break-word;
+    overflow: break-word;
+    white-space: normal;
+    margin-right: -7.5rem;
+
+    /* Animation for chat message */
+    animation: fadeIn .8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; 
+        transform: translateY(20px); 
+    }
+    100% { opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes fadeIn2 {
+    0% { opacity: 1; 
+        transform: translateY(20px); 
+    }
+    100% { opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes fadeAcross {
+    0% { opacity: 0; 
+        transform: translateX(-20px); 
+    }
+    100% { opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+/* Visual feedback styling */
+.responseProgress {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0rem;
+    /* width: 80%; */
+    margin-left: 11rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #404040;
+    font-weight: 200;
+    opacity: 1;
+
+    /* Animation */
+    animation: fadeAcross .8s ease-in-out;
+}
+
+/* Animation with loading circles */
+
+.loadingCircles {
+    display: inline-block;
+    margin-left: 0rem;
+    position: relative;
+    width: 37px;
+    height: 20px;
+}
+
+.circle {
+    display: inline-block;
+    border-radius: 50%;
+    position: absolute;
+}
+
+/* Biggest circle styling */
+
+.circle:nth-child(1) {
+    margin-left: 0.2rem;
+    width: 9px;
+    height: 9px;
+    background-color: #009845;
+    animation-delay: 0s;
+    animation: circlePulse1 2s ease-in-out infinite;
+}
+
+/* Medium circle styling */
+
+.circle:nth-child(2) {
+    margin-top: 1rem;
+    width: 8px;
+    height: 8px;
+    background-color: #00ff73;
+    animation-delay: 0.3s;
+    animation: circlePulse2 2s ease-in-out infinite;
+    z-index: 900;
+}
+
+/* Smallest circle styling */
+
+.circle:nth-child(3) {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    width: 8px;
+    height: 8px;
+    background-color: #B7D9EE;
+    animation-delay: 0.6s;
+    animation: circlePulse3 2s ease-in-out infinite;
+}
+
+/* Biggest circle animation */
+
+@keyframes circlePulse1 {
+    0% {
+        transform: translate(0px, 0px);
+        opacity: 0.7;
+        width: 9px;
+        height: 9px;
+    }
+    25% {
+        transform: translate(10px, 7px);
+        opacity: 0.9;
+        width: 11px;
+        height: 11px;
+    }
+    50% {
+        transform: translate(20px, 16px);
+        opacity: 0.9;
+        width: 9px;
+        height: 9px;
+    }
+    75% {
+        transform: translate(3px, 10px);
+        opacity: 0.9;
+        width: 9px;
+        height: 9px;
+    }
+    100% {
+        transform: translate(0px, 0px);
+        opacity: 0.7;
+        width: 9px;
+        height: 9px;
+    }
+}
+
+/* Medium circle styling */
+
+@keyframes circlePulse2 {
+    0% {
+        transform: translate(0px, 0px);
+        opacity: 0.7;
+        width: 8px;
+        height: 8px;
+    }
+    25% {
+        transform: translate(10px, -5px);
+        opacity: 0.9;
+        width: 6px;
+        height: 6px;
+    }
+    50% {
+        transform: translate(12px, -20px);
+        opacity: 0.9;
+        width: 8px;
+        height: 8px;
+    }
+    75% {
+        transform: translate(0px, -10px);
+        opacity: 0.7;
+        width: 8px;
+        height: 8px;
+    }
+    100% {
+        transform: translate(0px, 0px);
+        opacity: 0.5;
+        width: 8px;
+        height: 8px;
+    }
+}
+
+/* Smallest circle styling */
+
+@keyframes circlePulse3 {
+    0% {
+        transform: translate(0px, 0px);
+        opacity: 0.7;
+        width: 8px;
+        height: 8px;
+    }
+    25% {
+        transform: translate(-10px, 0px);
+        opacity: 0.9;
+        width: 6px;
+        height: 6px;
+    }
+    50% {
+        transform: translate(-25px, 0px);
+        opacity: 0.7;
+        width: 6px;
+        height: 6px;
+    }
+    75% {
+        transform: translate(-10px, -10px);
+        opacity: 0.7;
+        width: 10px;
+        height: 10px;
+    }
+    100% {
+        transform: translate(0px, 0px);
+        opacity: 0.7;
+        width: 8px;
+        height: 8px;
+    }
+}
+
+.progressText {
+    margin-top: 0.3rem;
+    margin-left: 0rem;
+}
+
+/*Styling to fade response text out after recieving ai response, might delete if it's not working....*/
+.responseProgres.hidden{
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Chat response styling */
+.chatBody{
+    position: absolute;
+    top: 20vh;
+    bottom: 5rem;
+    left: 8rem;
+    right:0;
+    overflow-y: auto;
+}
+
+.chatResponse{
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 3rem;
+    margin-left: 15%;
+    margin-right: 0;
+    flex-direction: row;
+
+    /* Animation for ai message */
+    animation: fadeIn .8s ease-in-out;
+}
+
+.conversationLogo {
+    width: 32px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.reponseContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 600px;
+}
+
+.responseText, .questionLines {
+    font-size: 0.85rem;
+    color: #404040;
+    /* font-weight: 200; */
+    font-family: Inter;
+    width: 100%;
+    max-width: 600px;
+    white-space: normal;
+    line-height: 1.5;
+    word-break:break-word;
+    margin-top: 0.4rem;
+    margin-bottom: 1.1rem;
+}
+
+/* Sidebar menu styling */
+.rectangleSideBar{
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 11rem;
+    background-color: #f2f2f2;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.sidebarAICurls {
+    position: fixed;
+    width: 125px;
+    height: auto;
+    top: 20%;
+    left: 3.2rem;
+}
+
+.sidebarMenuIcon {
+  	bottom: 2rem;
+    position: fixed;
+    margin-top: 32.3rem;
+  	width: 1.5rem;
+  	height: 2.55rem;
+}
+
+.optionsBtn{
+    position: fixed;
+    bottom: 0rem;
+    left: 4rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.QlikLogoSide{
+    position: fixed;
+    width: 3rem;
+    height: auto;
+    top: 2rem;
+    left: 4rem;
+    z-index: 1001;
+    pointer-events: none;
+}
+
+/* Settings popup styling */
+.settingsPopup {
+    position: fixed;
+    left: 8.8rem;
+    top: 30.6rem;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 9px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    font-family: Inter;
+    display: block;
+    flex-direction: column;
+    gap: .5rem;
+    width: 17rem;
+    height: 180px;
+    padding: 0.5rem 0.4rem 2.5rem 0.5rem;
+}
+
+.settingsHeader {
+    display: flex;
+}
+
+.optionsTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 6rem;
+    color: #2A2C33;
+    width: 100%;
+    align-self: center;
+    justify-content: stretch;
+}
+
+.exitOptions {
+    justify-content: flex-end;
+}
+
+.settingsPopup button {
+    border: none;
+    background: none;
+    margin-top: 0.15rem;
+}
+
+.settingsPopup img:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.settingsBody {
+    margin-top: 2.3rem;
+    margin-left: 0.15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0rem;
+    padding: 0;
+    cursor: pointer;
+}
+
+.volumeDiv, .languageDiv, .downloadDiv {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1rem;
+    margin-right: 0;
+    font-size: 0.85rem;
+    cursor: pointer
+}
+
+.volumeIcon, .languageIcon {
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+}
+
+.downloadIcon {
+    width: 17px;
+    height: 21px;
+}
+
+.settingsBody p {
+    width: 10rem;
+}
+
+/* Language popup styling */
+.languagePopup {
+    position: absolute;
+    top: -10rem;
+    left: 18rem;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 9px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    font-family: Inter;
+    width: 12rem;
+    max-height: 15rem;
+    overflow-y: auto;
+}
+
+.languageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.languageHeader h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: #2A2C33;
+}
+
+.languageHeader button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.languageHeader img {
+    width: 20px;
+    height: 20px;
+}
+
+.languageOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.languageOption {
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+
+.languageOption:hover {
+    background-color: #f0f0f0;
+}
+
+.languageOption.selected {
+    background-color: #009845;
+    color: white;
+}
+
+
+/* Chat interface intent box*/
+.landingIntentBoxChat {
+    position: fixed;
+    bottom: 2rem;
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    margin-left: 13rem;
+    height: 3rem;
+    width: 150vh;
+    border: 2px solid #939393;
+    font-family: Inter;
+    background-color: #fff;
+    border-radius: 35px;
+    box-sizing: border-box;
+    overflow: hidden;
+    gap: 0rem;
+}
+
+.intentTextareaChat{
+    margin-left: 0.5rem;
+    margin-top: 2rem;
+    flex: 1;
+    resize: none;
+    width: 100%;
+    font-size: 0.85rem;
+    padding: 1rem 0.5rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #333;
+    font-family: inherit;
+    max-height: 50px;
+}
+
+.sendBtnChat {
+    background: none;
+    border: none;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: bottom;
+    justify-content: right;
+    padding: 1rem 0.2rem;
+    transition: transform 0.2s ease;
+}
+
+.sendBtnChat img{
+    width: 32px;
+    height: 32px;
+    transition: filter 0.2s ease;
+}
+
+/* Citations accordion styling */
+.sourcesAccordion {
+    margin: 1rem 0;
+    color: #404040;
+    font-size: 0.85rem;
+    background-color: #F4F4F4;
+    padding: 0.5rem;
+    border-radius: 16px;
+    margin-bottom: 3vh;
+}
+
+.sourcesAccordion summary {
+    cursor: pointer;
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+.responseText a {
+    padding: 0;
+    color: #278ED7;
+}
+
+.sourcesList {
+    margin-top: 0.5rem;
+    padding: 0rem 1.5rem 0rem 0.5rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.sourcesList a {
+    color: #278ED7;
+}
+
+.sourcesList a:hover, .responseText a:hover {
+    color: rgb(20, 87, 174); 
+}
+
+/* Styling for questions the IFD asks */
+.additionalQuestions {
+    font-size: 0.85rem;
+    color: #404040;
+    font-family: Inter;
+    margin-bottom: 1.5rem;
+}
+
+.postResponseIcons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.Copy, .Like, .Dislike{
+    width: 13px;
+    height: 13px;
+    cursor: pointer;
+}
+
+.copyBtn, .likeBtn, .dislikeBtn, .readBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Minimized chat styling */
+.minimizedChat {
+    position: fixed;
+    bottom: 0rem;
+    right: 0rem;
+    width: 35vw;
+    height: 70vh;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 4px 12px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    overflow: visible;
+    isolation: auto;
+}
+
+.minimizedChat .chatBody {
+    position: absolute;
+    top: 12vh;
+    bottom: 4rem;
+    left: 0rem;
+    right: 0;
+    overflow-y: auto;
+}
+
+.minimizedChat .chatResponse {
+    margin-top: 3rem;
+    margin-left: 0%;
+}
+
+.minimizedChat .chatMessage {
+    border-radius: 9px;
+    background-color: #009845;
+    line-height: 1.5;
+    align-self: flex-end;
+    padding: 1rem 1.5rem;
+    font-size: 0.85rem;
+    color: #fff;
+    max-width: 40%;
+    word-break: break-word;
+    overflow: break-word;
+    white-space: normal;
+    margin-right: -2rem;
+}
+
+.minimizedChat .landingIntentBoxChat {
+    margin-top: 0rem;
+    margin-left: 0.9rem;
+    margin-right: 0.9rem;
+    bottom: 1rem;
+    height: 3rem;
+    width: 33vw;
+}
+
+.minimizedChat .responseProgress {
+    display: flex;
+    flex-direction: row;
+    gap: 0rem;
+    margin-left: 1.8rem;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: #404040;
+    font-weight: 200;
+    animation: fadeAcross .8s ease-in-out;
+}
+
+.minimizedChat .postResponseIcons {
+    margin-bottom: 1rem;
+}
+
+.minimizedChat .QlikLogoMinimize {
+    position: absolute;
+    width: 1.8rem;
+    height: auto;
+    top: 1.6rem;
+    left: 1.2rem;
+    z-index: 1004;
+}
+
+.minimizedChat .miniexit {
+    position: absolute;
+    top: 0;
+    right: 0.4rem;
+    background-color: #ffffff;
+    width: 100%;
+    height: 63px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    gap: 0.1rem;
+    overflow: visible;
+    z-index: 1003;
+}
+
+/* React tooltips custom styling */
+.react-tooltip {
+    z-index: 9999 !important;
+    background-color: #333 !important;
+    color: white !important;
+    border-radius: 4px !important;
+    font-size: 0.8rem !important;
+    padding: 0.5rem !important;
+    position: fixed !important;
+}
+
+/* Custom tooltip styling to ensure visibility */
+[data-tooltip-id] {
+    position: relative;
+    z-index: 1004;
+}
+
+/* Overriding the z-index for elements inside popups */
+.copyBtn,
+.likeBtn,
+.dislikeBtn,
+.readBtn {
+    z-index: 5 !important;
+}
+
+.copyBtn [data-tooltip-id],
+.likeBtn [data-tooltip-id],
+.dislikeBtn [data-tooltip-id],
+.readBtn [data-tooltip-id] {
+    z-index: 5 !important;
+}
+
+/*Ending conversation toast*/
+.ended_toast{
+    position: fixed;
+    background:  white;
+    color:#54565A;
+    padding: 20px 18px;
+    border-radius: 9px;
+    font-size: 14px;
+    justify-content: center;
+    justify-self: center;
+    align-content: center;
+    animation: fadeIn2 3s ease-in-out;
+    top: 40%;
+    opacity: 1;
+    font-family: Inter;
+    display: block;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.toast_background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(128, 128, 128, 0.7);
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    align-items: center;
+    animation: fadeIn2 .8s ease-in-out;
+}
+
+.endingTitle{
+    font-size: large;
+    justify-self: center;
+    display: flex;
+}
+
+.endingQ{
+    font-size: medium;
+    font-weight: normal;
+}
+
+.endChatBtn{
+    background-color: #DE1B43;
+    color: white;
+    border: none;
+    padding: 14px;
+    width: 100%;
+    border-radius: 9px;
+}
+
+.cancelBtn{
+    color:#54565A;
+    background-color: white;
+    border: none;
+    width: 100%;
+    padding: 14px;
+    border-radius: 9px;
+}
+
+.endChatBtn:hover{
+    background-color: #b31434;
+    cursor: pointer;
+}
+
+.cancelBtn:hover{
+    background-color:#e0e0e0;
+    cursor: pointer;
+}
+
+.ended_toast_success{
+    position: fixed;
+    background:  #009845;
+    color:white;
+    padding: 20px 18px;
+    border-radius: 9px;
+    font-size: 14px;
+    justify-content: center;
+    justify-self: center;
+    align-content: center;
+    animation: fadeIn2 .8s ease-in-out;
+    top: 40%;
+    opacity: 1;
+}
+
+/* Toast for minimized chat */
+
+.minimizedChat {
+    position: fixed;
+    bottom: 0rem;
+    right: 0rem;
+    width: 35vw;
+    height: 70vh;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 4px 12px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+    overflow: visible;
+    isolation: auto;
+}
+
+.minimized_ended_toast{
+    position: fixed;
+    background:  white;
+    color:#54565A;
+    padding: 20px 18px;
+    border-radius: 9px;
+    font-size: 14px;
+    justify-content: center;
+    justify-self: center;
+    align-content: center;
+    animation: fadeIn2 3s ease-in-out;
+    top: 40%;
+    opacity: 1;
+    font-family: Inter;
+    display: block;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.minimized_toast_background{
+    position: fixed;
+    bottom: 0rem;
+    right: 0rem;
+    width: 35vw;
+    height: 70vh;
+    background-color: rgba(128, 128, 128, 0.7);
+    border-radius: 10px;
+    box-shadow: 4px 12px 12px rgba(0, 0, 0, 0.15);
+    margin: 0.5rem;
+    z-index: 9999;
+    align-items: center;
+    animation: fadeIn2 .8s ease-in-out;
+}
+
+.minimized_endingTitle{
+    font-size: large;
+    justify-self: center;
+    display: flex;
+}
+
+.minimized_endingQ{
+    font-size: medium;
+    font-weight: normal;
+}
+
+.minimized_endChatBtn{
+    background-color: #DE1B43;
+    color: white;
+    border: none;
+    padding: 14px;
+    width: 100%;
+    border-radius: 9px;
+}
+
+.minimized_cancelBtn{
+    color:#54565A;
+    background-color: white;
+    border: none;
+    width: 100%;
+    padding: 14px;
+    border-radius: 9px;
+}
+
+.minimized_endChatBtn:hover{
+    background-color: #b31434;
+    cursor: pointer;
+}
+
+.minimized_cancelBtn:hover{
+    background-color:#e0e0e0;
+    cursor: pointer;
+}
+
+.minimized_ended_toast_success{
+    position: fixed;
+    background:  #009845;
+    color:white;
+    padding: 20px 18px;
+    border-radius: 9px;
+    font-size: 14px;
+    justify-content: center;
+    justify-self: center;
+    align-content: center;
+    animation: fadeIn2 .8s ease-in-out;
+    top: 55%;
+    opacity: 1;
+}
+
+/* Optimizing for larger screens */
+@media (min-width: 1400px) {
+
+    @keyframes fadeInOut {
+    0% { width: 750px; opacity: 0;}
+    50% { width: 800px; opacity: 1;}
+    100% { width: 750px; opacity: 0; }
+    }
+
+    @keyframes fadeInOut2 {
+    0% { width: 740px; opacity: 0; }
+    20% { width: 740px; }
+    50% { width: 800px, opacity: 1; }
+    80% { width: 740px; }
+    100% { width: 740px; opacity: 0; }
+    }
+
+    @keyframes fadeInOut3 {
+    0% { width: 790px; opacity: 0;}
+    50% { width: 840px; opacity: 1;}
+    100% { width: 790px; opacity: 0; }
+    }
+
+    .rightAICurls {
+        width: 790px;
+    }
+
+    @keyframes fadeInOut4 {
+    0% { width: 780px; opacity: 0; }
+    20% { width: 780px; }
+    50% { width: 740px, opacity: 1; }
+    80% { width: 780px; }
+    100% { width: 780px; opacity: 0; }
+    }
+
+    .grayRightAICurls {
+        width: 780px;
+    }
+
+    .invitationToConverse {
+        margin-bottom: 3rem;
+        font-size: 2.8rem;
+    }
+
+    .logoIcon {
+        width: 150px;
+        margin-bottom: 3rem;
+        margin-top: 20rem;
+    }
+
+
+    /*Intent Box styling*/
+    .landingIntentBox {
+        height: 15rem;
+        border-radius: 50px;
+    }
+
+    .intentTextarea{
+        font-size: 1.3rem;
+        padding-left: 20px;
+        padding-top: 20px;
+    }
+
+    .sendBtn {
+        margin-top: 10rem;
+    }
+
+    .sendBtn img{
+        width: 48px;
+        height: 48px;
+    }
+
+    .chatMessage {
+        font-size: 1rem;
+        margin-right: -11rem;
+    }
+
+    .micBtn {
+        margin-top: 10rem;
+    }
+
+    .micBtn img{
+        width: 46px;
+        height: 46px;
+    }
+
+    .micBtnChat img {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Visual Feedback Styling */
+    .responseProgress {
+        margin-left: 15rem;
+        font-size: 1rem;
+    }
+
+    .chatResponse{
+        margin-left: 13%;
+    }
+
+    .conversationLogo {
+        width: 40px;
+    }
+
+    .responseText, .questionLines {
+        font-size: 1rem;
+        max-width: 700px;
+        margin-top: 0.55rem;
+    }
+
+    .sidebarAICurls {
+        width: 150px;
+        top: 25%;
+        left: 1.6rem;
+    }
+
+    .sidebarMenuIcon {
+        width: 1.7rem;
+    }
+
+    .QlikLogoSide{
+        width: 3.5rem;
+    }
+
+    .settingsPopup {
+        position: fixed;
+        left: 8.8rem;
+        top: 52.05rem;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 9px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        font-family: Inter;
+        display: block;
+        flex-direction: column;
+        gap: .5rem;
+        width: 17rem;
+        height: 180px;
+        padding: 0.5rem 0.4rem 3.3rem 0.5rem;
+    }
+
+    .settingsHeader {
+        display: flex;
+    }
+
+    .optionsTitle {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0;
+        margin-left: 6rem;
+        color: #2A2C33;
+        width: 100%;
+        align-self: center;
+        justify-content: stretch;
+    }
+
+    .exitOptions {
+        justify-content: flex-end;
+    }
+
+    .settingsPopup button {
+        border: none;
+        background: none;
+        margin-top: 0.15rem;
+    }
+
+    .settingsPopup img:hover {
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+
+    .settingsBody {
+        margin-top: 1.9rem;
+        margin-left: 0.15rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0rem;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .volumeDiv, .languageDiv, .downloadDiv {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-right: 0;
+        font-size: 1rem;
+        cursor: pointer
+    }
+
+    .volumeIcon, .languageIcon {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+    }
+
+    .downloadIcon {
+        width: 18px;
+        height: 22px;
+    }
+
+    .settingsBody p {
+        width: 10rem;
+    }
+
+    .languageOption {
+    font-size: 0.95rem;
+    }
+
+    .intentTextareaChat{
+        margin-left: 0.7rem;
+        margin-top: 1.8rem;
+        font-size: 1rem;
+    }
+
+    .sourcesAccordion {
+        font-size: 1rem;
+        margin-top: 2vh;
+        margin-bottom: 2.3vh;
+    }
+
+    .sourcesAccordion summary {
+        cursor: pointer;
+        font-weight: 500;
+        margin-left: 0.5rem;
+    }
+
+    .additionalQuestions {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .postResponseIcons {
+        gap: 0.7rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .Copy, .Like, .Dislike {
+        width: 16px;
+        height: 16px;
+    }
+
+    .Read {
+        width: 18px;
+        height: 18px;
+    }
+
+    .minimizedChat .landingIntentBoxChat {
+    width: 33.7vw;
+    }
+}
+
+/* Optimizing for smaller screens */
+
+@media (max-width: 1100px) {
+
+
+    .landingIntentBoxChat {
+        width: 120vh;
+    }
+
+}
+
+@media (max-width: 950px) {
+
+    .landingIntentBox {
+        width: 120vh;
+    }
+
+    .landingIntentBoxChat {
+        width: 120vh;
+    }
+
+    .minimizedChat .landingIntentBoxChat {
+        width: 31vw;
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    .landingIntentBoxChat {
+        width: 80vh;
+    }
+
+}
+
+@media (max-width: 750px) {
+
+    .landingIntentBox {
+        width: 80vh;
+    }
+
+    .landingIntentBoxChat {
+        width: 150vh;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .landingIntentBoxChat {
+        width: 65vh;
+    }
+
+}

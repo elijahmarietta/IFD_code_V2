@@ -1,0 +1,18 @@
+.
+|___.gitignore
+|___eslint.config.js
+|___index.html
+|___node_modules
+|___package-lock.json
+|___package.json
+|___public
+| |___vite.svg
+|___README.md
+|___src
+| |___App.css
+| |___App.jsx
+| |___assets
+| | |___Logo.svg
+| | |___Send.svg
+| |___main.jsx
+|___vite.config.js

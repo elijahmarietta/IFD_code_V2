@@ -64,7 +64,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://5a6dd73d6ea8.ngrok-free.app/api/chat', {
+            const response = await fetch('https://392fbfb0942f.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -185,7 +185,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://5a6dd73d6ea8.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://392fbfb0942f.ngrok-free.app/api/end_convo', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -228,7 +228,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://5a6dd73d6ea8.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://392fbfb0942f.ngrok-free.app/api/end_convo', {
                method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -615,15 +615,16 @@ const App = () => {
             {!isChatStarted ? (
                 //Decorative AI curls that fade in and out of landing interface
                 <div className="mainContent">
-                    <div className="AICurls">
+                    {/* <div className="AICurls">
                         <img className="leftAICurls" alt="Left AI Curls" src={leftAICurls}/>
                         <img className="grayLeftAICurls" alt="Gray Left AI Curls" src={grayLeftAICurls}/>
                         <img className="grayRightAICurls" alt="GrayRight AI Curls" src={grayRightAICurls}/>
                         <img className="rightAICurls" alt="Right AI Curls" src={rightAICurls}/>
-                    </div>
+                    </div> */}
                     {/* Landing page Icon and text to invite user to converse */}
-                    <img className="logoIcon" alt="Logo" src={logoIcon} />
-                    <b className="invitationToConverse">How can Qlik help you?</b>
+                    {/* <img className="logoIcon" alt="Logo" src={logoIcon} /> */}
+                    <b className="invitationToConverse">How can we help you?</b>
+                    <p className="landingSubtitle">Please provide detailed information in the form below:</p>
 
                     {/* Landing page intention box */}
                     <div className={`landingIntentBox ${enableSend ? 'active' : ''}`}>
@@ -651,211 +652,439 @@ const App = () => {
                 </div>
             </div>
             // When the chat is minimized
-            ) : isMinimized ? (
-                // Accessibility icons at the top of the screen (minimize, exit)
-                <div className="minimizedChat">
-                    <img className="QlikLogoMinimize" alt="Qlik Logo" src={logoIcon} />
-                    <div className="miniexit">
-                        <button 
-                            className="miniBtn" 
-                            onClick={handleRestore} 
-                            data-tooltip-id="minimize-tooltip"
-                            data-tooltip-content="Maximize"
-                        >
-                            <img alt="restore" src={isMinimized ? maximizeIcon : minIcon} />
-                        </button>
-                        {/*Clicking on exit button will launch ending the conversation*/}
-                        <button 
-                            className="exitBtn" 
-                            onClick={() => setShowMinimizedEndChatMenu(true)}
-                            data-tooltip-id="exit-tooltip"
-                            data-tooltip-content="Exit"
-                        >
-                            <img alt="exit" src={exitIcon} />
-                        </button>
-                        {/* Ending conversation and displaying toast along with menu */}
-                        {ShowMinimizedEndChatMenu && (
-                            <div className="minimized_toast_background">
-                                <div className="minimized_ended_toast">
-                                    <h3 className="minimized_endingTitle">End Chat</h3>
-                                    <h2 className="minimized_endingQ">Are you sure you want to end the chat?</h2>
-                                    <button className="minimized_endChatBtn" onClick={handleMinimizedExit}>End Chat</button>
-                                    <button className="minimized_cancelBtn" onClick={handleMinimizedCancel}>Cancel</button>
-                                </div>
-                            </div>
-                        )}
+            // ) : isMinimized ? (
+            //     // Accessibility icons at the top of the screen (minimize, exit)
+                
+            //     <div className="minimizedChat">
+            //         <img className="QlikLogoMinimize" alt="Qlik Logo" src={logoIcon} />
+            //         <div className="miniexit">
+            //             <button 
+            //                 className="miniBtn" 
+            //                 onClick={handleRestore} 
+            //                 data-tooltip-id="minimize-tooltip"
+            //                 data-tooltip-content="Maximize"
+            //             >
+            //                 <img alt="restore" src={isMinimized ? maximizeIcon : minIcon} />
+            //             </button>
+            //             {/*Clicking on exit button will launch ending the conversation*/}
+            //             <button 
+            //                 className="exitBtn" 
+            //                 onClick={() => setShowMinimizedEndChatMenu(true)}
+            //                 data-tooltip-id="exit-tooltip"
+            //                 data-tooltip-content="Exit"
+            //             >
+            //                 <img alt="exit" src={exitIcon} />
+            //             </button>
+            //             {/* Ending conversation and displaying toast along with menu */}
+            //             {ShowMinimizedEndChatMenu && (
+            //                 <div className="minimized_toast_background">
+            //                     <div className="minimized_ended_toast">
+            //                         <h3 className="minimized_endingTitle">End Chat</h3>
+            //                         <h2 className="minimized_endingQ">Are you sure you want to end the chat?</h2>
+            //                         <button className="minimized_endChatBtn" onClick={handleMinimizedExit}>End Chat</button>
+            //                         <button className="minimized_cancelBtn" onClick={handleMinimizedCancel}>Cancel</button>
+            //                     </div>
+            //                 </div>
+            //             )}
 
-                        {/* Success Overlay of Ending conversation - only show when ended successfully and not showing the menu */}
-                        {minimizedEndedSuccessful && !ShowMinimizedEndChatMenu && (
-                            <div className="minimized_toast_background">
-                                <div className="minimized_ended_toast_success">
-                                    Conversation succesfully ended
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                    {/* Chat interface if screen is minimized (mini display similar to what current customer portal looks like) */}
-                    <div className='chatBody' ref={chatBodyRef}>
-                        {/* Sending messages from the user to interface as message boxes */}
-                        <div className="chatMessages">
-                            {chatMessages.map((msg, index) => 
-                                msg.from ==='user' ? (
-                                    <div key={index} className={`chatMessage ${msg.from}`}>
-                                        {msg.text}
-                                    </div>
-                                ) : (
-                                    // Ada's repsonse insertion along with URL sources in source accordion
-                                    <div key={index} className="chatResponse">
-                                    <img className="conversationLogo" alt="Qlik Logo" src={conversationLogo} />
-                                    <div className='responseContent'>
-                                        <div className="responseText">
-                                            {formatResponseText(msg.text)}
-                                        </div>
-                                        {getUrl(msg.text).length > 0 && (
-                                            <details className="sourcesAccordion">
-                                                <summary>Sources</summary>
-                                                <div className="sourcesList">
-                                                    <ul>
-                                                        {getUrl(msg.text).map((link,i) => (
-                                                            <li key={i}>
-                                                            <a
-                                                            href={link}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            >
-                                                                {link}
-                                                            </a>
-                                                         </li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            </details>
-                                        )}
-                                        {/* Formatting ADA's response by bolding instructional text and seperating last question line to be displayed under source accordion */}
-                                        {getQuestionLines(msg.text).length > 0 && (
-                                            <div className="questionLines">
-                                                {getQuestionLines(msg.text).map((questionLine, i) => (
-                                                    <div key={i} className="questionLine">
-                                                        {/* Use a special formatter that doesn't filter question lines */}
-                                                        {(() => {
-                                                            const urlRegex = /(https?:\/\/[^\s]+?)([.!?]?)(\s|$)/g;
-                                                            const numberedColonMatch = questionLine.match(/^(\d+[\.\)\:]?\s*.*?:)/);
+            //             {/* Success Overlay of Ending conversation - only show when ended successfully and not showing the menu */}
+            //             {minimizedEndedSuccessful && !ShowMinimizedEndChatMenu && (
+            //                 <div className="minimized_toast_background">
+            //                     <div className="minimized_ended_toast_success">
+            //                         Conversation succesfully ended
+            //                     </div>
+            //                 </div>
+            //             )}
+            //         </div>
+            //         {/* Chat interface if screen is minimized (mini display similar to what current customer portal looks like) */}
+            //         <div className='chatBody' ref={chatBodyRef}>
+            //             {/* Sending messages from the user to interface as message boxes */}
+            //             <div className="chatMessages">
+            //                 {chatMessages.map((msg, index) => 
+            //                     msg.from ==='user' ? (
+            //                         <div key={index} className={`chatMessage ${msg.from}`}>
+            //                             {msg.text}
+            //                         </div>
+            //                     ) : (
+            //                         // Ada's repsonse insertion along with URL sources in source accordion
+            //                         <div key={index} className="chatResponse">
+            //                         <img className="conversationLogo" alt="Qlik Logo" src={conversationLogo} />
+            //                         <div className='responseContent'>
+            //                             <div className="responseText">
+            //                                 {formatResponseText(msg.text)}
+            //                             </div>
+            //                             {getUrl(msg.text).length > 0 && (
+            //                                 <details className="sourcesAccordion">
+            //                                     <summary>Sources</summary>
+            //                                     <div className="sourcesList">
+            //                                         <ul>
+            //                                             {getUrl(msg.text).map((link,i) => (
+            //                                                 <li key={i}>
+            //                                                 <a
+            //                                                 href={link}
+            //                                                 target="_blank"
+            //                                                 rel="noopener noreferrer"
+            //                                                 >
+            //                                                     {link}
+            //                                                 </a>
+            //                                              </li>
+            //                                             ))}
+            //                                         </ul>
+            //                                     </div>
+            //                                 </details>
+            //                             )}
+            //                             {/* Formatting ADA's response by bolding instructional text and seperating last question line to be displayed under source accordion */}
+            //                             {getQuestionLines(msg.text).length > 0 && (
+            //                                 <div className="questionLines">
+            //                                     {getQuestionLines(msg.text).map((questionLine, i) => (
+            //                                         <div key={i} className="questionLine">
+            //                                             {/* Use a special formatter that doesn't filter question lines */}
+            //                                             {(() => {
+            //                                                 const urlRegex = /(https?:\/\/[^\s]+?)([.!?]?)(\s|$)/g;
+            //                                                 const numberedColonMatch = questionLine.match(/^(\d+[\.\)\:]?\s*.*?:)/);
                                                             
-                                                            return (
-                                                                <span>
-                                                                    {numberedColonMatch ? (
-                                                                        // Find the first capital letter after the first colon
-                                                                        (() => {
-                                                                            const colonIndex = questionLine.indexOf(':');
-                                                                            if (colonIndex !== -1) {
-                                                                                const afterColon = questionLine.substring(colonIndex + 1);
-                                                                                const capitalMatch = afterColon.match(/[A-Z]/);
+            //                                                 return (
+            //                                                     <span>
+            //                                                         {numberedColonMatch ? (
+            //                                                             // Find the first capital letter after the first colon
+            //                                                             (() => {
+            //                                                                 const colonIndex = questionLine.indexOf(':');
+            //                                                                 if (colonIndex !== -1) {
+            //                                                                     const afterColon = questionLine.substring(colonIndex + 1);
+            //                                                                     const capitalMatch = afterColon.match(/[A-Z]/);
                                                                                 
-                                                                                if (capitalMatch) {
-                                                                                    const capitalIndex = colonIndex + 1 + capitalMatch.index;
-                                                                                    const boldPart = questionLine.substring(0, capitalIndex);
-                                                                                    const normalPart = questionLine.substring(capitalIndex);
+            //                                                                     if (capitalMatch) {
+            //                                                                         const capitalIndex = colonIndex + 1 + capitalMatch.index;
+            //                                                                         const boldPart = questionLine.substring(0, capitalIndex);
+            //                                                                         const normalPart = questionLine.substring(capitalIndex);
                                                                                     
-                                                                                    return (
-                                                                                        <>
-                                                                                            <strong>
-                                                                                                {boldPart.split(urlRegex).map((part, j) => {
-                                                                                                    const urlMatch = part.match(/^https?:\/\/[^\s]+/);
-                                                                                                    if (urlMatch) {
-                                                                                                        return (
-                                                                                                            <a key={j} href={part} target="_blank" rel="noopener noreferrer">
-                                                                                                                {part}
-                                                                                                            </a>
-                                                                                                        );
-                                                                                                    }
-                                                                                                    return part;
-                                                                                                })}
-                                                                                            </strong>
-                                                                                            {normalPart.split(urlRegex).map((part, j) => {
-                                                                                                const urlMatch = part.match(/^https?:\/\/[^\s]+/);
-                                                                                                if (urlMatch) {
-                                                                                                    return (
-                                                                                                        <a key={j} href={part} target="_blank" rel="noopener noreferrer">
-                                                                                                            {part}
-                                                                                                        </a>
-                                                                                                    );
-                                                                                                }
-                                                                                                return part;
-                                                                                            })}
-                                                                                        </>
-                                                                                    );
-                                                                                } else {
-                                                                                    // No capital letter after colon, bold up to and including the colon
-                                                                                    const boldPart = questionLine.substring(0, colonIndex + 1);
-                                                                                    const normalPart = questionLine.substring(colonIndex + 1);
+            //                                                                         return (
+            //                                                                             <>
+            //                                                                                 <strong>
+            //                                                                                     {boldPart.split(urlRegex).map((part, j) => {
+            //                                                                                         const urlMatch = part.match(/^https?:\/\/[^\s]+/);
+            //                                                                                         if (urlMatch) {
+            //                                                                                             return (
+            //                                                                                                 <a key={j} href={part} target="_blank" rel="noopener noreferrer">
+            //                                                                                                     {part}
+            //                                                                                                 </a>
+            //                                                                                             );
+            //                                                                                         }
+            //                                                                                         return part;
+            //                                                                                     })}
+            //                                                                                 </strong>
+            //                                                                                 {normalPart.split(urlRegex).map((part, j) => {
+            //                                                                                     const urlMatch = part.match(/^https?:\/\/[^\s]+/);
+            //                                                                                     if (urlMatch) {
+            //                                                                                         return (
+            //                                                                                             <a key={j} href={part} target="_blank" rel="noopener noreferrer">
+            //                                                                                                 {part}
+            //                                                                                             </a>
+            //                                                                                         );
+            //                                                                                     }
+            //                                                                                     return part;
+            //                                                                                 })}
+            //                                                                             </>
+            //                                                                         );
+            //                                                                     } else {
+            //                                                                         // No capital letter after colon, bold up to and including the colon
+            //                                                                         const boldPart = questionLine.substring(0, colonIndex + 1);
+            //                                                                         const normalPart = questionLine.substring(colonIndex + 1);
                                                                                     
-                                                                                    return (
-                                                                                        <>
-                                                                                            <strong>
-                                                                                                {boldPart.split(urlRegex).map((part, j) => {
-                                                                                                    const urlMatch = part.match(/^https?:\/\/[^\s]+/);
-                                                                                                    if (urlMatch) {
-                                                                                                        return (
-                                                                                                            <a key={j} href={part} target="_blank" rel="noopener noreferrer">
-                                                                                                                {part}
-                                                                                                            </a>
-                                                                                                        );
-                                                                                                    }
-                                                                                                    return part;
-                                                                                                })}
-                                                                                            </strong>
-                                                                                            {normalPart.split(urlRegex).map((part, j) => {
-                                                                                                const urlMatch = part.match(/^https?:\/\/[^\s]+/);
-                                                                                                if (urlMatch) {
-                                                                                                    return (
-                                                                                                        <a key={j} href={part} target="_blank" rel="noopener noreferrer">
-                                                                                                            {part}
-                                                                                                        </a>
-                                                                                                    );
-                                                                                                }
-                                                                                                return part;
-                                                                                            })}
-                                                                                        </>
-                                                                                    );
-                                                                                }
-                                                                            }
+            //                                                                         return (
+            //                                                                             <>
+            //                                                                                 <strong>
+            //                                                                                     {boldPart.split(urlRegex).map((part, j) => {
+            //                                                                                         const urlMatch = part.match(/^https?:\/\/[^\s]+/);
+            //                                                                                         if (urlMatch) {
+            //                                                                                             return (
+            //                                                                                                 <a key={j} href={part} target="_blank" rel="noopener noreferrer">
+            //                                                                                                     {part}
+            //                                                                                                 </a>
+            //                                                                                             );
+            //                                                                                         }
+            //                                                                                         return part;
+            //                                                                                     })}
+            //                                                                                 </strong>
+            //                                                                                 {normalPart.split(urlRegex).map((part, j) => {
+            //                                                                                     const urlMatch = part.match(/^https?:\/\/[^\s]+/);
+            //                                                                                     if (urlMatch) {
+            //                                                                                         return (
+            //                                                                                             <a key={j} href={part} target="_blank" rel="noopener noreferrer">
+            //                                                                                                 {part}
+            //                                                                                             </a>
+            //                                                                                         );
+            //                                                                                     }
+            //                                                                                     return part;
+            //                                                                                 })}
+            //                                                                             </>
+            //                                                                         );
+            //                                                                     }
+            //                                                                 }
                                                                             
-                                                                            // Fallback: bold the entire line if no colon found
-                                                                            return questionLine.split(urlRegex).map((part, j) => {
-                                                                                const urlMatch = part.match(/^https?:\/\/[^\s]+/);
-                                                                                if (urlMatch) {
-                                                                                    return (
-                                                                                        <a key={j} href={part} target="_blank" rel="noopener noreferrer">
-                                                                                            {part}
-                                                                                        </a>
-                                                                                    );
-                                                                                }
-                                                                                return <strong key={j}>{part}</strong>;
-                                                                            });
-                                                                        })()
-                                                                    ) : (
-                                                                        // Line doesn't match pattern - process URLs only
-                                                                        questionLine.split(urlRegex).map((part, j) => {
-                                                                            const urlMatch = part.match(/^https?:\/\/[^\s]+/);
-                                                                            if (urlMatch) {
-                                                                                return (
-                                                                                    <a key={j} href={part} target="_blank" rel="noopener noreferrer">
-                                                                                        {part}
-                                                                                    </a>
-                                                                                );
-                                                                            }
-                                                                            return part;
-                                                                        })
-                                                                    )}
-                                                                </span>
-                                                            );
-                                                        })()}
+            //                                                                 // Fallback: bold the entire line if no colon found
+            //                                                                 return questionLine.split(urlRegex).map((part, j) => {
+            //                                                                     const urlMatch = part.match(/^https?:\/\/[^\s]+/);
+            //                                                                     if (urlMatch) {
+            //                                                                         return (
+            //                                                                             <a key={j} href={part} target="_blank" rel="noopener noreferrer">
+            //                                                                                 {part}
+            //                                                                             </a>
+            //                                                                         );
+            //                                                                     }
+            //                                                                     return <strong key={j}>{part}</strong>;
+            //                                                                 });
+            //                                                             })()
+            //                                                         ) : (
+            //                                                             // Line doesn't match pattern - process URLs only
+            //                                                             questionLine.split(urlRegex).map((part, j) => {
+            //                                                                 const urlMatch = part.match(/^https?:\/\/[^\s]+/);
+            //                                                                 if (urlMatch) {
+            //                                                                     return (
+            //                                                                         <a key={j} href={part} target="_blank" rel="noopener noreferrer">
+            //                                                                             {part}
+            //                                                                         </a>
+            //                                                                     );
+            //                                                                 }
+            //                                                                 return part;
+            //                                                             })
+            //                                                         )}
+            //                                                     </span>
+            //                                                 );
+            //                                             })()}
+            //                                         </div>
+            //                                     ))}
+            //                                 </div>
+            //                             )}
+            //                             <div className="postResponseIcons">
+            //                                 {/* Icons under ADA's response to copy , like, dislike, and make ADA reponse txt-to-speech */}
+            //                                     <button className='copyBtn' onClick={() => copyClick(msg)} data-tooltip-id="copy-tooltip" data-tooltip-content="Copy">
+            //                                         <img className="Copy" alt="Copy" src={copiedStates[msg.id] ? copyCheckIcon : copyIcon} />
+            //                                     </button>
+            //                                     {!isDisliked && (
+            //                                         <button className='likeBtn' onClick={() => setIsLiked(!isLiked)} data-tooltip-id="like-tooltip" data-tooltip-content="Like">
+            //                                             <img className="Like" alt="Like" src={isLiked ? likeIconFill : likeIcon} />
+            //                                         </button>
+            //                                     )}
+            //                                     {!isLiked && (
+            //                                         <button className='dislikeBtn' onClick={() => setIsDisliked(!isDisliked)} data-tooltip-id="dislike-tooltip" data-tooltip-content="Dislike">
+            //                                             <img className="Dislike" alt="Dislike" src={isDisliked ? dislikeIconFill : dislikeIcon} />
+            //                                         </button>
+            //                                     )}
+            //                                     <button className='readBtn' onClick={() => readAloud(msg)} data-tooltip-id="read-tooltip" data-tooltip-content={isReading[msg.id] ? "Stop" : "Listen"}>
+            //                                         <img className="Read" alt="Read" src={isReading[msg.id] ? stopIcon : speakerIcon} />
+            //                                     </button>
+            //                                 </div>
+            //                             </div>
+            //                         </div>
+            //                     )
+            //                 )}
+            //             </div>
+            //             {showProgress && (
+            //                 <div className="responseProgress">
+            //                     {/* Loading animation for retrieving ADA's respopnse */}
+            //                     <div className="loadingCircles">
+            //                         <div className="circle"></div>
+            //                         <div className="circle"></div>
+            //                         <div className="circle"></div>
+            //                     </div>
+            //                     <p className="progressText">
+            //                         Searching the Qlik Knowledge Fabric...
+            //                     </p>
+            //                 </div>
+            //             )}
+            //         </div>
+            //         {/* Intent Box on landing page */}
+            //         <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`}>
+            //             <textarea 
+            //                 id='intent' 
+            //                 value={intent} 
+            //                 placeholder='Please explain your situation...' 
+            //                 onChange={(e) => setIntent(e.target.value)} 
+            //                 onKeyDown={handleKeyPress}
+            //                 className='intentTextareaChat' 
+            //                 rows={3}
+            //             ></textarea>
+            //             <button 
+            //                 className="micBtnChat" 
+            //                 onClick={isListening ? stopVoiceRecording : startVoiceRecording}
+            //                 data-tooltip-id="mic-tooltip"
+            //                 data-tooltip-content={isListening ? "Stop" : "Dictate"}
+            //             >
+            //                 <img alt="Microphone" src={isListening ? micActiveIcon : micIcon} />
+            //             </button>
+            //             <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxClick} disabled={!enableSend}>
+            //                 <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
+            //             </button>
+            //         </div>
+            //     </div>
+            // When the chat is not minimized (default)
+            ) : (
+                <div className="mainContent">
+                    <div className="conversationLoadingResponse">
+                        <b className="invitationToConverse">How can we help you?</b>
+                        <p className="landingSubtitle">Please provide detailed information in the form below:</p>
+                        <div className='chatBody' ref={chatBodyRef}>
+                            <div className="chatMessages">
+                                {/* Adding user's repsone to chat interface as a message box */}
+                                {chatMessages.map((msg, index) => 
+                                    msg.from ==='user' ? (
+                                        <div key={index} className={`chatMessage ${msg.from}`}>
+                                            {/* {msg.text} */}
+                                        </div>
+                                    ) : (
+                                        // Adding ADA's repsone to chat interface, including populating source's URL in accordion 
+                                        <div key={index} className="chatResponse">
+                                            <img className="conversationLogo" alt="Qlik Logo" src={conversationLogo} />
+                                            <div className='responseContent'>
+                                                <div className="responseText">
+                                                    {formatResponseText(msg.text)}
+                                                </div>
+                                                {getUrl(msg.text).length > 0 && (
+                                                    <details className="sourcesAccordion">
+                                                        <summary>Sources</summary>
+                                                        <div className="sourcesList">
+                                                            <ul>
+                                                                {getUrl(msg.text).map((link,i) => (
+                                                                    <li key={i}>
+                                                                    <a
+                                                                    href={link}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                    >
+                                                                        {link}
+                                                                    </a>
+                                                                </li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                    </details>
+                                                )}
+                                                {/* Formatting ADA's response on front end by bolding text based on starting with a number or ending with a colon for  instructions */}
+                                                {getQuestionLines(msg.text).length > 0 && (
+                                                    <div className="questionLines">
+                                                        {getQuestionLines(msg.text).map((questionLine, i) => (
+                                                            <div key={i} className="questionLine">
+                                                                {/* Use a special formatter that doesn't filter question lines */}
+                                                                {(() => {
+                                                                    const urlRegex = /(https?:\/\/[^\s]+?)([.!?]?)(\s|$)/g;
+                                                                    const numberedColonMatch = questionLine.match(/^(\d+[\.\)\:]?\s*.*?:)/);
+                                                                    
+                                                                    return (
+                                                                        <span>
+                                                                            {numberedColonMatch ? (
+                                                                                // Find the first capital letter after the first colon
+                                                                                (() => {
+                                                                                    const colonIndex = questionLine.indexOf(':');
+                                                                                    if (colonIndex !== -1) {
+                                                                                        const afterColon = questionLine.substring(colonIndex + 1);
+                                                                                        const capitalMatch = afterColon.match(/[A-Z]/);
+                                                                                        
+                                                                                        if (capitalMatch) {
+                                                                                            const capitalIndex = colonIndex + 1 + capitalMatch.index;
+                                                                                            const boldPart = questionLine.substring(0, capitalIndex);
+                                                                                            const normalPart = questionLine.substring(capitalIndex);
+                                                                                            
+                                                                                            return (
+                                                                                                <>
+                                                                                                    <strong>
+                                                                                                        {boldPart.split(urlRegex).map((part, j) => {
+                                                                                                            const urlMatch = part.match(/^https?:\/\/[^\s]+/);
+                                                                                                            if (urlMatch) {
+                                                                                                                return (
+                                                                                                                    <a key={j} href={part} target="_blank" rel="noopener noreferrer">
+                                                                                                                        {part}
+                                                                                                                    </a>
+                                                                                                                );
+                                                                                                            }
+                                                                                                            return part;
+                                                                                                        })}
+                                                                                                    </strong>
+                                                                                                    {normalPart.split(urlRegex).map((part, j) => {
+                                                                                                        const urlMatch = part.match(/^https?:\/\/[^\s]+/);
+                                                                                                        if (urlMatch) {
+                                                                                                            return (
+                                                                                                                <a key={j} href={part} target="_blank" rel="noopener noreferrer">
+                                                                                                                    {part}
+                                                                                                                </a>
+                                                                                                            );
+                                                                                                        }
+                                                                                                        return part;
+                                                                                                    })}
+                                                                                                </>
+                                                                                            );
+                                                                                        } else {
+                                                                                            // No capital letter after colon, bold up to and including the colon
+                                                                                            const boldPart = questionLine.substring(0, colonIndex + 1);
+                                                                                            const normalPart = questionLine.substring(colonIndex + 1);
+                                                                                            
+                                                                                            return (
+                                                                                                <>
+                                                                                                    <strong>
+                                                                                                        {boldPart.split(urlRegex).map((part, j) => {
+                                                                                                            const urlMatch = part.match(/^https?:\/\/[^\s]+/);
+                                                                                                            if (urlMatch) {
+                                                                                                                return (
+                                                                                                                    <a key={j} href={part} target="_blank" rel="noopener noreferrer">
+                                                                                                                        {part}
+                                                                                                                    </a>
+                                                                                                                );
+                                                                                                            }
+                                                                                                            return part;
+                                                                                                        })}
+                                                                                                    </strong>
+                                                                                                    {normalPart.split(urlRegex).map((part, j) => {
+                                                                                                        const urlMatch = part.match(/^https?:\/\/[^\s]+/);
+                                                                                                        if (urlMatch) {
+                                                                                                            return (
+                                                                                                                <a key={j} href={part} target="_blank" rel="noopener noreferrer">
+                                                                                                                    {part}
+                                                                                                                </a>
+                                                                                                            );
+                                                                                                        }
+                                                                                                        return part;
+                                                                                                    })}
+                                                                                                </>
+                                                                                            );
+                                                                                        }
+                                                                                    }
+                                                                                    
+                                                                                    // Fallback: bold the entire line if no colon found
+                                                                                    return questionLine.split(urlRegex).map((part, j) => {
+                                                                                        const urlMatch = part.match(/^https?:\/\/[^\s]+/);
+                                                                                        if (urlMatch) {
+                                                                                            return (
+                                                                                                <a key={j} href={part} target="_blank" rel="noopener noreferrer">
+                                                                                                    {part}
+                                                                                                </a>
+                                                                                            );
+                                                                                        }
+                                                                                        return <strong key={j}>{part}</strong>;
+                                                                                    });
+                                                                                })()
+                                                                            ) : (
+                                                                                // Line doesn't match pattern - process URLs only
+                                                                                questionLine.split(urlRegex).map((part, j) => {
+                                                                                    const urlMatch = part.match(/^https?:\/\/[^\s]+/);
+                                                                                    if (urlMatch) {
+                                                                                        return (
+                                                                                            <a key={j} href={part} target="_blank" rel="noopener noreferrer">
+                                                                                                {part}
+                                                                                            </a>
+                                                                                        );
+                                                                                    }
+                                                                                    return part;
+                                                                                })
+                                                                            )}
+                                                                        </span>
+                                                                    );
+                                                                })()}
+                                                            </div>
+                                                        ))}
                                                     </div>
-                                                ))}
-                                            </div>
-                                        )}
-                                        <div className="postResponseIcons">
+                                                )}
                                             {/* Icons under ADA's response to copy , like, dislike, and make ADA reponse txt-to-speech */}
+                                            <div className="postResponseIcons">
                                                 <button className='copyBtn' onClick={() => copyClick(msg)} data-tooltip-id="copy-tooltip" data-tooltip-content="Copy">
                                                     <img className="Copy" alt="Copy" src={copiedStates[msg.id] ? copyCheckIcon : copyIcon} />
                                                 </button>
@@ -873,14 +1102,14 @@ const App = () => {
                                                     <img className="Read" alt="Read" src={isReading[msg.id] ? stopIcon : speakerIcon} />
                                                 </button>
                                             </div>
-                                        </div>
+                                            </div>
                                     </div>
                                 )
-                            )}
-                        </div>
+                                )}
+                            </div>
                         {showProgress && (
                             <div className="responseProgress">
-                                {/* Loading animation for retrieving ADA's respopnse */}
+                                {/* Loading animation when retrieving ADA response */}
                                 <div className="loadingCircles">
                                     <div className="circle"></div>
                                     <div className="circle"></div>
@@ -892,252 +1121,9 @@ const App = () => {
                             </div>
                         )}
                     </div>
-                    {/* Intent Box on landing page */}
-                    <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`}>
-                        <textarea 
-                            id='intent' 
-                            value={intent} 
-                            placeholder='Please explain your situation...' 
-                            onChange={(e) => setIntent(e.target.value)} 
-                            onKeyDown={handleKeyPress}
-                            className='intentTextareaChat' 
-                            rows={3}
-                        ></textarea>
-                        <button 
-                            className="micBtnChat" 
-                            onClick={isListening ? stopVoiceRecording : startVoiceRecording}
-                            data-tooltip-id="mic-tooltip"
-                            data-tooltip-content={isListening ? "Stop" : "Dictate"}
-                        >
-                            <img alt="Microphone" src={isListening ? micActiveIcon : micIcon} />
-                        </button>
-                        <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxClick} disabled={!enableSend}>
-                            <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
-                        </button>
-                    </div>
-                </div>
-            // When the chat is not minimized (default)
-            ) : (
-                <div className="conversationLoadingResponse">
-                    {/* Top accessiblity icons (minimize, exit) */}
-                    <div className="miniexit">
-                        <button 
-                            className="miniBtn" 
-                            onClick={handleMinimize}
-                            data-tooltip-id="minimize-tooltip2"
-                            data-tooltip-content="Minimize"
-                        >
-                            <img alt="mini" src={isMinimized ? maximizeIcon : minIcon} />
-                        </button>
-                        <button 
-                            className="exitBtn" 
-                            onClick={() => setShowEndChatMenu(true)}
-                            data-tooltip-id="exit-tooltip"
-                            data-tooltip-content="Exit"
-                        >
-                            <img alt="exit" src={exitIcon} />
-                        </button>
-                    </div>
-                    {/* Chat interface after intention is sent */}
-                    <div className='chatBody' ref={chatBodyRef}>
-                        <div className="chatMessages">
-                            {/* Adding user's repsone to chat interface as a message box */}
-                            {chatMessages.map((msg, index) => 
-                                msg.from ==='user' ? (
-                                    <div key={index} className={`chatMessage ${msg.from}`}>
-                                        {msg.text}
-                                    </div>
-                                ) : (
-                                    // Adding ADA's repsone to chat interface, including populating source's URL in accordion 
-                                    <div key={index} className="chatResponse">
-                                        <img className="conversationLogo" alt="Qlik Logo" src={conversationLogo} />
-                                        <div className='responseContent'>
-                                            <div className="responseText">
-                                                {formatResponseText(msg.text)}
-                                            </div>
-                                            {getUrl(msg.text).length > 0 && (
-                                                <details className="sourcesAccordion">
-                                                    <summary>Sources</summary>
-                                                    <div className="sourcesList">
-                                                        <ul>
-                                                            {getUrl(msg.text).map((link,i) => (
-                                                                <li key={i}>
-                                                                <a
-                                                                href={link}
-                                                                target="_blank"
-                                                                rel="noopener noreferrer"
-                                                                >
-                                                                    {link}
-                                                                </a>
-                                                             </li>
-                                                            ))}
-                                                        </ul>
-                                                    </div>
-                                                </details>
-                                            )}
-                                            {/* Formatting ADA's response on front end by bolding text based on starting with a number or ending with a colon for  instructions */}
-                                            {getQuestionLines(msg.text).length > 0 && (
-                                                <div className="questionLines">
-                                                    {getQuestionLines(msg.text).map((questionLine, i) => (
-                                                        <div key={i} className="questionLine">
-                                                            {/* Use a special formatter that doesn't filter question lines */}
-                                                            {(() => {
-                                                                const urlRegex = /(https?:\/\/[^\s]+?)([.!?]?)(\s|$)/g;
-                                                                const numberedColonMatch = questionLine.match(/^(\d+[\.\)\:]?\s*.*?:)/);
-                                                                
-                                                                return (
-                                                                    <span>
-                                                                        {numberedColonMatch ? (
-                                                                            // Find the first capital letter after the first colon
-                                                                            (() => {
-                                                                                const colonIndex = questionLine.indexOf(':');
-                                                                                if (colonIndex !== -1) {
-                                                                                    const afterColon = questionLine.substring(colonIndex + 1);
-                                                                                    const capitalMatch = afterColon.match(/[A-Z]/);
-                                                                                    
-                                                                                    if (capitalMatch) {
-                                                                                        const capitalIndex = colonIndex + 1 + capitalMatch.index;
-                                                                                        const boldPart = questionLine.substring(0, capitalIndex);
-                                                                                        const normalPart = questionLine.substring(capitalIndex);
-                                                                                        
-                                                                                        return (
-                                                                                            <>
-                                                                                                <strong>
-                                                                                                    {boldPart.split(urlRegex).map((part, j) => {
-                                                                                                        const urlMatch = part.match(/^https?:\/\/[^\s]+/);
-                                                                                                        if (urlMatch) {
-                                                                                                            return (
-                                                                                                                <a key={j} href={part} target="_blank" rel="noopener noreferrer">
-                                                                                                                    {part}
-                                                                                                                </a>
-                                                                                                            );
-                                                                                                        }
-                                                                                                        return part;
-                                                                                                    })}
-                                                                                                </strong>
-                                                                                                {normalPart.split(urlRegex).map((part, j) => {
-                                                                                                    const urlMatch = part.match(/^https?:\/\/[^\s]+/);
-                                                                                                    if (urlMatch) {
-                                                                                                        return (
-                                                                                                            <a key={j} href={part} target="_blank" rel="noopener noreferrer">
-                                                                                                                {part}
-                                                                                                            </a>
-                                                                                                        );
-                                                                                                    }
-                                                                                                    return part;
-                                                                                                })}
-                                                                                            </>
-                                                                                        );
-                                                                                    } else {
-                                                                                        // No capital letter after colon, bold up to and including the colon
-                                                                                        const boldPart = questionLine.substring(0, colonIndex + 1);
-                                                                                        const normalPart = questionLine.substring(colonIndex + 1);
-                                                                                        
-                                                                                        return (
-                                                                                            <>
-                                                                                                <strong>
-                                                                                                    {boldPart.split(urlRegex).map((part, j) => {
-                                                                                                        const urlMatch = part.match(/^https?:\/\/[^\s]+/);
-                                                                                                        if (urlMatch) {
-                                                                                                            return (
-                                                                                                                <a key={j} href={part} target="_blank" rel="noopener noreferrer">
-                                                                                                                    {part}
-                                                                                                                </a>
-                                                                                                            );
-                                                                                                        }
-                                                                                                        return part;
-                                                                                                    })}
-                                                                                                </strong>
-                                                                                                {normalPart.split(urlRegex).map((part, j) => {
-                                                                                                    const urlMatch = part.match(/^https?:\/\/[^\s]+/);
-                                                                                                    if (urlMatch) {
-                                                                                                        return (
-                                                                                                            <a key={j} href={part} target="_blank" rel="noopener noreferrer">
-                                                                                                                {part}
-                                                                                                            </a>
-                                                                                                        );
-                                                                                                    }
-                                                                                                    return part;
-                                                                                                })}
-                                                                                            </>
-                                                                                        );
-                                                                                    }
-                                                                                }
-                                                                                
-                                                                                // Fallback: bold the entire line if no colon found
-                                                                                return questionLine.split(urlRegex).map((part, j) => {
-                                                                                    const urlMatch = part.match(/^https?:\/\/[^\s]+/);
-                                                                                    if (urlMatch) {
-                                                                                        return (
-                                                                                            <a key={j} href={part} target="_blank" rel="noopener noreferrer">
-                                                                                                {part}
-                                                                                            </a>
-                                                                                        );
-                                                                                    }
-                                                                                    return <strong key={j}>{part}</strong>;
-                                                                                });
-                                                                            })()
-                                                                        ) : (
-                                                                            // Line doesn't match pattern - process URLs only
-                                                                            questionLine.split(urlRegex).map((part, j) => {
-                                                                                const urlMatch = part.match(/^https?:\/\/[^\s]+/);
-                                                                                if (urlMatch) {
-                                                                                    return (
-                                                                                        <a key={j} href={part} target="_blank" rel="noopener noreferrer">
-                                                                                            {part}
-                                                                                        </a>
-                                                                                    );
-                                                                                }
-                                                                                return part;
-                                                                            })
-                                                                        )}
-                                                                    </span>
-                                                                );
-                                                            })()}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        {/* Icons under ADA's response to copy , like, dislike, and make ADA reponse txt-to-speech */}
-                                        <div className="postResponseIcons">
-                                            <button className='copyBtn' onClick={() => copyClick(msg)} data-tooltip-id="copy-tooltip" data-tooltip-content="Copy">
-                                                <img className="Copy" alt="Copy" src={copiedStates[msg.id] ? copyCheckIcon : copyIcon} />
-                                            </button>
-                                            {!isDisliked && (
-                                                <button className='likeBtn' onClick={() => setIsLiked(!isLiked)} data-tooltip-id="like-tooltip" data-tooltip-content="Like">
-                                                    <img className="Like" alt="Like" src={isLiked ? likeIconFill : likeIcon} />
-                                                </button>
-                                            )}
-                                            {!isLiked && (
-                                                <button className='dislikeBtn' onClick={() => setIsDisliked(!isDisliked)} data-tooltip-id="dislike-tooltip" data-tooltip-content="Dislike">
-                                                    <img className="Dislike" alt="Dislike" src={isDisliked ? dislikeIconFill : dislikeIcon} />
-                                                </button>
-                                            )}
-                                            <button className='readBtn' onClick={() => readAloud(msg)} data-tooltip-id="read-tooltip" data-tooltip-content={isReading[msg.id] ? "Stop" : "Listen"}>
-                                                <img className="Read" alt="Read" src={isReading[msg.id] ? stopIcon : speakerIcon} />
-                                            </button>
-                                        </div>
-                                        </div>
-                                </div>
-                            )
-                            )}
-                        </div>
-                    {showProgress && (
-                        <div className="responseProgress">
-                            {/* Loading animation when retrieving ADA response */}
-                            <div className="loadingCircles">
-                                <div className="circle"></div>
-                                <div className="circle"></div>
-                                <div className="circle"></div>
-                            </div>
-                            <p className="progressText">
-                                Searching the Qlik Knowledge Fabric...
-                            </p>
-                        </div>
-                    )}
                 </div>
                     {/* Sidebar menu on chat interface, includong decorative AI curls graphic */}
-                    <div className="rectangleSideBar">
+                    {/* <div className="rectangleSideBar">
                         <img 
                             className="QlikLogoSide" 
                             alt="Qlik Logo" 
@@ -1150,9 +1136,9 @@ const App = () => {
                         </div>
                         <button className="optionsBtn" onClick={() => setOptionsMenu(prev => !prev)}>
                             <img className="sidebarMenuIcon" alt="Options" src={optionsIcon} data-tooltip-id="options-tooltip" data-tooltip-content="Options" />
-                        </button>
+                        </button> */}
                         {/* Options menu on chat interface for sound, language, and downloading transcripts */}
-                        {showOptionsMenu && (
+                        {/* {showOptionsMenu && (
                             <>
                                 <div className="overlay" onClick={() => setOptionsMenu(false)} />
                                 <div className="settingsPopup">
@@ -1206,9 +1192,9 @@ const App = () => {
                                 </div>
                             </>
                         )}
-                    </div>
+                    </div> */}
                     {/* Intent box on chat interface */}
-                    <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`}>
+                    {/* <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`}>
                         <textarea 
                             id='intent' 
                             value={intent} 
@@ -1217,9 +1203,9 @@ const App = () => {
                             onKeyDown={handleKeyPress}
                             className='intentTextareaChat' 
                             rows={3}
-                        ></textarea>
+                        ></textarea> */}
                         {/* Speech-to-text button/functionality in intention box */}
-                        <button 
+                        {/* <button 
                             className="micBtnChat" 
                             onClick={isListening ? stopVoiceRecording : startVoiceRecording}
                             data-tooltip-id="mic-tooltip"
@@ -1230,7 +1216,7 @@ const App = () => {
                         <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxClick} disabled={!enableSend}>
                             <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             )}
             
@@ -1246,7 +1232,7 @@ const App = () => {
             <Tooltip id="options-tooltip" />
 
             {/* Ending chat menu */}
-            {ShowEndChatMenu && (
+            {/* {ShowEndChatMenu && (
                 <div className="toast_background">
                     <div className="ended_toast">
                         <h3 className="endingTitle">End Chat</h3>
@@ -1255,16 +1241,16 @@ const App = () => {
                         <button className="cancelBtn" onClick={handleCancel}>Cancel</button>
                     </div>
                 </div>
-            )}
+            )} */}
 
             {/* Success Overlay */}
-            {endedSuccessful && (
+            {/* {endedSuccessful && (
                 <div className="toast_background">
                     <div className="ended_toast_success">
                         Conversation succesfully ended
                     </div>
                 </div>
-            )}
+            )} */}
         </div>
     );
 }

@@ -100,17 +100,17 @@
 }
 
 .invitationToConverse {
-    margin-bottom: 2rem;
-    margin-left: 1rem;
-    font-size: 2rem;
+    margin: 6rem 0rem 1rem 0rem;
+    font-size: 2.4rem;
     color: #19426c;
     max-width: 90%;
     text-align: center;
 }
 
-.landingSubtitle {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+.landingSubheading {
+    margin: 0rem 0rem 2.5rem 0rem;
+    font-size: 0.95rem;
+    color: #767676;
 }
 
 .logoIcon {
@@ -129,7 +129,8 @@
     height: 10rem;
     width: 150vh;
     padding: .75rem;
-    border: 3px solid #939393;
+    border: 1px solid #C8C8C8;
+    box-shadow: 2px 8px 12px 4px rgba(0, 0, 0, 0.05);
     font-family: Inter;
     background-color: #fff;
     border-radius: 35px;
@@ -137,9 +138,9 @@
     gap: 0rem;
 }
 
-.landingIntentBox.active, .landingIntentBoxChat.active {
-    border: 2px solid #cdcdcd;
-}
+/* .landingIntentBox.active, .landingIntentBoxChat.active {
+    border: 1px solid #929292;
+} */
 
 .intentTextarea{
     flex: 1;
@@ -153,7 +154,8 @@
     background-color: transparent;
     color: #333;
     font-family: inherit;
-    max-height: 20vh;
+    max-height: 13vh;
+    caret-color: #40C470;
 }
 
 .sendBtn {
@@ -192,6 +194,7 @@
     margin-top: 6.3rem;
 }
 
+
 .micBtnChat {
     padding: 1rem 0.2rem;
 }
@@ -202,8 +205,27 @@
     transition: filter 0.2s ease;
 }
 
-.micBtn:hover img, .micBtnChat:hover img {
+.micBtn:hover img, .micBtnChat:hover img, .attachBtn:hover img {
     filter: brightness(1.2);
+}
+
+/* Styling for attachment button */
+
+.attachBtn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    position: absolute;
+    top: 23.5rem;
+    left: 13.2rem;
+}
+
+.attachBtn img {
+    width: 24px;
+    height: 24px;
+    transition: filter 0.2s ease;
 }
 
 /* Chat interface styling */
@@ -316,19 +338,19 @@
     margin-top: 4rem;
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: 1.5rem;
     /* width: 80%; */
     /* margin-left: 11rem; */
     justify-content: center;
     /* margin-bottom: 2.5rem; */
-    font-size: 0.85rem;
-    font-style: italic;
-    color: #404040;
-    font-weight: 200;
+    font-size: 0.9rem;
+    /* font-style: italic; */
+    color: #767676;
+    font-weight: 300;
     opacity: 1;
 
     /* Animation */
-    animation: fadeAcross .8s ease-in-out;
+    animation: fadeAcross 0.5s ease-in-out;
 }
 
 /* Animation with loading circles */
@@ -351,8 +373,8 @@
 
 .circle:nth-child(1) {
     margin-left: 0.2rem;
-    width: 9px;
-    height: 9px;
+    width: 11px;
+    height: 11px;
     background-color: #009845;
     animation-delay: 0s;
     animation: circlePulse1 2s ease-in-out infinite;
@@ -362,8 +384,8 @@
 
 .circle:nth-child(2) {
     margin-top: 1rem;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     background-color: #00ff73;
     animation-delay: 0.3s;
     animation: circlePulse2 2s ease-in-out infinite;
@@ -375,8 +397,8 @@
 .circle:nth-child(3) {
     margin-top: 1rem;
     margin-left: 1rem;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     background-color: #B7D9EE;
     animation-delay: 0.6s;
     animation: circlePulse3 2s ease-in-out infinite;
@@ -388,32 +410,32 @@
     0% {
         transform: translate(0px, 0px);
         opacity: 0.7;
-        width: 9px;
-        height: 9px;
+        width: 11px;
+        height: 11px;
     }
     25% {
         transform: translate(10px, 7px);
         opacity: 0.9;
-        width: 11px;
-        height: 11px;
+        width: 13px;
+        height: 13px;
     }
     50% {
         transform: translate(20px, 16px);
         opacity: 0.9;
-        width: 9px;
-        height: 9px;
+        width: 11px;
+        height: 11px;
     }
     75% {
         transform: translate(3px, 10px);
         opacity: 0.9;
-        width: 9px;
-        height: 9px;
+        width: 11px;
+        height: 11px;
     }
     100% {
         transform: translate(0px, 0px);
         opacity: 0.7;
-        width: 9px;
-        height: 9px;
+        width: 11px;
+        height: 11px;
     }
 }
 
@@ -423,32 +445,32 @@
     0% {
         transform: translate(0px, 0px);
         opacity: 0.7;
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
     }
     25% {
         transform: translate(10px, -5px);
         opacity: 0.9;
-        width: 6px;
-        height: 6px;
+        width: 8px;
+        height: 8px;
     }
     50% {
         transform: translate(12px, -20px);
         opacity: 0.9;
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
     }
     75% {
         transform: translate(0px, -10px);
         opacity: 0.7;
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
     }
     100% {
         transform: translate(0px, 0px);
         opacity: 0.5;
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
     }
 }
 
@@ -458,32 +480,32 @@
     0% {
         transform: translate(0px, 0px);
         opacity: 0.7;
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
     }
     25% {
         transform: translate(-10px, 0px);
         opacity: 0.9;
-        width: 6px;
-        height: 6px;
+        width: 8px;
+        height: 8px;
     }
     50% {
         transform: translate(-25px, 0px);
         opacity: 0.7;
-        width: 6px;
-        height: 6px;
+        width: 8px;
+        height: 8px;
     }
     75% {
         transform: translate(-10px, -10px);
         opacity: 0.7;
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
     }
     100% {
         transform: translate(0px, 0px);
         opacity: 0.7;
-        width: 8px;
-        height: 8px;
+        width: 10px;
+        height: 10px;
     }
 }
 
@@ -511,7 +533,8 @@
     width: 150vh;
     height: auto;
     min-height: 10rem;
-    border: 2px solid #939393;
+    border: 1px solid #C8C8C8;
+    box-shadow: 2px 8px 12px 4px rgba(0, 0, 0, 0.05);
     background-color: #fff;
     border-radius: 35px;
     box-sizing: border-box;
@@ -522,7 +545,7 @@
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     margin-left: 1%;
     margin-right: 1%;
     flex-direction: row;
@@ -996,19 +1019,17 @@
     z-index: 1004;
 }
 
-/* Overriding the z-index for elements inside popups */
-.copyBtn,
-.likeBtn,
-.dislikeBtn,
-.readBtn {
-    z-index: 5 !important;
+/* Specific styling for attachment button tooltip */
+[data-tooltip-id="attach-tooltip"] {
+    position: relative !important;
+    z-index: 1005 !important;
 }
 
-.copyBtn [data-tooltip-id],
-.likeBtn [data-tooltip-id],
-.dislikeBtn [data-tooltip-id],
-.readBtn [data-tooltip-id] {
-    z-index: 5 !important;
+/* Override tooltip positioning for attachment button */
+.react-tooltip[data-tooltip-id="attach-tooltip"] {
+    position: fixed !important;
+    z-index: 10000 !important;
+    transform: none !important;
 }
 
 /*Ending conversation toast*/

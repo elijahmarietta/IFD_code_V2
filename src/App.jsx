@@ -30,6 +30,7 @@ import globeIcon from './assets/globe.svg';
 import notificationSound from './assets/Notification.wav';
 import micIcon from './assets/mic.svg';
 import micActiveIcon from './assets/mic-active.svg';
+import attachment from './assets/Attachment.svg'
 
 //  App variables to keep track of state changes
 const App = () => {
@@ -59,12 +60,14 @@ const App = () => {
     const [ShowMinimizedEndChatMenu,setShowMinimizedEndChatMenu] = useState(false);
     const [endedSuccessful, showEndedSuccessful] = useState(false);
     const [minimizedEndedSuccessful, showMinimizedEndedSuccessful] = useState(false);
+    const [uploadedFiles, setUploadedFiles] = useState([]);
+    const fileInputRef = useRef(null);
 
 
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://619df137df3f.ngrok-free.app/api/chat', {
+            const response = await fetch('https://392fbfb0942f.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -185,7 +188,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://619df137df3f.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://392fbfb0942f.ngrok-free.app/api/end_convo', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -228,7 +231,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://619df137df3f.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://392fbfb0942f.ngrok-free.app/api/end_convo', {
                method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -604,6 +607,29 @@ const App = () => {
         }
     }, [recognition, isListening]);
 
+    // Handle attachment button click
+    const handleAttachmentClick = useCallback(() => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
+        }
+    }, []);
+
+    // Handle file selection
+    const handleFileUpload = useCallback((event) => {
+        const files = Array.from(event.target.files);
+        if (files.length > 0) {
+            setUploadedFiles(prev => [...prev, ...files]);
+            console.log('Files uploaded:', files);
+            // Reset the input to allow selecting the same file again
+            event.target.value = '';
+        }
+    }, []);
+
+    // Remove uploaded file
+    const removeFile = useCallback((index) => {
+        setUploadedFiles(prev => prev.filter((_, i) => i !== index));
+    }, []);
+
     const enableSend = intent.trim().length>0;
 
     // Transition from functions to visible elements
@@ -624,7 +650,7 @@ const App = () => {
                     {/* Landing page Icon and text to invite user to converse */}
                     {/* <img className="logoIcon" alt="Logo" src={logoIcon} /> */}
                     <b className="invitationToConverse">How can we help you?</b>
-                    <p className="landingSubtitle">Please provide detailed information in the form below:</p>
+                    <p className="landingSubheading">Please provide detailed information in the form below:</p>
 
                     {/* Landing page intention box */}
                     <div className={`landingIntentBox ${enableSend ? 'active' : ''}`}>
@@ -637,7 +663,23 @@ const App = () => {
                         className='intentTextarea' 
                         rows={3}
                      ></textarea>
-                     {/* Speech-to-txt input for landing page intention box */}
+                     
+                     {/* Hidden file input */}
+                     <input
+                        type="file"
+                        ref={fileInputRef}
+                        onChange={handleFileUpload}
+                        style={{ display: 'none' }}
+                        multiple
+                        accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png,.gif"
+                     />
+                     
+                     <button
+                        className="attachBtn" 
+                        onClick={handleAttachmentClick}
+                    >
+                        <img alt="Attachment" src={attachment} data-tooltip-id="attach-tooltip" data-tooltip-content="Attach file"/>
+                     </button>
                      <button 
                         className="micBtn" 
                         onClick={isListening ? stopVoiceRecording : startVoiceRecording}
@@ -923,7 +965,7 @@ const App = () => {
                 <div className="mainContent">
                     {/* <div className="conversationLoadingResponse"> */}
                         <b className="invitationToConverse">How can we help you?</b>
-                        <p className="landingSubtitle">Please provide detailed information in the form below:</p>
+                        <p className="landingSubheading">Please provide detailed information in the form below:</p>
                         <div className='chatBody' ref={chatBodyRef}>
                             <div className="chatMessages">
                                 {/* Adding user's repsone to chat interface as a message box */}
@@ -935,7 +977,7 @@ const App = () => {
                                     ) : (
                                         // Adding ADA's repsone to chat interface, including populating source's URL in accordion 
                                         <div key={index} className="chatResponse">
-                                            {/* <img className="conversationLogo" alt="Qlik Logo" src={conversationLogo} /> */}
+                                            <img className="conversationLogo" alt="Qlik Logo" src={conversationLogo} />
                                             <div className='responseContent'>
                                                 <div className="responseText">
                                                     {formatResponseText(msg.text)}
@@ -1229,6 +1271,7 @@ const App = () => {
             <Tooltip id="dislike-tooltip" />
             <Tooltip id="read-tooltip" />
             <Tooltip id="mic-tooltip" />
+            <Tooltip id="attach-tooltip" />
             <Tooltip id="options-tooltip" />
 
             {/* Ending chat menu */}

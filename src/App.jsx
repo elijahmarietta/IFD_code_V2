@@ -67,12 +67,68 @@ const App = () => {
     const [uploadedFiles, setUploadedFiles] = useState([]);
     const fileInputRef = useRef(null);
     const [activeTab, setActiveTab] = useState('solve'); // 'solve' or 'contact'
+    const [showSuggestions, setShowSuggestions] = useState(false);
+    const [suggestions] = useState([
+        "I'm having trouble connecting to my dashboard",
+        "How do I create a new visualization?",
+        "My data refresh is failing",
+        "I need help with user permissions",
+        "The application is running slowly",
+        "I can't access my published app",
+        "How do I export data from Qlik Sense?",
+        "I'm getting an error when loading data",
+        "How do I share my dashboard with others?",
+        "I need help with data modeling"
+    ]);
+    const [filteredSuggestions, setFilteredSuggestions] = useState([]);
 
+    // Handle input change and filter suggestions
+    const handleIntentChange = useCallback((e) => {
+        const value = e.target.value;
+        setIntent(value);
+
+        if (value.trim().length > 2) {
+            const filtered = suggestions.filter(suggestion =>
+                suggestion.toLowerCase().includes(value.toLowerCase())
+            );
+            setFilteredSuggestions(filtered.slice(0, 5)); // Show max 5 suggestions
+            setShowSuggestions(filtered.length > 0);
+        } else {
+            setShowSuggestions(false);
+            setFilteredSuggestions([]);
+        }
+    }, [suggestions]);
+
+    // Handle suggestion click
+    const handleSuggestionClick = useCallback((suggestion) => {
+        setIntent(suggestion);
+        setShowSuggestions(false);
+        setFilteredSuggestions([]);
+        // Focus back on textarea
+        const textarea = document.getElementById('intent');
+        if (textarea) {
+            textarea.focus();
+        }
+    }, []);
+
+    // Hide suggestions when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!event.target.closest('.landingIntentBox') && !event.target.closest('.autocompleteDropdown')) {
+                setShowSuggestions(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://392fbfb0942f.ngrok-free.app/api/chat', {
+            const response = await fetch('https://be634b0883ed.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -193,7 +249,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://392fbfb0942f.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://be634b0883ed.ngrok-free.app/api/end_convo', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -236,7 +292,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://392fbfb0942f.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://be634b0883ed.ngrok-free.app/api/end_convo', {
                method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -659,12 +715,12 @@ const App = () => {
                         <p className="landingSubheading">Please provide detailed information in the form below:</p>
 
                         {/* Landing page intention box */}
-                        <div className={`landingIntentBox ${enableSend ? 'active' : ''}`}>
+                        <div className={`landingIntentBox ${enableSend ? 'active' : ''} ${showSuggestions ? 'expanded' : ''}`}>
                             <textarea 
                                 id='intent' 
                                 value={intent} 
                                 placeholder='Please explain your situation...' 
-                                onChange={(e) => setIntent(e.target.value)} 
+                                onChange={handleIntentChange}
                                 onKeyDown={handleKeyPress}
                                 className='intentTextarea' 
                                 rows={3}
@@ -723,6 +779,22 @@ const App = () => {
                                 >
                                     +
                                 </button>
+                            </div>
+                        )}
+                        
+
+                        {/* Autocomplete suggestions */}
+                        {showSuggestions && filteredSuggestions.length > 0 && (
+                            <div className="autocompleteDropdown">
+                                {filteredSuggestions.map((suggestion, index) => (
+                                    <div
+                                        key={index}
+                                        className="suggestionItem"
+                                        onClick={() => handleSuggestionClick(suggestion)}
+                                    >
+                                        {suggestion}
+                                    </div>
+                                ))}
                             </div>
                         )}
                         </div>

@@ -125,8 +125,8 @@
     display: flex;
     align-items: left;
     justify-content: space-between;
-    margin-bottom: 1rem;
-    height: 10rem;
+    margin-bottom: 0rem;
+    min-height: 10rem;
     width: 150vh;
     padding: .75rem;
     border: 1px solid #C8C8C8;
@@ -138,6 +138,95 @@
     gap: 0rem;
 }
 
+/* Uploaded files display within intent box */
+.uploadedFilesDisplay {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
+    max-width: 150vh;
+    /* background-color: #f9f9f9; */
+    /* border-radius: 12px;
+    border: 1px solid #e0e0e0; */
+}
+
+.fileDisplayItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background-color: #fff;
+    border: 1px solid #d0d0d0;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #333;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.fileName {
+    font-weight: 500;
+    color: #19426c;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fileType {
+    font-size: 0.75rem;
+    color: #666;
+    font-style: italic;
+}
+
+.removeFileBtn {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 0.25rem;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.removeFileBtn:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Plus button to add more files */
+.addMoreFilesBtn {
+    background: none;
+    border: 1px solid #ccc;
+    color: #999;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.addMoreFilesBtn:hover {
+    border-color: #19426c;
+    color: #19426c;
+    background-color: #f0f0f0;
+}
+
 /* .landingIntentBox.active, .landingIntentBoxChat.active {
     border: 1px solid #929292;
 } */
@@ -146,7 +235,7 @@
     flex: 1;
     resize: none;
     width: 100%;
-    font-size: 1rem;
+    font-size: 0.95rem;
     padding-left: 11px;
     padding-top: 15px;
     border: none;
@@ -343,7 +432,7 @@
     /* margin-left: 11rem; */
     justify-content: center;
     /* margin-bottom: 2.5rem; */
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     /* font-style: italic; */
     color: #767676;
     font-weight: 300;
@@ -569,7 +658,7 @@
 }
 
 .responseText, .questionLines {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #404040;
     /* font-weight: 200; */
     font-family: Inter;
@@ -1225,6 +1314,136 @@
     animation: fadeIn2 .8s ease-in-out;
     top: 55%;
     opacity: 1;
+}
+
+/* Tab Navigation */
+
+.tabNavigationContainer {
+    border-bottom: 1px solid #e0e0e0;
+    margin: 0.5rem 0rem 0.5rem 0rem;
+}
+
+.tabNavigation {
+    display: flex;
+    border-radius: 8px 8px 0 0;
+    width: 40%;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.tab {
+    flex: 1;
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.02rem;
+    font-weight: 500;
+    color: #A7A7A7;
+    transition: all 0.3s ease;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    border-bottom: 3px solid transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-weight: 600;
+}
+
+.tab:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.tab.active {
+    /* background-color: #f9f9f9; */
+    border-bottom: 2px solid #00B140;
+    color: #10B64C;
+}
+
+/* Contact Us Content */
+.contactUsContent {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 0 0 12px 12px;
+    margin-bottom: 1rem;
+}
+
+.contactForm {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contactForm h3 {
+    color: #19426c;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.contactForm p {
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.supportForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 14px;
+}
+
+.formGroup input,
+.formGroup textarea,
+.formGroup select {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+    outline: none;
+    border-color: #19426c;
+}
+
+.formGroup textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submitContactBtn {
+    background-color: #19426c;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.submitContactBtn:hover {
+    background-color: #2d5a87;
 }
 
 /* Optimizing for larger screens */

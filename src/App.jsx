@@ -64,7 +64,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://392fbfb0942f.ngrok-free.app/api/chat', {
+            const response = await fetch('https://619df137df3f.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -185,7 +185,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://392fbfb0942f.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://619df137df3f.ngrok-free.app/api/end_convo', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -228,7 +228,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://392fbfb0942f.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://619df137df3f.ngrok-free.app/api/end_convo', {
                method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -935,7 +935,7 @@ const App = () => {
                                     ) : (
                                         // Adding ADA's repsone to chat interface, including populating source's URL in accordion 
                                         <div key={index} className="chatResponse">
-                                            <img className="conversationLogo" alt="Qlik Logo" src={conversationLogo} />
+                                            {/* <img className="conversationLogo" alt="Qlik Logo" src={conversationLogo} /> */}
                                             <div className='responseContent'>
                                                 <div className="responseText">
                                                     {formatResponseText(msg.text)}

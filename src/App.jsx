@@ -833,14 +833,14 @@ const App = () => {
                             >
                                 <img alt="Attachment" src={attachment} data-tooltip-id="attach-tooltip" data-tooltip-content="Attach files"/>
                             </button>
-                            <button 
+                            {/* <button 
                                 className="micBtn" 
                                 onClick={isListening ? stopVoiceRecording : startVoiceRecording}
                                 data-tooltip-id="mic-tooltip"
                                 data-tooltip-content={isListening ? "Stop" : "Dictate"}
                             >
                                 <img alt="Microphone" src={isListening ? micActiveIcon : micIcon} />
-                            </button>
+                            </button> */}
                             <button className={ `sendBtn ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxClick} disabled={!enableSend}>
                                 <img alt="Send" src={enableSend ? sendIcon_green : sendIcon}></img>
                             </button>

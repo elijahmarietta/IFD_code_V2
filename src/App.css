@@ -12,6 +12,7 @@
     color: #5d5d5d;
     font-family: Inter;
     box-sizing: border-box;
+    margin-bottom: 2rem;
 }
 
 .mainContent{
@@ -154,12 +155,13 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 10001;
     max-height: 250px;
-    overflow-y: auto;
+    overflow-y: hidden;
     animation: fadeIn 0.2s ease-in-out;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
+    padding-top: 0.5rem;
 }
 
 .suggestionItem {
@@ -189,7 +191,6 @@
 
 .suggestionItem:first-child {
     border-radius: 12px 12px 0 0;
-    margin-top: 0.5rem;
 }
 
 .suggestionItem:last-child {

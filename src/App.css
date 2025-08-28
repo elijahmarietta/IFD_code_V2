@@ -101,11 +101,16 @@
 }
 
 .invitationToConverse {
-    margin: 6rem 0rem 1rem 0rem;
+    margin: 2rem 0rem 1rem 0rem;
     font-size: 2.4rem;
     color: #19426c;
     max-width: 90%;
     text-align: center;
+    transition: margin-top 0.3s ease;
+}
+
+.invitationToConverse.chatStarted {
+    margin-top: 4rem;
 }
 
 .landingSubheading {
@@ -147,7 +152,7 @@
 /* Autocomplete dropdown styling */
 .autocompleteDropdown {
     position: absolute;
-    top: 26rem;
+    top: 22rem;
     width: 150vh;
     background-color: #fff;
     border: 1px solid #d0d0d0;
@@ -371,7 +376,7 @@
     cursor: pointer;
     transition: transform 0.2s ease;
     position: absolute;
-    top: 23.5rem;
+    top: 19.5rem;
     left: 13.2rem;
 }
 
@@ -381,7 +386,65 @@
     transition: filter 0.2s ease;
 }
 
-/* Chat interface styling */
+/* Ch
+
+/* Existing buttons styling */
+.existingButtons {
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.articles {
+    background-color: #FBFBFB;
+    border: none;
+    cursor: pointer;
+    padding: 2rem 4rem;
+    transition: transform 0.2s ease;
+    border: 1px solid #009845;
+    border-radius: 10px 10px 0px 0px;
+    border-bottom: 4px solid #009845;
+    font-family: Inter;
+    font-size: 1rem;
+    color: #19426C;
+    font-weight: 600;
+    transition: box-shadow 0.3s ease;
+}
+
+.articles:hover {
+    box-shadow: 2px 6px 18px 8px rgba(0, 0, 0, 0.1);
+}
+
+.criticalIssues {
+    background: none;
+    background-image: linear-gradient(to bottom, #FCFFFF, #E6FAF9);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.1rem 1.7rem;
+    font-family: Inter;
+    font-size: 1rem;
+    color: #19426C;
+    font-weight: 600;
+    border: 1px solid #10CFC9;
+    border-radius: 40px;
+}
+
+.criticalIssues img {
+    width: 22px;
+    height: 22px;
+}
+
+.criticalIssues:hover {
+    background-image: linear-gradient(to bottom, #FDF9F7, #ECC5AD, #DA9164);
+    border: 1px solid #F26522;
+}at interface styling */
 /* .conversationLoadingResponse{
     display: flex;
     flex-flow: column;
@@ -667,8 +730,7 @@
     margin-left: 0rem;
 }
 
-/*Styling to fade response text out after recieving ai response, might delete if it's not working....*/
-.responseProgres.hidden{
+/*Styling to fade response text out after recieving ai response, might ponseProgres.hidden{
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
@@ -734,7 +796,7 @@
 
 .responseText, .questionLines {
     font-size: 0.9rem;
-    color: #878787;
+    color: #404040;
     /* font-weight: 200; */
     font-family: Inter;
     /* width: 100%; */
@@ -743,10 +805,22 @@
     white-space: normal;
     line-height: 1.5;
     word-break:break-word;
+    margin-top: 0.4rem;
     margin-bottom: 1.1rem;
 }
 
-/* Sidebar menu styling */
+.questionLines {
+    display: none;
+}
+
+.endStatement {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #404040;
+    font-family: Inter;
+    line-height: 1.5;
+    word-break: break-word;
+}debar menu styling */
 .rectangleSideBar{
     display: flex;
     justify-content: center;
@@ -1394,7 +1468,7 @@
 
 .tabNavigationContainer {
     border-bottom: 1px solid #e0e0e0;
-    margin: 0.5rem 0rem 0rem 0rem;
+    margin: 0.5rem 0rem 0.5rem 0rem;
 }
 
 .tabNavigation {
@@ -1445,7 +1519,8 @@
     margin-bottom: 1rem;
 }
 
-.contactForm {
+.c
+    animation: fadeIn .8s ease-in-out;ontactForm {
     max-width: 600px;
     margin: 0 auto;
 }

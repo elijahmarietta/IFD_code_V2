@@ -36,6 +36,8 @@ import questionActiveIcon from './assets/QuestionActive.svg'
 import contactIcon from './assets/Contact.svg'
 import contactActiveIcon from './assets/ContactActive.svg'
 import searchIcon from './assets/Search.svg'
+import articleIcon from './assets/Articles.svg'
+import criticalIcon from './assets/Critical.svg'
 
 //  App variables to keep track of state changes
 const App = () => {
@@ -219,7 +221,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://5afeb04d48e2.ngrok-free.app/api/chat', {
+            const response = await fetch('https://be634b0883ed.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -340,7 +342,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://5afeb04d48e2.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://be634b0883ed.ngrok-free.app/api/end_convo', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -383,7 +385,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://5afeb04d48e2.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://be634b0883ed.ngrok-free.app/api/end_convo', {
                method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -889,12 +891,24 @@ const App = () => {
                                 ))}
                             </div>
                         )}
+
+                        {/* Explore article and critical issues buttons */}
+                            <div className="existingButtons">
+                                <button className="articles">
+                                    <img alt="Articles" src={articleIcon}></img>
+                                    <p>EXPLORE ARTICLES</p>
+                                </button>
+                                <button className="criticalIssues">
+                                    <img alt="Critical Issues" src={criticalIcon}></img>
+                                    <p>CRITICAL ISSUES</p>
+                                </button>
+                            </div>
                         </div>
                 </>
             ) : (
                 <div className="mainContent">
                     {/* <div className="conversationLoadingResponse"> */}
-                        <b className="invitationToConverse">How can we help you?</b>
+                        <b className={`invitationToConverse ${chatMessages.length > 0 ? 'chatStarted' : ''}`}>How can we help you?</b>
                         <p className="landingSubheading">Please provide detailed information in the form below:</p>
                         <div className='chatBody' ref={chatBodyRef}>
                             {/* Tab navigation - only show after AI response */}
@@ -1082,6 +1096,10 @@ const App = () => {
                                                             ))}
                                                         </div>
                                                     )}
+                                                {/* Hard-coded ending statement */}
+                                                <div className="endStatement">
+                                                    <p>If you need further assistance or have any questions, feel free to ask!</p>
+                                                </div>
                                                 {/* Icons under ADA's response to copy , like, dislike, and make ADA reponse txt-to-speech */}
                                                 <div className="postResponseIcons">
                                                     <button className='copyBtn' onClick={() => copyClick(msg)} data-tooltip-id="copy-tooltip" data-tooltip-content="Copy">
@@ -1168,103 +1186,23 @@ const App = () => {
                                     </p>
                                 </div>
                             )}
-                   
-                </div>
-                    {/* Sidebar menu on chat interface, includong decorative AI curls graphic */}
-                    {/* <div className="rectangleSideBar">
-                        <img 
-                            className="QlikLogoSide" 
-                            alt="Qlik Logo" 
-                            src={logoIcon} 
-                            onClick={(e) => e.stopPropagation()}
-                            style={{ pointerEvents: 'auto' }}
-                        />
-                        <div className="AICurls">
-                            <img className="sidebarAICurls" alt="Sidebar AI Curls" src={sidebarAICurls}/>
+
+                            
+
                         </div>
-                        <button className="optionsBtn" onClick={() => setOptionsMenu(prev => !prev)}>
-                            <img className="sidebarMenuIcon" alt="Options" src={optionsIcon} data-tooltip-id="options-tooltip" data-tooltip-content="Options" />
-                        </button> */}
-                        {/* Options menu on chat interface for sound, language, and downloading transcripts */}
-                        {/* {showOptionsMenu && (
-                            <>
-                                <div className="overlay" onClick={() => setOptionsMenu(false)} />
-                                <div className="settingsPopup">
-                                    <div className="settingsHeader">
-                                        <h3 className="optionsTitle">Options</h3>
-                                        <button className="exitOptions" onClick={() => setOptionsMenu(false)}>
-                                            <img className="exitOptionsIcon" alt="exit Options" src={exitIcon} />
-                                        </button>
-                                    </div>
-                                    <div className="settingsBody">
-                                        <div className='volumeDiv' onClick={() => setIsSoundEnabled(prev => !prev)}>
-                                            <button className="volumeOptions">
-                                                <img className="volumeIcon" alt="volume Options" src={isSoundEnabled ? volumeIcon : volumeIconMute}/>
-                                            </button>
-                                            <p>{isSoundEnabled ? 'Turn off sound' : 'Turn on sound'}</p>
-                                        </div>
-                                        <div className='languageDiv' onClick={() => setShowLanguageMenu(prev => !prev)}>
-                                            <button className="languageOptions" >
-                                                <img className="languageIcon" alt="language Options" src={globeIcon} />
-                                            </button>
-                                            <p>Change language</p>
-                                        </div>
-                                        {showLanguageMenu && (
-                                            <div className="languagePopup">
-                                                <div className="languageHeader">
-                                                    <h4>Select Language</h4>
-                                                    <button onClick={() => setShowLanguageMenu(false)}>
-                                                        <img src={exitIcon} alt="close" />
-                                                    </button>
-                                                </div>
-                                                <div className="languageOptions">
-                                                    {['اَلْعَرَبِيَّةُ', '简体中文', '繁體中文', 'Nederlands', 'English', 'Français', 'Deutsch', 'Italiano', '日本語', '한국어', 'Polski', 'Português', 'Русский язык', 'Español', 'Svenska', 'Türkçe'].map((language) => (
-                                                        <div 
-                                                            key={language}
-                                                            className={`languageOption ${selectedLanguage === language ? 'selected' : ''}`}
-                                                            onClick={() => handleLanguageSelect(language)}
-                                                        >
-                                                            {language}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        )}
-                                        <div className='downloadDiv' onClick={downloadTranscript}>
-                                            <button className="downloadOptions">
-                                                <img className="downloadIcon" alt="download Options" src={downloadIcon} />
-                                            </button>
-                                            <p>Download transcript</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </>
-                        )}
-                    </div> */}
-                    {/* Intent box on chat interface */}
-                    {/* <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`}>
-                        <textarea 
-                            id='intent' 
-                            value={intent} 
-                            placeholder='Please explain your situation...' 
-                            onChange={(e) => setIntent(e.target.value)} 
-                            onKeyDown={handleKeyPress}
-                            className='intentTextareaChat' 
-                            rows={3}
-                        ></textarea> */}
-                        {/* Speech-to-text button/functionality in intention box */}
-                        {/* <button 
-                            className="micBtnChat" 
-                            onClick={isListening ? stopVoiceRecording : startVoiceRecording}
-                            data-tooltip-id="mic-tooltip"
-                            data-tooltip-content={isListening ? "Stop" : "Dictate"}
-                        >
-                            <img alt="Microphone" src={isListening ? micActiveIcon : micIcon} />
-                        </button>
-                        <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxClick} disabled={!enableSend}>
-                            <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
-                        </button>
-                    </div> */}
+
+                        {/* Explore article and critical issues buttons */}
+                        <div className="existingButtons">
+                            <button className="articles">
+                                <img alt="Articles" src={articleIcon}></img>
+                                <p>EXPLORE ARTICLES</p>
+                            </button>
+                            <button className="criticalIssues">
+                                <img alt="Critical Issues" src={criticalIcon}></img>
+                                <p>CRITICAL ISSUES</p>
+                            </button>
+                        </div>
+                   
                 </div>
             )}
             

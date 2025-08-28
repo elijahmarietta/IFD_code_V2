@@ -143,6 +143,63 @@
     min-height: 12rem;
 }
 
+/* Autocomplete dropdown styling */
+.autocompleteDropdown {
+    position: absolute;
+    top: 26rem;
+    width: 150vh;
+    background-color: #fff;
+    border: 1px solid #d0d0d0;
+    border-radius: 0px 0px 12px 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10001;
+    max-height: 250px;
+    overflow-y: auto;
+    animation: fadeIn 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.suggestionItem {
+    width: 140vh;
+    padding: 2.5vh 5vh;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #333;
+    /* border-bottom: 1px solid #f0f0f0; */
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    justify-self: start;
+    gap: 0.7rem;
+}
+
+.suggestionItem:last-child {
+    border-bottom: none;
+    margin-bottom: 0.8rem;
+}
+
+.suggestionItem:hover {
+    background-color: #f8f9fa;
+    color: #19426c;
+}
+
+.suggestionItem:first-child {
+    border-radius: 12px 12px 0 0;
+    margin-top: 0.5rem;
+}
+
+.suggestionItem:last-child {
+    border-radius: 0 0 12px 12px;
+}
+
+.suggestionItem:first-child:last-child {
+    border-radius: 12px;
+}
+
 /* Uploaded files display within intent box */
 .uploadedFilesDisplay {
     display: flex;
@@ -378,7 +435,7 @@
     display: flex;
     align-self: flex-end;
     flex-direction: column;
-    gap: 1rem;
+    /* gap: 1rem; */
     width: 80%;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
@@ -663,9 +720,20 @@
     max-width: 600px;
 }
 
+.responseHeader {
+    font-size: 0.9rem;
+    color: #878787;
+    font-weight: 700;
+    font-family: Inter;
+    white-space: normal;
+    line-height: 1.5;
+    word-break:break-word;
+    margin-top: 1rem;
+}
+
 .responseText, .questionLines {
     font-size: 0.9rem;
-    color: #404040;
+    color: #878787;
     /* font-weight: 200; */
     font-family: Inter;
     /* width: 100%; */
@@ -674,7 +742,6 @@
     white-space: normal;
     line-height: 1.5;
     word-break:break-word;
-    margin-top: 0.4rem;
     margin-bottom: 1.1rem;
 }
 
@@ -1326,7 +1393,7 @@
 
 .tabNavigationContainer {
     border-bottom: 1px solid #e0e0e0;
-    margin: 0.5rem 0rem 0.5rem 0rem;
+    margin: 0.5rem 0rem 0rem 0rem;
 }
 
 .tabNavigation {
@@ -1761,55 +1828,4 @@
         width: 65vh;
     }
 
-}
-
-/* Autocomplete dropdown styling */
-.autocompleteDropdown {
-    position: absolute;
-    top: 26rem;
-    width: 150vh;
-    background-color: #fff;
-    border: 1px solid #d0d0d0;
-    border-radius: 0px 0px 12px 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    z-index: 10001;
-    max-height: 250px;
-    overflow-y: auto;
-    animation: fadeIn 0.2s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-}
-
-.suggestionItem {
-    padding: 12px 16px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    color: #333;
-    border-bottom: 1px solid #f0f0f0;
-    transition: background-color 0.2s ease;
-    justify-content: center;
-    justify-self: center;
-}
-
-.suggestionItem:last-child {
-    border-bottom: none;
-}
-
-.suggestionItem:hover {
-    background-color: #f8f9fa;
-    color: #19426c;
-}
-
-.suggestionItem:first-child {
-    border-radius: 12px 12px 0 0;
-}
-
-.suggestionItem:last-child {
-    border-radius: 0 0 12px 12px;
-}
-
-.suggestionItem:first-child:last-child {
-    border-radius: 12px;
 }

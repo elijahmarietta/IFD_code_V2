@@ -35,6 +35,7 @@ import questionIcon from './assets/Question.svg'
 import questionActiveIcon from './assets/QuestionActive.svg'
 import contactIcon from './assets/Contact.svg'
 import contactActiveIcon from './assets/ContactActive.svg'
+import searchIcon from './assets/Search.svg'
 
 //  App variables to keep track of state changes
 const App = () => {
@@ -128,7 +129,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://be634b0883ed.ngrok-free.app/api/chat', {
+            const response = await fetch('https://5afeb04d48e2.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -249,7 +250,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://be634b0883ed.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://5afeb04d48e2.ngrok-free.app/api/end_convo', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -292,7 +293,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://be634b0883ed.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://5afeb04d48e2.ngrok-free.app/api/end_convo', {
                method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -792,6 +793,7 @@ const App = () => {
                                         className="suggestionItem"
                                         onClick={() => handleSuggestionClick(suggestion)}
                                     >
+                                        <img alt="Suggestion" src={searchIcon} />
                                         {suggestion}
                                     </div>
                                 ))}
@@ -841,6 +843,9 @@ const App = () => {
                                             <div key={index} className="chatResponse">
                                                 {/* <img className="conversationLogo" alt="Qlik Logo" src={conversationLogo} /> */}
                                                 <div className='responseContent'>
+                                                    <div className="responseHeader">
+                                                        <p>Your curated solution:</p>
+                                                    </div>
                                                     <div className="responseText">
                                                         {formatResponseText(msg.text)}
                                                     </div>

@@ -796,12 +796,12 @@ const App = () => {
                 <>
                     {/* Decorative AI curls that fade in and out of landing interface */}
                     <div className="mainContent">
-                        {/* <div className="AICurls">
+                        <div className="AICurls">
                             <img className="leftAICurls" alt="Left AI Curls" src={leftAICurls}/>
                             <img className="grayLeftAICurls" alt="Gray Left AI Curls" src={grayLeftAICurls}/>
                             <img className="grayRightAICurls" alt="GrayRight AI Curls" src={grayRightAICurls}/>
                             <img className="rightAICurls" alt="Right AI Curls" src={rightAICurls}/>
-                        </div> */}
+                        </div>
                         {/* Landing page Icon and text to invite user to converse */}
                         {/* <img className="logoIcon" alt="Logo" src={logoIcon} /> */}
                         <b className="invitationToConverse">How can we help you?</b>
@@ -908,6 +908,12 @@ const App = () => {
             ) : (
                 <div className="mainContent">
                     {/* <div className="conversationLoadingResponse"> */}
+                        <div className="AICurls">
+                            <img className="leftAICurls" alt="Left AI Curls" src={leftAICurls}/>
+                            <img className="grayLeftAICurls" alt="Gray Left AI Curls" src={grayLeftAICurls}/>
+                            <img className="grayRightAICurls" alt="GrayRight AI Curls" src={grayRightAICurls}/>
+                            <img className="rightAICurls" alt="Right AI Curls" src={rightAICurls}/>
+                        </div>
                         <b className={`invitationToConverse ${chatMessages.length > 1 ? 'chatStarted' : ''}`}>How can we help you?</b>
                         <p className="landingSubheading">Please provide detailed information in the form below:</p>
                         <div className='chatBody' ref={chatBodyRef}>

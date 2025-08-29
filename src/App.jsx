@@ -221,7 +221,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://be634b0883ed.ngrok-free.app/api/chat', {
+            const response = await fetch('https://5644927d72f8.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -342,7 +342,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://be634b0883ed.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://5644927d72f8.ngrok-free.app/api/end_convo', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -385,7 +385,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://be634b0883ed.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://5644927d72f8.ngrok-free.app/api/end_convo', {
                method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -908,7 +908,7 @@ const App = () => {
             ) : (
                 <div className="mainContent">
                     {/* <div className="conversationLoadingResponse"> */}
-                        <b className={`invitationToConverse ${chatMessages.length > 0 ? 'chatStarted' : ''}`}>How can we help you?</b>
+                        <b className={`invitationToConverse ${chatMessages.length > 1 ? 'chatStarted' : ''}`}>How can we help you?</b>
                         <p className="landingSubheading">Please provide detailed information in the form below:</p>
                         <div className='chatBody' ref={chatBodyRef}>
                             {/* Tab navigation - only show after AI response */}

@@ -101,16 +101,16 @@
 }
 
 .invitationToConverse {
-    margin: 2rem 0rem 1rem 0rem;
+    margin: 8rem 0rem 1rem 0rem;
     font-size: 2.4rem;
     color: #19426c;
     max-width: 90%;
     text-align: center;
-    transition: margin-top 0.3s ease;
+    transition: margin-top 0.8s ease-in-out;
 }
 
 .invitationToConverse.chatStarted {
-    margin-top: 4rem;
+    margin-top: 0.5rem;
 }
 
 .landingSubheading {
@@ -152,7 +152,7 @@
 /* Autocomplete dropdown styling */
 .autocompleteDropdown {
     position: absolute;
-    top: 22rem;
+    top: 28rem;
     width: 150vh;
     background-color: #fff;
     border: 1px solid #d0d0d0;
@@ -376,7 +376,7 @@
     cursor: pointer;
     transition: transform 0.2s ease;
     position: absolute;
-    top: 19.5rem;
+    top: 25.5rem;
     left: 13.2rem;
 }
 
@@ -390,7 +390,7 @@
 
 /* Existing buttons styling */
 .existingButtons {
-    margin-top: 4rem;
+    margin-top: 3.5rem;
     margin-bottom: 3rem;
     display: flex;
     flex-direction: column;
@@ -1079,7 +1079,7 @@
 .sourcesAccordion {
     margin: 1rem 0;
     color: #404040;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     background-color: #F4F4F4;
     padding: 0.5rem;
     border-radius: 16px;
@@ -1519,8 +1519,8 @@
     margin-bottom: 1rem;
 }
 
-.c
-    animation: fadeIn .8s ease-in-out;ontactForm {
+.contactForm {
+    animation: fadeIn .8s ease-in-out;
     max-width: 600px;
     margin: 0 auto;
 }

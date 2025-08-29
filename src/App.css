@@ -1060,9 +1060,38 @@
 
 /* Optimizing for smaller screens */
 
+@media (max-width: 1300px) and (max-height: 550px) {
+
+    .tabNavigation {
+    width: 50%;
+    }
+
+    .attachBtn {
+    left: 16.4rem;
+    }
+
+}
+
+@media (max-width: 1200px) {
+
+    .attachBtn {
+    left: 13.6rem;
+    }
+
+}
+
 @media (max-width: 1100px) {
 
+    .attachBtn {
+    left: 11rem;
+    }
+}
 
+@media (max-width: 1000px) {
+
+    .attachBtn {
+    left: 8.8rem;
+    }
 
 }
 
@@ -1072,11 +1101,25 @@
         width: 120vh;
     }
 
+    .attachBtn {
+    left: 11rem;
+    }
+
 }
 
 @media (max-width: 900px) {
 
-    
+    .attachBtn {
+    left: 9rem;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .attachBtn {
+    left: 6.5rem;
+    }
 
 }
 
@@ -1086,9 +1129,41 @@
         width: 80vh;
     }
 
+    .attachBtn {
+    top: 28.5rem;
+    left: 11rem;
+    }
+
 }
 
 @media (max-width: 700px) {
 
+    .attachBtn {
+    left: 9rem;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .attachBtn {
+    left: 7rem;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .attachBtn {
+    left: 6rem;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .attachBtn {
+    left: 3.5rem;
+    }
 
 }

@@ -1,6 +1,5 @@
 import { io } from "socket.io-client";
 import { useCallback, useState, useEffect, useRef } from 'react';
-import { Tooltip } from 'react-tooltip';
 import './App.css';
 import sendIcon from './assets/Send.svg';
 import logoIcon from './assets/Logo.svg';
@@ -715,52 +714,6 @@ const App = () => {
         }
     }, [intent, onLandingIntentBoxClick]);
 
-    // Initialize speech recognition
-    useEffect(() => {
-        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            const recognitionInstance = new SpeechRecognition();
-            
-            recognitionInstance.continuous = false;
-            recognitionInstance.interimResults = false;
-            recognitionInstance.lang = 'en-US';
-            
-            recognitionInstance.onstart = () => {
-                setIsListening(true);
-            };
-            
-            recognitionInstance.onresult = (event) => {
-                const transcript = event.results[0][0].transcript;
-                setIntent(prev => prev + (prev ? ' ' : '') + transcript);
-            };
-            
-            recognitionInstance.onend = () => {
-                setIsListening(false);
-            };
-            
-            recognitionInstance.onerror = (event) => {
-                console.error('Speech recognition error:', event.error);
-                setIsListening(false);
-            };
-            
-            setRecognition(recognitionInstance);
-        }
-    }, []);
-
-    // Start voice recording
-    const startVoiceRecording = useCallback(() => {
-        if (recognition && !isListening) {
-            recognition.start();
-        }
-    }, [recognition, isListening]);
-
-    // Stop voice recording
-    const stopVoiceRecording = useCallback(() => {
-        if (recognition && isListening) {
-            recognition.stop();
-        }
-    }, [recognition, isListening]);
-
     // Handle attachment button click
     const handleAttachmentClick = useCallback(() => {
         if (fileInputRef.current) {
@@ -803,7 +756,6 @@ const App = () => {
                             <img className="rightAICurls" alt="Right AI Curls" src={rightAICurls}/>
                         </div>
                         {/* Landing page Icon and text to invite user to converse */}
-                        {/* <img className="logoIcon" alt="Logo" src={logoIcon} /> */}
                         <b className="invitationToConverse">How can we help you?</b>
                         <p className="landingSubheading">Please provide detailed information in the form below:</p>
 
@@ -833,16 +785,8 @@ const App = () => {
                                 className="attachBtn" 
                                 onClick={handleAttachmentClick}
                             >
-                                <img alt="Attachment" src={attachment} data-tooltip-id="attach-tooltip" data-tooltip-content="Attach files"/>
+                                <img alt="Attachment" src={attachment}/>
                             </button>
-                            {/* <button 
-                                className="micBtn" 
-                                onClick={isListening ? stopVoiceRecording : startVoiceRecording}
-                                data-tooltip-id="mic-tooltip"
-                                data-tooltip-content={isListening ? "Stop" : "Dictate"}
-                            >
-                                <img alt="Microphone" src={isListening ? micActiveIcon : micIcon} />
-                            </button> */}
                             <button className={ `sendBtn ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxClick} disabled={!enableSend}>
                                 <img alt="Send" src={enableSend ? sendIcon_green : sendIcon}></img>
                             </button>
@@ -867,8 +811,6 @@ const App = () => {
                                 <button 
                                     className="addMoreFilesBtn"
                                     onClick={handleAttachmentClick}
-                                    data-tooltip-id="add-files-tooltip"
-                                    data-tooltip-content="Add more files"
                                 >
                                     +
                                 </button>
@@ -907,7 +849,6 @@ const App = () => {
                 </>
             ) : (
                 <div className="mainContent">
-                    {/* <div className="conversationLoadingResponse"> */}
                         <div className="AICurls">
                             <img className="leftAICurls" alt="Left AI Curls" src={leftAICurls}/>
                             <img className="grayLeftAICurls" alt="Gray Left AI Curls" src={grayLeftAICurls}/>
@@ -951,7 +892,6 @@ const App = () => {
                                         ) : (
                                             // Adding ADA's repsone to chat interface, including populating source's URL in accordion 
                                             <div key={index} className="chatResponse">
-                                                {/* <img className="conversationLogo" alt="Qlik Logo" src={conversationLogo} /> */}
                                                 <div className='responseContent'>
                                                     <div className="responseHeader">
                                                         <p>Your curated solution:</p>
@@ -1108,20 +1048,20 @@ const App = () => {
                                                 </div>
                                                 {/* Icons under ADA's response to copy , like, dislike, and make ADA reponse txt-to-speech */}
                                                 <div className="postResponseIcons">
-                                                    <button className='copyBtn' onClick={() => copyClick(msg)} data-tooltip-id="copy-tooltip" data-tooltip-content="Copy">
+                                                    <button className='copyBtn' onClick={() => copyClick(msg)}>
                                                         <img className="Copy" alt="Copy" src={copiedStates[msg.id] ? copyCheckIcon : copyIcon} />
                                                     </button>
                                                     {!isDisliked && (
-                                                        <button className='likeBtn' onClick={() => setIsLiked(!isLiked)} data-tooltip-id="like-tooltip" data-tooltip-content="Like">
+                                                        <button className='likeBtn' onClick={() => setIsLiked(!isLiked)}>
                                                             <img className="Like" alt="Like" src={isLiked ? likeIconFill : likeIcon} />
                                                         </button>
                                                     )}
                                                     {!isLiked && (
-                                                        <button className='dislikeBtn' onClick={() => setIsDisliked(!isDisliked)} data-tooltip-id="dislike-tooltip" data-tooltip-content="Dislike">
+                                                        <button className='dislikeBtn' onClick={() => setIsDisliked(!isDisliked)}>
                                                             <img className="Dislike" alt="Dislike" src={isDisliked ? dislikeIconFill : dislikeIcon} />
                                                         </button>
                                                     )}
-                                                    <button className='readBtn' onClick={() => readAloud(msg)} data-tooltip-id="read-tooltip" data-tooltip-content={isReading[msg.id] ? "Stop" : "Listen"}>
+                                                    <button className='readBtn' onClick={() => readAloud(msg)}>
                                                         <img className="Read" alt="Read" src={isReading[msg.id] ? stopIcon : speakerIcon} />
                                                     </button>
                                                 </div>
@@ -1211,40 +1151,6 @@ const App = () => {
                    
                 </div>
             )}
-            
-            {/* Tooltip components when hoovering over icons */}
-            <Tooltip id="minimize-tooltip" />
-            <Tooltip id="exit-tooltip" />
-            <Tooltip id="minimize-tooltip2" />
-            <Tooltip id="copy-tooltip" />
-            <Tooltip id="like-tooltip" />
-            <Tooltip id="dislike-tooltip" />
-            <Tooltip id="read-tooltip" />
-            <Tooltip id="mic-tooltip" />
-            <Tooltip id="attach-tooltip" />
-            <Tooltip id="add-files-tooltip" />
-            <Tooltip id="options-tooltip" />
-
-            {/* Ending chat menu */}
-            {/* {ShowEndChatMenu && (
-                <div className="toast_background">
-                    <div className="ended_toast">
-                        <h3 className="endingTitle">End Chat</h3>
-                        <h2 className="endingQ">Are you sure you want to end the chat?</h2>
-                        <button className="endChatBtn" onClick={handleExit}>End Chat</button>
-                        <button className="cancelBtn" onClick={handleCancel}>Cancel</button>
-                    </div>
-                </div>
-            )} */}
-
-            {/* Success Overlay */}
-            {/* {endedSuccessful && (
-                <div className="toast_background">
-                    <div className="ended_toast_success">
-                        Conversation succesfully ended
-                    </div>
-                </div>
-            )} */}
         </div>
     );
 }

@@ -127,6 +127,7 @@
 }
 
 /*Intent Box styling on the landing page*/
+
 .landingIntentBox {
     display: flex;
     align-items: left;
@@ -151,6 +152,7 @@
 }
 
 /* Autocomplete dropdown styling */
+
 .autocompleteDropdown {
     position: absolute;
     top: 28rem;
@@ -176,7 +178,6 @@
     cursor: pointer;
     font-size: 0.9rem;
     color: #333;
-    /* border-bottom: 1px solid #f0f0f0; */
     transition: background-color 0.2s ease;
     display: flex;
     align-items: center;
@@ -208,6 +209,7 @@
 }
 
 /* Uploaded files display within intent box */
+
 .uploadedFilesDisplay {
     display: flex;
     align-items: center;
@@ -218,9 +220,6 @@
     margin-bottom: 2rem;
     padding: 0.5rem;
     max-width: 150vh;
-    /* background-color: #f9f9f9; */
-    /* border-radius: 12px;
-    border: 1px solid #e0e0e0; */
 }
 
 .fileDisplayItem {
@@ -274,6 +273,7 @@
 }
 
 /* Plus button to add more files */
+
 .addMoreFilesBtn {
     background: none;
     border: 1px solid #ccc;
@@ -295,10 +295,6 @@
     color: #19426c;
     background-color: #f0f0f0;
 }
-
-/* .landingIntentBox.active, .landingIntentBoxChat.active {
-    border: 1px solid #929292;
-} */
 
 .intentTextarea{
     flex: 1;
@@ -336,38 +332,6 @@
     transition: filter 0.2s ease;
 }
 
-/* Microphone button styling for speech-to-text */
-.micBtn, .micBtnChat {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    display: flex;
-    align-items: bottom;
-    justify-content: center;
-    transition: transform 0.2s ease;
-}
-
-.micBtn {
-    margin-top: 6.3rem;
-    transition: margin-top 0.3s ease;
-}
-
-
-.micBtnChat {
-    padding: 1rem 0.2rem;
-}
-
-.micBtn img, .micBtnChat img {
-    width: 35px;
-    height: 35px;
-    transition: filter 0.2s ease;
-}
-
-.micBtn:hover img, .micBtnChat:hover img, .attachBtn:hover img {
-    filter: brightness(1.2);
-}
-
 /* Styling for attachment button */
 
 .attachBtn {
@@ -387,9 +351,8 @@
     transition: filter 0.2s ease;
 }
 
-/* Ch
-
 /* Existing buttons styling */
+
 .existingButtons {
     margin-top: 3.5rem;
     margin-bottom: 3rem;
@@ -435,6 +398,7 @@
     font-weight: 600;
     border: 1px solid #10CFC9;
     border-radius: 40px;
+    transition: background-image 0.3s ease, border 0.3s ease;
 }
 
 .criticalIssues img {
@@ -445,57 +409,11 @@
 .criticalIssues:hover {
     background-image: linear-gradient(to bottom, #FDF9F7, #ECC5AD, #DA9164);
     border: 1px solid #F26522;
-}at interface styling */
-/* .conversationLoadingResponse{
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #fff;
-    text-align: left;
-    font-size: 1.625rem;
-    padding: 2rem 1rem;
-    color: #5d5d5d;
-    font-family: Inter;
-    box-sizing: border-box; 
-} */
-
-/* Minimize and exit button styling */
-
-.miniexit {
-    position: absolute;
-    top: 0;
-    right: 0.4rem;
-  	background-color: #ffffff;
-  	width: 300vh;
-  	height: 63px;
-  	display: flex;
-  	flex-direction: row;
-  	align-items: center;
-  	justify-content: flex-end;
-  	padding-top: 10px;
-    padding-bottom: 10px;
-  	box-sizing: border-box;
-  	gap: 0.1rem;
-}
-
-.miniBtn {
-  	top: 0;
-    background-color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.exitBtn {
-  	top: 0;
-    background-color: white;
-    border: none;
-    cursor: pointer;
 }
 
 
 /* Chat message styling */
+
 .chatMessages{
     display: flex;
     align-self: flex-end;
@@ -505,24 +423,6 @@
     padding-right: 0.5rem;
     padding-left: 0.5rem;
 }
-
-/* .chatMessage {
-  	border-radius: 9px;
-  	background-color: #009845;
-  	line-height: 1.5;
-  	align-self: flex-end;
-  	padding: 1rem 1.5rem;
-  	font-size: 0.85rem;
-    color: #fff;
-    max-width: 40%;
-    word-break: break-word;
-    overflow: break-word;
-    white-space: normal;
-    margin-right: -7.5rem; */
-
-    /* Animation for chat message */
-    /* animation: fadeIn .8s ease-in-out;
-} */
 
 @keyframes fadeIn {
     0% { opacity: 0; 
@@ -550,18 +450,16 @@
         transform: translateX(0); 
     }
 }
+
 /* Visual feedback styling */
+
 .responseProgress {
     margin-top: 4rem;
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
-    /* width: 80%; */
-    /* margin-left: 11rem; */
     justify-content: center;
-    /* margin-bottom: 2.5rem; */
     font-size: 0.95rem;
-    /* font-style: italic; */
     color: #767676;
     font-weight: 300;
     opacity: 1;
@@ -731,18 +629,9 @@
     margin-left: 0rem;
 }
 
-/*Styling to fade response text out after recieving ai response, might ponseProgres.hidden{
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
 /* Chat response styling */
 .chatBody{
     position: relative;
-    /* top: 0rem; */
-    /* left: 8rem;
-    right: 2rem; */
-    /* bottom: 8rem; */
     overflow-y: visible;
     padding: 0rem 1rem;
     font-family: Inter;
@@ -762,7 +651,6 @@
     display: flex;
     align-items: flex-start;
     gap: 1rem;
-    /* margin-top: 1rem; */
     margin-left: 1%;
     margin-right: 1%;
     flex-direction: row;
@@ -799,10 +687,7 @@
 .responseText, .questionLines {
     font-size: 0.9rem;
     color: #404040;
-    /* font-weight: 200; */
     font-family: Inter;
-    /* width: 100%; */
-    /* max-width: 200vh; */
     width: 125%;
     white-space: normal;
     line-height: 1.5;
@@ -822,262 +707,10 @@
     font-family: Inter;
     line-height: 1.5;
     word-break: break-word;
-}debar menu styling */
-.rectangleSideBar{
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    width: 11rem;
-    background-color: #f2f2f2;
-    height: 100vh;
-    top: 0;
-    left: 0;
-}
-
-.sidebarAICurls {
-    position: fixed;
-    width: 125px;
-    height: auto;
-    top: 20%;
-    left: 3.2rem;
-}
-
-.sidebarMenuIcon {
-  	bottom: 2rem;
-    position: fixed;
-    margin-top: 32.3rem;
-  	width: 1.5rem;
-  	height: 2.55rem;
-}
-
-.optionsBtn{
-    position: fixed;
-    bottom: 0rem;
-    left: 4rem;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    z-index: 999;
-}
-
-.QlikLogoSide{
-    position: fixed;
-    width: 3rem;
-    height: auto;
-    top: 2rem;
-    left: 4rem;
-    z-index: 1001;
-    pointer-events: none;
-}
-
-/* Settings popup styling */
-.settingsPopup {
-    position: fixed;
-    left: 8.8rem;
-    top: 30.6rem;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 9px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    font-family: Inter;
-    display: block;
-    flex-direction: column;
-    gap: .5rem;
-    width: 17rem;
-    height: 180px;
-    padding: 0.5rem 0.4rem 2.5rem 0.5rem;
-}
-
-.settingsHeader {
-    display: flex;
-}
-
-.optionsTitle {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 6rem;
-    color: #2A2C33;
-    width: 100%;
-    align-self: center;
-    justify-content: stretch;
-}
-
-.exitOptions {
-    justify-content: flex-end;
-}
-
-.settingsPopup button {
-    border: none;
-    background: none;
-    margin-top: 0.15rem;
-}
-
-.settingsPopup img:hover {
-    background-color: #f0f0f0;
-    cursor: pointer;
-}
-
-.settingsBody {
-    margin-top: 2.3rem;
-    margin-left: 0.15rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0rem;
-    padding: 0;
-    cursor: pointer;
-}
-
-.volumeDiv, .languageDiv, .downloadDiv {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 1rem;
-    margin-right: 0;
-    font-size: 0.85rem;
-    cursor: pointer
-}
-
-.volumeIcon, .languageIcon {
-    width: 17px;
-    height: 17px;
-    cursor: pointer;
-}
-
-.downloadIcon {
-    width: 17px;
-    height: 21px;
-}
-
-.settingsBody p {
-    width: 10rem;
-}
-
-/* Language popup styling */
-.languagePopup {
-    position: absolute;
-    top: -10rem;
-    left: 18rem;
-    background-color: #fff;
-    padding: 1rem;
-    border-radius: 9px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 10000;
-    font-family: Inter;
-    width: 12rem;
-    max-height: 15rem;
-    overflow-y: auto;
-}
-
-.languageHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.languageHeader h4 {
-    margin: 0;
-    font-size: 1rem;
-    color: #2A2C33;
-}
-
-.languageHeader button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-}
-
-.languageHeader img {
-    width: 20px;
-    height: 20px;
-}
-
-.languageOptions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.languageOption {
-    padding: 0.5rem;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: background-color 0.2s ease;
-}
-
-.languageOption:hover {
-    background-color: #f0f0f0;
-}
-
-.languageOption.selected {
-    background-color: #009845;
-    color: white;
-}
-
-
-/* Chat interface intent box*/
-.landingIntentBoxChat {
-    position: fixed;
-    bottom: 2rem;
-    display: flex;
-    align-items: center;
-    margin-top: 1rem;
-    margin-left: 13rem;
-    height: 3rem;
-    width: 150vh;
-    border: 2px solid #939393;
-    font-family: Inter;
-    background-color: #fff;
-    border-radius: 35px;
-    box-sizing: border-box;
-    overflow: hidden;
-    gap: 0rem;
-}
-
-.intentTextareaChat{
-    margin-left: 0.5rem;
-    margin-top: 2rem;
-    flex: 1;
-    resize: none;
-    width: 100%;
-    font-size: 0.85rem;
-    padding: 1rem 0.5rem;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    color: #333;
-    font-family: inherit;
-    max-height: 50px;
-}
-
-.sendBtnChat {
-    background: none;
-    border: none;
-    padding:0;
-    cursor: pointer;
-    display: flex;
-    align-items: bottom;
-    justify-content: right;
-    padding: 1rem 0.2rem;
-    transition: transform 0.2s ease;
-}
-
-.sendBtnChat img{
-    width: 32px;
-    height: 32px;
-    transition: filter 0.2s ease;
 }
 
 /* Citations accordion styling */
+
 .sourcesAccordion {
     margin: 1rem 0;
     color: #404040;
@@ -1115,6 +748,7 @@
 }
 
 /* Styling for questions the IFD asks */
+
 .additionalQuestions {
     font-size: 0.85rem;
     color: #404040;
@@ -1139,106 +773,6 @@
     background: none;
     border: none;
     cursor: pointer;
-}
-
-/* Minimized chat styling */
-.minimizedChat {
-    position: fixed;
-    bottom: 0rem;
-    right: 0rem;
-    width: 35vw;
-    height: 70vh;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 4px 12px 12px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    margin: 0.5rem;
-    overflow: visible;
-    isolation: auto;
-}
-
-.minimizedChat .chatBody {
-    position: absolute;
-    top: 12vh;
-    bottom: 4rem;
-    left: 0rem;
-    right: 0;
-    overflow-y: auto;
-}
-
-.minimizedChat .chatResponse {
-    margin-top: 3rem;
-    margin-left: 0%;
-}
-
-.minimizedChat .chatMessage {
-    border-radius: 9px;
-    background-color: #009845;
-    line-height: 1.5;
-    align-self: flex-end;
-    padding: 1rem 1.5rem;
-    font-size: 0.85rem;
-    color: #fff;
-    max-width: 40%;
-    word-break: break-word;
-    overflow: break-word;
-    white-space: normal;
-    margin-right: -2rem;
-}
-
-.minimizedChat .landingIntentBoxChat {
-    margin-top: 0rem;
-    margin-left: 0.9rem;
-    margin-right: 0.9rem;
-    bottom: 1rem;
-    height: 3rem;
-    width: 33vw;
-}
-
-.minimizedChat .responseProgress {
-    display: flex;
-    flex-direction: row;
-    gap: 0rem;
-    margin-left: 1.8rem;
-    font-size: 0.85rem;
-    font-style: italic;
-    color: #404040;
-    font-weight: 200;
-    animation: fadeAcross .8s ease-in-out;
-}
-
-.minimizedChat .postResponseIcons {
-    margin-bottom: 1rem;
-}
-
-.minimizedChat .QlikLogoMinimize {
-    position: absolute;
-    width: 1.8rem;
-    height: auto;
-    top: 1.6rem;
-    left: 1.2rem;
-    z-index: 1004;
-}
-
-.minimizedChat .miniexit {
-    position: absolute;
-    top: 0;
-    right: 0.4rem;
-    background-color: #ffffff;
-    width: 100%;
-    height: 63px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    box-sizing: border-box;
-    gap: 0.1rem;
-    overflow: visible;
-    z-index: 1003;
 }
 
 /* React tooltips custom styling */
@@ -1269,201 +803,6 @@
     position: fixed !important;
     z-index: 10000 !important;
     transform: none !important;
-}
-
-/*Ending conversation toast*/
-.ended_toast{
-    position: fixed;
-    background:  white;
-    color:#54565A;
-    padding: 20px 18px;
-    border-radius: 9px;
-    font-size: 14px;
-    justify-content: center;
-    justify-self: center;
-    align-content: center;
-    animation: fadeIn2 3s ease-in-out;
-    top: 40%;
-    opacity: 1;
-    font-family: Inter;
-    display: block;
-    flex-direction: column;
-    justify-content: space-between;
-    
-}
-
-.toast_background{
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(128, 128, 128, 0.7);
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    align-items: center;
-    animation: fadeIn2 .8s ease-in-out;
-}
-
-.endingTitle{
-    font-size: large;
-    justify-self: center;
-    display: flex;
-}
-
-.endingQ{
-    font-size: medium;
-    font-weight: normal;
-}
-
-.endChatBtn{
-    background-color: #DE1B43;
-    color: white;
-    border: none;
-    padding: 14px;
-    width: 100%;
-    border-radius: 9px;
-}
-
-.cancelBtn{
-    color:#54565A;
-    background-color: white;
-    border: none;
-    width: 100%;
-    padding: 14px;
-    border-radius: 9px;
-}
-
-.endChatBtn:hover{
-    background-color: #b31434;
-    cursor: pointer;
-}
-
-.cancelBtn:hover{
-    background-color:#e0e0e0;
-    cursor: pointer;
-}
-
-.ended_toast_success{
-    position: fixed;
-    background:  #009845;
-    color:white;
-    padding: 20px 18px;
-    border-radius: 9px;
-    font-size: 14px;
-    justify-content: center;
-    justify-self: center;
-    align-content: center;
-    animation: fadeIn2 .8s ease-in-out;
-    top: 40%;
-    opacity: 1;
-}
-
-/* Toast for minimized chat */
-
-.minimizedChat {
-    position: fixed;
-    bottom: 0rem;
-    right: 0rem;
-    width: 35vw;
-    height: 70vh;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 4px 12px 12px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    margin: 0.5rem;
-    overflow: visible;
-    isolation: auto;
-}
-
-.minimized_ended_toast{
-    position: fixed;
-    background:  white;
-    color:#54565A;
-    padding: 20px 18px;
-    border-radius: 9px;
-    font-size: 14px;
-    justify-content: center;
-    justify-self: center;
-    align-content: center;
-    animation: fadeIn2 3s ease-in-out;
-    top: 40%;
-    opacity: 1;
-    font-family: Inter;
-    display: block;
-    flex-direction: column;
-    justify-content: space-between;
-    
-}
-
-.minimized_toast_background{
-    position: fixed;
-    bottom: 0rem;
-    right: 0rem;
-    width: 35vw;
-    height: 70vh;
-    background-color: rgba(128, 128, 128, 0.7);
-    border-radius: 10px;
-    box-shadow: 4px 12px 12px rgba(0, 0, 0, 0.15);
-    margin: 0.5rem;
-    z-index: 9999;
-    align-items: center;
-    animation: fadeIn2 .8s ease-in-out;
-}
-
-.minimized_endingTitle{
-    font-size: large;
-    justify-self: center;
-    display: flex;
-}
-
-.minimized_endingQ{
-    font-size: medium;
-    font-weight: normal;
-}
-
-.minimized_endChatBtn{
-    background-color: #DE1B43;
-    color: white;
-    border: none;
-    padding: 14px;
-    width: 100%;
-    border-radius: 9px;
-}
-
-.minimized_cancelBtn{
-    color:#54565A;
-    background-color: white;
-    border: none;
-    width: 100%;
-    padding: 14px;
-    border-radius: 9px;
-}
-
-.minimized_endChatBtn:hover{
-    background-color: #b31434;
-    cursor: pointer;
-}
-
-.minimized_cancelBtn:hover{
-    background-color:#e0e0e0;
-    cursor: pointer;
-}
-
-.minimized_ended_toast_success{
-    position: fixed;
-    background:  #009845;
-    color:white;
-    padding: 20px 18px;
-    border-radius: 9px;
-    font-size: 14px;
-    justify-content: center;
-    justify-self: center;
-    align-content: center;
-    animation: fadeIn2 .8s ease-in-out;
-    top: 55%;
-    opacity: 1;
 }
 
 /* Tab Navigation */
@@ -1508,12 +847,12 @@
 }
 
 .tab.active {
-    /* background-color: #f9f9f9; */
     border-bottom: 2px solid #00B140;
     color: #10B64C;
 }
 
-/* Contact Us Content */
+/* Contact us content */
+
 .contactUsContent {
     padding: 2rem;
     background-color: #f9f9f9;
@@ -1641,14 +980,9 @@
         font-size: 2.8rem;
     }
 
-    .logoIcon {
-        width: 150px;
-        margin-bottom: 3rem;
-        margin-top: 20rem;
-    }
 
+    /*Intent box styling*/
 
-    /*Intent Box styling*/
     .landingIntentBox {
         height: 15rem;
         border-radius: 50px;
@@ -1674,21 +1008,8 @@
         margin-right: -11rem;
     }
 
-    .micBtn {
-        margin-top: 10rem;
-    }
+    /* Visual feedback styling */
 
-    .micBtn img{
-        width: 46px;
-        height: 46px;
-    }
-
-    .micBtnChat img {
-        width: 36px;
-        height: 36px;
-    }
-
-    /* Visual Feedback Styling */
     .responseProgress {
         margin-left: 15rem;
         font-size: 1rem;
@@ -1698,122 +1019,10 @@
         margin-left: 13%;
     }
 
-    .conversationLogo {
-        width: 40px;
-    }
-
     .responseText, .questionLines {
         font-size: 1rem;
         max-width: 700px;
         margin-top: 0.55rem;
-    }
-
-    .sidebarAICurls {
-        width: 150px;
-        top: 25%;
-        left: 1.6rem;
-    }
-
-    .sidebarMenuIcon {
-        width: 1.7rem;
-    }
-
-    .QlikLogoSide{
-        width: 3.5rem;
-    }
-
-    .settingsPopup {
-        position: fixed;
-        left: 8.8rem;
-        top: 52.05rem;
-        transform: translate(-50%, -50%);
-        background-color: #fff;
-        padding: 1rem;
-        border-radius: 9px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 1000;
-        font-family: Inter;
-        display: block;
-        flex-direction: column;
-        gap: .5rem;
-        width: 17rem;
-        height: 180px;
-        padding: 0.5rem 0.4rem 3.3rem 0.5rem;
-    }
-
-    .settingsHeader {
-        display: flex;
-    }
-
-    .optionsTitle {
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 0;
-        margin-left: 6rem;
-        color: #2A2C33;
-        width: 100%;
-        align-self: center;
-        justify-content: stretch;
-    }
-
-    .exitOptions {
-        justify-content: flex-end;
-    }
-
-    .settingsPopup button {
-        border: none;
-        background: none;
-        margin-top: 0.15rem;
-    }
-
-    .settingsPopup img:hover {
-        background-color: #f0f0f0;
-        cursor: pointer;
-    }
-
-    .settingsBody {
-        margin-top: 1.9rem;
-        margin-left: 0.15rem;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0rem;
-        padding: 0;
-        cursor: pointer;
-    }
-
-    .volumeDiv, .languageDiv, .downloadDiv {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        margin-right: 0;
-        font-size: 1rem;
-        cursor: pointer
-    }
-
-    .volumeIcon, .languageIcon {
-        width: 18px;
-        height: 18px;
-        cursor: pointer;
-    }
-
-    .downloadIcon {
-        width: 18px;
-        height: 22px;
-    }
-
-    .settingsBody p {
-        width: 10rem;
-    }
-
-    .languageOption {
-    font-size: 0.95rem;
-    }
-
-    .intentTextareaChat{
-        margin-left: 0.7rem;
-        margin-top: 1.8rem;
-        font-size: 1rem;
     }
 
     .sourcesAccordion {
@@ -1847,10 +1056,6 @@
         width: 18px;
         height: 18px;
     }
-
-    .minimizedChat .landingIntentBoxChat {
-    width: 33.7vw;
-    }
 }
 
 /* Optimizing for smaller screens */
@@ -1858,9 +1063,6 @@
 @media (max-width: 1100px) {
 
 
-    .landingIntentBoxChat {
-        width: 120vh;
-    }
 
 }
 
@@ -1870,21 +1072,11 @@
         width: 120vh;
     }
 
-    .landingIntentBoxChat {
-        width: 120vh;
-    }
-
-    .minimizedChat .landingIntentBoxChat {
-        width: 31vw;
-    }
-
 }
 
 @media (max-width: 900px) {
 
-    .landingIntentBoxChat {
-        width: 80vh;
-    }
+    
 
 }
 
@@ -1894,16 +1086,9 @@
         width: 80vh;
     }
 
-    .landingIntentBoxChat {
-        width: 150vh;
-    }
-
 }
 
 @media (max-width: 700px) {
 
-    .landingIntentBoxChat {
-        width: 65vh;
-    }
 
 }

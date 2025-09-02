@@ -220,7 +220,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://5644927d72f8.ngrok-free.app/api/chat', {
+            const response = await fetch('https://481ab4c1fcce.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -341,7 +341,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://5644927d72f8.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://481ab4c1fcce.ngrok-free.app/api/end_convo', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -384,7 +384,7 @@ const App = () => {
 
         // Accessing backend ending conversation API function via ngrok link
         try{
-            const response = await fetch('https://5644927d72f8.ngrok-free.app/api/end_convo', {
+            const response = await fetch('https://481ab4c1fcce.ngrok-free.app/api/end_convo', {
                method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({ convo_id: convoId })
@@ -1073,19 +1073,10 @@ const App = () => {
                             ) : (
                                 <div className="contactUsContent">
                                     <div className="contactForm">
-                                        <h3>Contact Our Support Team</h3>
-                                        <p>If you need additional assistance, our support team is here to help.</p>
+                                        <h3>Create a Case</h3>
+                                        <p>Tell us what's going on:</p>
                                         
                                         <form className="supportForm">
-                                            <div className="formGroup">
-                                                <label htmlFor="contactName">Name</label>
-                                                <input type="text" id="contactName" placeholder="Your full name" />
-                                            </div>
-                                            
-                                            <div className="formGroup">
-                                                <label htmlFor="contactEmail">Email</label>
-                                                <input type="email" id="contactEmail" placeholder="your.email@company.com" />
-                                            </div>
                                             
                                             <div className="formGroup">
                                                 <label htmlFor="contactSubject">Subject</label>
@@ -1101,7 +1092,7 @@ const App = () => {
                                                 ></textarea>
                                             </div>
                                             
-                                            <div className="formGroup">
+                                            {/* <div className="formGroup">
                                                 <label htmlFor="contactPriority">Priority Level</label>
                                                 <select id="contactPriority">
                                                     <option value="low">Low</option>
@@ -1109,10 +1100,10 @@ const App = () => {
                                                     <option value="high">High</option>
                                                     <option value="urgent">Urgent</option>
                                                 </select>
-                                            </div>
+                                            </div> */}
                                             
                                             <button type="submit" className="submitContactBtn">
-                                                Submit Support Request
+                                                Continue with My Case
                                             </button>
                                         </form>
                                     </div>

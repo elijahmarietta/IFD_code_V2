@@ -855,7 +855,7 @@
 
 .contactUsContent {
     padding: 2rem;
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
     border-radius: 0 0 12px 12px;
     margin-bottom: 1rem;
 }
@@ -876,6 +876,7 @@
     color: #666;
     margin-bottom: 2rem;
     line-height: 1.5;
+    font-size: 1rem;
 }
 
 .supportForm {
@@ -887,6 +888,7 @@
 .formGroup {
     display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
 .formGroup label {

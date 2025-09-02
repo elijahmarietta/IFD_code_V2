@@ -869,7 +869,7 @@
 .contactForm h3 {
     color: #19426c;
     margin-bottom: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
 }
 
 .contactForm p {
@@ -913,7 +913,7 @@
 .formGroup textarea:focus,
 .formGroup select:focus {
     outline: none;
-    border-color: #19426c;
+    border-color: #00B140;
 }
 
 .formGroup textarea {

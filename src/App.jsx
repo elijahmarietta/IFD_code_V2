@@ -37,6 +37,12 @@ import contactActiveIcon from './assets/ContactActive.svg'
 import searchIcon from './assets/Search.svg'
 import articleIcon from './assets/Articles.svg'
 import criticalIcon from './assets/Critical.svg'
+import accountRelatedIcon from './assets/accountRelated.svg'
+import productRelatedIcon from './assets/productRelated.svg'
+import analyticsIcon from './assets/Data Analytics.svg'
+import integrationIcon from './assets/Data Integration.svg'
+import cloudIcon from './assets/Qlik Cloud.svg'
+import talendIcon from './assets/Talend.svg'
 
 //  App variables to keep track of state changes
 const App = () => {
@@ -173,6 +179,12 @@ const App = () => {
         "How can I effectively troubleshoot unusual script behavior or syntax errors encountered in the forums?"
     ]);
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
+    const [isContact2, setIsContact2] = useState(false);
+    const [isContact3, setIsContact3] = useState(false);
+    const [isContact4, setIsContact4] = useState(false);
+    const [isAccountRelated, setIsAccountRelated] = useState(false);
+    const [isProductRelated, setIsProductRelated] = useState(false);
+    const [selectedOption, setSelectedOption] = useState('');
 
     // Handle input change and filter suggestions
     const handleIntentChange = useCallback((e) => {
@@ -220,7 +232,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://481ab4c1fcce.ngrok-free.app/api/chat', {
+            const response = await fetch('https://56895061c51f.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -329,102 +341,6 @@ const App = () => {
 
         return () => socket.disconnect();
     },[stopTimer]);
-
-    // Function for when the exit button is clicked
-    const handleExit = useCallback(async() => {
-        //Closing confirmation to end chat menu and showing succes overlay
-        setShowEndChatMenu(false);
-        showEndedSuccessful(true);
-
-        // Ending convo via API
-        if (!convoId) return;
-
-        // Accessing backend ending conversation API function via ngrok link
-        try{
-            const response = await fetch('https://481ab4c1fcce.ngrok-free.app/api/end_convo', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json'},
-                body: JSON.stringify({ convo_id: convoId })
-            });
-
-            if (!response.ok){
-                const errData = await response.json()
-                console.error('Error handling exit request:', errData.error || response.statusText );
-                showEndedSuccessful(false);
-                return;
-            }
-            
-            const result = await response.json();
-            console.log('Conversation ended: ', result.message);
-        
-        //Clearing componenents in the front end, closing toast display
-
-        setTimeout(() => {
-            setIsChatStarted(false);
-            setchatMessages([]); //Clears chat log
-            setIntent(''); //Empty intent box
-            setConvoId(null); //Reset convoId
-            setEndUserId(null); //Reset endUserId
-            resetTimer();
-            showEndedSuccessful(false);
-        }, 2); // Increase number to keep toast on screen longer, for CSS style changes
-
-        } catch (error){
-            console.error('Error ending conversation:', error);
-        }
-    }, [convoId, resetTimer]);
-
-    const handleMinimizedExit = useCallback(async() => {
-        //Closing confirmation to end chat menu and showing succes overlay
-        setShowMinimizedEndChatMenu(false);
-        showMinimizedEndedSuccessful(true);
-
-        // Ending convo via API
-        if (!convoId) return;
-
-        // Accessing backend ending conversation API function via ngrok link
-        try{
-            const response = await fetch('https://481ab4c1fcce.ngrok-free.app/api/end_convo', {
-               method: 'POST',
-                headers: { 'Content-Type': 'application/json'},
-                body: JSON.stringify({ convo_id: convoId })
-            });
-
-            if (!response.ok){
-                const errData = await response.json()
-                console.error('Error handling exit request:', errData.error || response.statusText );
-                showMinimizedEndedSuccessful(false);
-                return;
-            }
-            
-            const result = await response.json();
-            console.log('Conversation ended: ', result.message);
-        
-        //Clearing componenents in the front end, closing toast display
-
-        setTimeout(() => {
-            setIsChatStarted(false);
-            setchatMessages([]); //Clears chat log
-            setIntent(''); //Empty intent box
-            setConvoId(null); //Reset convoId
-            setEndUserId(null); //Reset endUserId
-            resetTimer();
-            showMinimizedEndedSuccessful(false);
-        }, 2); // Increase number to keep toast on screen longer, for CSS style changes
-
-        } catch (error){
-            console.error('Error ending conversation:', error);
-        }
-    }, [convoId, resetTimer]);
-
-    //Handling cancel btn to return to chat interface
-    const handleCancel = useCallback(() =>{
-        setShowEndChatMenu(false);
-    }, []);
-
-    const handleMinimizedCancel = useCallback(() => {
-        setShowMinimizedEndChatMenu(false);
-    }, []);
 
     // Keep line breaks/extract links from  ADA response to make them clickable on frontend
     function formatResponseText(text){
@@ -579,7 +495,6 @@ const App = () => {
         return lines.filter(line => line.trim().endsWith('?'));
     }
 
-
     const extractTextFromResponse = (msg) => {
         // Simply return the raw text since msg.text is already a string
         return msg.text || '';
@@ -646,49 +561,6 @@ const App = () => {
         speechSynthesis.speak(utterance);
     }, [isReading, extractTextFromResponse]);
 
-    //Minimizing/maximizing screen functions
-    const handleMinimize = useCallback(() => {
-        setIsMinimized(true);
-    }, []);
-
-    //
-    const handleRestore = useCallback(() => {
-        setIsMinimized(false);
-    }, []);
-
-    //Switching langugae based on user selected menu item (would need to be paired with ADA langauge API logic)
-    const handleLanguageSelect = useCallback((language) => {
-        setSelectedLanguage(language);
-        // setShowLanguageMenu(false);
-        // Here you would implement actual language switching logic
-        console.log(`Language changed to: ${language}`);
-    }, []);
-
-    // Formatting transcript
-    const formatChatForDownload = () => {
-        return chatMessages.map(msg => {
-            if (msg.from === 'user') {
-                return `USER: ${msg.text}\n`;
-            } else {
-                return `QLIK: ${extractTextFromResponse(msg)}\n`;
-            }
-        }).join('\n');
-    };
-
-    // Download transcript function
-    const downloadTranscript = () => {
-        const text = formatChatForDownload();
-        const blob = new Blob([text], { type: 'text/plain' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'chat-transcript.txt';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
-    };
-
     // Auto scroll effect after new messages are posted to chat interface
     useEffect(() => {
         if (chatBodyRef.current) {
@@ -738,6 +610,39 @@ const App = () => {
     }, []);
 
     const enableSend = intent.trim().length>0;
+
+    // Going to Page 2 of the Contact Form
+    const contact2 = useCallback(() => {
+            setIsContact2(true);
+    }, []);
+
+    // Going to Page 3 of the Contact Form
+    const contact3 = useCallback(() => {
+        setIsContact3(true);
+    }, []);
+
+    // Going to Page 4 of the Contact Form
+    const contact4 = useCallback(() => {
+        setIsContact4(true);
+    }, []);
+
+    // Setting case as Account Related
+
+    const accountRelated = useCallback(() => {
+        setIsAccountRelated(true);
+        setIsProductRelated(false);
+    }, []);
+
+    // Setting case as Product Related
+    const productRelated = useCallback(() => {
+        setIsProductRelated(true);
+        setIsAccountRelated(false);
+    }, []);
+
+    // Handle dropdown change
+    const handleChange = useCallback((e) => {
+        setSelectedOption(e.target.value);
+    }, []);
 
     // Transition from functions to visible elements
 
@@ -1067,46 +972,218 @@ const App = () => {
                                                 </div>
                                                 </div>
                                         </div>
-                                    )
+                                        )
                                     )}
                                 </div>
                             ) : (
                                 <div className="contactUsContent">
-                                    <div className="contactForm">
-                                        <h3>Create a Case</h3>
-                                        <p>Tell us what's going on:</p>
-                                        
-                                        <form className="supportForm">
+                                    {isContact4 ? (
+                                        <div className="contactForm">
+                                            <h3>Case Submitted Successfully!</h3>
+                                            <p>Thank you for contacting us. We'll get back to you soon.</p>
+                                        </div>
+                                    ) : isContact3 ? (
+                                        <div className="contactForm">
+                                            <h1>Contact3</h1>
+                                            <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact4(); }}>
+                                                    
+                                                <div className="formGroup">
+                                                    <label htmlFor="contactEmail">Case Preferred Email</label>
+                                                    <input type="email" id="contactEmail" placeholder="you@example.com" required />
+                                                </div>
+
+                                                <div className="formGroup">
+                                                    <label htmlFor="contactRegion">Case Preferred Support Region</label>
+                                                    <input type="text" id="contactRegion" placeholder="Qlik US Eastern" />
+                                                </div>
+
+                                                <div className="formGroup">
+                                                    <label htmlFor="contactPhone">Case Preferred Phone</label>
+                                                    <input type="text" id="contactPhone" placeholder="(123) 456-7890" />
+                                                </div>
+
+                                                <div className="formGroup">
+                                                    <label htmlFor="contactPortal">Portal Account</label>
+                                                    <input type="text" id="contactPortal" placeholder="QlikTech Single Signon Hold Account" />
+                                                </div>
+
+                                                <div className="formGroup">
+                                                    <label htmlFor="contactIssue">Account Issue</label>
+                                                    <select id="contactIssue" value={selectedOption} onChange={handleChange} required>
+                                                        <option value="" disabled>
+                                                            --None--
+                                                        </option>
+                                                        <option value="option1">Training</option>
+                                                        <option value="option2">Partner Portal</option>
+                                                        <option value="option3">Support Portal</option>
+                                                        <option value="option4">Download Site</option>
+                                                        <option value="option5">Community</option>
+                                                        <option value="option6">Qlik.com</option>
+                                                        <option value="option7">Helpsite</option>
+                                                        <option value="option8">Sales inquiry or issue</option>
+                                                        <option value="option9">Account Administration</option>
+                                                        <option value="option10">Payment/Invoice Issue or inquiry</option>
+                                                        <option value="option11">MyQlik – Digital ONLINE payment</option>
+                                                        <option value="option12">Tenant Access Issue</option>
+                                                        <option value="option13">QSD Authentication</option>
+                                                        <option value="option14">Need guidance to start using product</option>
+                                                        <option value="option15">License related</option>
+                                                        <option value="option16">Other</option>
+                                                    </select>
+                                                </div>
+
+                                                <div className="formGroup">
+                                                    <label htmlFor="contactArea">Area / Component</label>
+                                                    <select id="contactArea" value={selectedOption} onChange={handleChange} required>
+                                                        <option value="" disabled>
+                                                            --None--
+                                                        </option>
+                                                        <option value="option1">Access</option>
+                                                        <option value="option2">Authentication / Authorization</option>
+                                                        <option value="option3">Browser Related</option>
+                                                        <option value="option4">Documentation</option>
+                                                        <option value="option5">General Question</option>
+                                                        <option value="option6">Feature Request</option>
+                                                        <option value="option7">File Access/Permissions</option>
+                                                        <option value="option8">File Share</option>
+                                                        <option value="option9">License Related</option>
+                                                        <option value="option10">Product Defect</option>
+                                                        <option value="option11">Security Concern</option>
+                                                        <option value="option12">Subscriptions</option>
+                                                        <option value="option13">User Access</option>
+                                                        <option value="option14">User License</option>
+                                                        <option value="option15">User Management</option>
+                                                        <option value="option16">Web Interface</option>
+                                                        <option value="option17">Other/Undetermined</option>
+                                                    </select>
+                                                </div>
+
+                                                <div className="formGroup">
+                                                    <label htmlFor="contactID">Contact User ID</label>
+                                                    <input type="text" id="contactID" placeholder="Mi4w_kMvjs..." />
+                                                </div>
+
+                                                <div className="formGroup">
+                                                    <label htmlFor="contactLicense">Affected License Number</label>
+                                                    <input type="text" id="contactLicense" placeholder="123456789123456789" />
+                                                </div>
+
+                                                <div className="formGroup">
+                                                    <label htmlFor="contactPriority">Priority</label>
+                                                    <select id="contactPriority" value={selectedOption} onChange={handleChange} required>
+                                                        <option value="" disabled>
+                                                            --None--
+                                                        </option>
+                                                        <option value="option1">Low/Medium</option>
+                                                        <option value="option2">High</option>
+                                                        <option value="option3">Urgent</option>
+                                                    </select>
+                                                </div>
+
+                                                
+                                                <button type="submit" className="submitContactBtn">
+                                                    Continue with My Case
+                                                </button>
+                                            </form>
+                                        </div>
+                                    ) : isContact2 ? (
+                                        <div className="contactForm">
+                                            <h1>Contact2</h1>
+                                            <h3>Create a Case</h3>
+                                            <p>Tell us what's going on:</p>
                                             
-                                            <div className="formGroup">
-                                                <label htmlFor="contactSubject">Subject</label>
-                                                <input type="text" id="contactSubject" placeholder="Brief description of your issue" />
+                                            <div className="supportForm">
+                                                <div className="relatedButtons">
+                                                    <button 
+                                                        type="button" 
+                                                        className="articles" 
+                                                        onClick={accountRelated}
+                                                    >
+                                                        <img alt="Account Related" src={accountRelatedIcon}></img>
+                                                        <p>Account Related</p>
+                                                    </button>
+                                                    <button 
+                                                        type="button" 
+                                                        className="articles" 
+                                                        onClick={productRelated}
+                                                    >
+                                                        <img alt="Product Related" src={productRelatedIcon}></img>
+                                                        <p>Product Related</p>
+                                                    </button>
+                                                </div>
+
+                                                {isProductRelated && (
+                                                    <div className="productButtons">
+                                                        <button 
+                                                            type="button" 
+                                                            className="articles"
+                                                        >
+                                                            <img alt="Account Related" src={analyticsIcon}></img>
+                                                            <p>Data Analytics</p>
+                                                        </button>
+                                                        <button 
+                                                            type="button" 
+                                                            className="articles"
+                                                        >
+                                                            <img alt="Account Related" src={integrationIcon}></img>
+                                                            <p>Data Integration</p>
+                                                        </button>
+                                                        <button 
+                                                            type="button" 
+                                                            className="articles"
+                                                        >
+                                                            <img alt="Account Related" src={cloudIcon}></img>
+                                                            <p>Qlik Cloud</p>
+                                                        </button>
+                                                        <button 
+                                                            type="button" 
+                                                            className="articles"
+                                                        >
+                                                            <img alt="Account Related" src={talendIcon}></img>
+                                                            <p>Talend</p>
+                                                        </button>
+                                                    </div>
+                                                )}
+
+                                                {(isAccountRelated || isProductRelated) && (
+                                                    <button 
+                                                        type="button" 
+                                                        className="submitContactBtn" 
+                                                        onClick={contact3}
+                                                    >
+                                                        Next
+                                                    </button>
+                                                )}
                                             </div>
+                                        </div>
+                                    ) : (
+                                        <div className="contactForm">
+                                            <h1>Contact1</h1>
+                                            <h3>Create a Case</h3>
+                                            <p>Tell us what's going on:</p>
                                             
-                                            <div className="formGroup">
-                                                <label htmlFor="contactMessage">Message</label>
-                                                <textarea 
-                                                    id="contactMessage" 
-                                                    rows="4" 
-                                                    placeholder="Please provide detailed information about your issue..."
-                                                ></textarea>
-                                            </div>
-                                            
-                                            {/* <div className="formGroup">
-                                                <label htmlFor="contactPriority">Priority Level</label>
-                                                <select id="contactPriority">
-                                                    <option value="low">Low</option>
-                                                    <option value="medium" selected>Medium</option>
-                                                    <option value="high">High</option>
-                                                    <option value="urgent">Urgent</option>
-                                                </select>
-                                            </div> */}
-                                            
-                                            <button type="submit" className="submitContactBtn">
-                                                Continue with My Case
-                                            </button>
-                                        </form>
-                                    </div>
+                                            <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact2(); }}>
+                                                <div className="formGroup">
+                                                    <label htmlFor="contactSubject">Subject</label>
+                                                    <input type="text" id="contactSubject" placeholder="Brief description of your issue" required />
+                                                </div>
+                                                
+                                                <div className="formGroup">
+                                                    <label htmlFor="contactMessage">Description</label>
+                                                    <textarea 
+                                                        id="contactMessage" 
+                                                        rows="4" 
+                                                        placeholder="Please provide detailed information about your issue..."
+                                                        required
+                                                    ></textarea>
+                                                </div>
+                                                
+                                                <button type="submit" className="submitContactBtn">
+                                                    Continue with My Case
+                                                </button>
+                                            </form>
+                                        </div>
+                                    )}
                                 </div>
                             )}
 

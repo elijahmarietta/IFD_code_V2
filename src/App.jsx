@@ -43,6 +43,7 @@ import analyticsIcon from './assets/Data Analytics.svg'
 import integrationIcon from './assets/Data Integration.svg'
 import cloudIcon from './assets/Qlik Cloud.svg'
 import talendIcon from './assets/Talend.svg'
+import checkIcon from './assets/Check.svg'
 
 //  App variables to keep track of state changes
 const App = () => {
@@ -162,7 +163,6 @@ const App = () => {
         "How do I handle scenario-based transformations in Qlik Sense?",
         "What types of questions are asked during QlikSense interviews?",
         "How can I explain or get explanations for specific interview-style questions in the community?",
-        "Why is the Qlik Community perceived as inactive or less conversational compared to other communities?",
         "What factors influence community responsiveness—like posting in the right forum or familiarity with terminology?",
         "Where can I find archived Q&A or knowledge bases for troubleshooting latency or performance issues? (",
         "What are common pitfalls customers face when posting questions?",
@@ -649,18 +649,18 @@ const App = () => {
 
     useEffect(() => {
         const progressTimer1 = setTimeout(() => {
-        setShowProgress2(true); // Make the element visible after 3 seconds
+        setShowProgress2(true);
         console.log('Progress 2 started');
-        }, 6000);
+        }, 10000);
 
         return () => clearTimeout(progressTimer1);
     }, []);
 
     useEffect(() => {
         const progressTimer2 = setTimeout(() => {
-        setShowProgress3(true); // Make the element visible after 3 seconds
+        setShowProgress3(true);
         console.log('Progress 3 started');
-        }, 12000);
+        }, 18000);
 
         return () => clearTimeout(progressTimer2);
     }, []);
@@ -1211,10 +1211,10 @@ const App = () => {
                             {showProgress && (
                                 <div className="responseProgress">
                                     {/* Loading animation when retrieving ADA response */}
-                                    <h2>Curating your solution</h2>
-                                    <h3>We synthesize the information you provide with the Qlik Knowledge Fabric to generate a curated solution</h3>
+                                    <h4>Curating your solution</h4>
+                                    <p className="progressSubheading">We synthesize the information you provide with the Qlik Knowledge Fabric to generate your personalized solution</p>
                                     {!showProgress2 && (
-                                        <div className="loadGroup">
+                                        <div className="loadGroupLoading">
                                             <div className="loadingCircles">
                                                 <div className="circle"></div>
                                                 <div className="circle"></div>
@@ -1228,12 +1228,13 @@ const App = () => {
 
                                     {showProgress2 && !showProgress3 && (
                                         <div className="responseProgress2">
-                                            <div className="loadGroup">
+                                            <div className="loadGroupCheck">
+                                                <img src={checkIcon} alt="Check icon" />
                                                 <p className="progressText">
                                                     Understanding your explanation
                                                 </p>
                                             </div>
-                                            <div className="loadGroup">
+                                            <div className="loadGroupLoading">
                                                     <div className="loadingCircles">
                                                         <div className="circle"></div>
                                                         <div className="circle"></div>
@@ -1243,27 +1244,24 @@ const App = () => {
                                                     Searching the Qlik Knowledge Fabric
                                                 </p>
                                             </div>
-                                            <div className="loadGroup">
-                                                <p className="progressText">
-                                                    Creating customized recommendations
-                                                </p>
-                                            </div>
                                         </div>
                                     )}
 
                                     {showProgress3 && (
                                         <div className="responseProgress3">
-                                            <div className="loadGroup">
+                                            <div className="loadGroupCheck">
+                                                <img src={checkIcon} alt="Check icon" />
                                                 <p className="progressText">
                                                     Understanding your explanation
                                                 </p>
                                             </div>
-                                            <div className="loadGroup">
+                                            <div className="loadGroupCheck">
+                                                <img src={checkIcon} alt="Check icon" />
                                                 <p className="progressText">
                                                     Searching the Qlik Knowledge Fabric
                                                 </p>
                                             </div>
-                                            <div className="loadGroup">
+                                            <div className="loadGroupLoading">
                                                 <div className="loadingCircles">
                                                     <div className="circle"></div>
                                                     <div className="circle"></div>

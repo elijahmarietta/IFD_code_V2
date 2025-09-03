@@ -179,6 +179,7 @@ const App = () => {
         "How can I effectively troubleshoot unusual script behavior or syntax errors encountered in the forums?"
     ]);
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
+    const [isContact1, setIsContact1] = useState(false);
     const [isContact2, setIsContact2] = useState(false);
     const [isContact3, setIsContact3] = useState(false);
     const [isContact4, setIsContact4] = useState(false);
@@ -612,14 +613,26 @@ const App = () => {
 
     const enableSend = intent.trim().length>0;
 
+    // Going to Page 1 of the Contact Form
+    const contact1 = useCallback(() => {
+            console.log("Contact 1");
+            setIsContact1(true);
+            setIsContact2(false);
+            setIsContact3(false);
+    }, []);
+    
     // Going to Page 2 of the Contact Form
     const contact2 = useCallback(() => {
+            setIsContact1(false);
             setIsContact2(true);
+            setIsContact3(false);
     }, []);
 
     // Going to Page 3 of the Contact Form
     const contact3 = useCallback(() => {
-        setIsContact3(true);
+            setIsContact1(false);
+            setIsContact2(false);
+            setIsContact3(true);
     }, []);
 
     // Going to Page 4 of the Contact Form
@@ -1125,9 +1138,22 @@ const App = () => {
                                                 </div>
 
                                                 
-                                                <button type="submit" className="submitContactBtn">
-                                                    Continue with My Case
-                                                </button>
+                                                <div className="endContactBtn">
+                                                        <button 
+                                                            type="button" 
+                                                            className="backContactBtn"
+                                                            onClick={contact2}
+                                                        >
+                                                            Back
+                                                        </button>
+                                                        <button 
+                                                            type="submit" 
+                                                            className="nextContactBtn" 
+                                                            onClick={contact4}
+                                                        >
+                                                            Next
+                                                        </button>
+                                                </div>
                                             </form>
                                         </div>
                                     ) : isContact2 ? (
@@ -1190,15 +1216,63 @@ const App = () => {
                                                 )}
 
                                                 {(isAccountRelated || isProductRelated) && (
-                                                    <button 
-                                                        type="button" 
-                                                        className="submitContactBtn" 
-                                                        onClick={contact3}
-                                                    >
-                                                        Next
-                                                    </button>
+                                                    <div className="endContactBtn">
+                                                        <button 
+                                                            type="button" 
+                                                            className="backContactBtn" 
+                                                            onClick={contact1}
+                                                        >
+                                                            Back
+                                                        </button>
+                                                        <button 
+                                                            type="submit" 
+                                                            className="nextContactBtn" 
+                                                            onClick={contact3}
+                                                        >
+                                                            Next
+                                                        </button>
+                                                    </div>
                                                 )}
                                             </div>
+                                        </div>
+                                    ) : isContact1 ? (
+                                        <div className="contactForm">
+                                            <h1>Contact1</h1>
+                                            <h3>Create a Case</h3>
+                                            <p>Tell us what's going on:</p>
+                                            
+                                            <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact2(); }}>
+                                                <div className="formGroup">
+                                                    <label htmlFor="contactSubject">Subject</label>
+                                                    <input type="text" id="contactSubject" placeholder="Brief description of your issue" required />
+                                                </div>
+                                                
+                                                <div className="formGroup">
+                                                    <label htmlFor="contactMessage">Description</label>
+                                                    <textarea 
+                                                        id="contactMessage" 
+                                                        rows="4" 
+                                                        placeholder="Please provide detailed information about your issue..."
+                                                        required
+                                                    ></textarea>
+                                                </div>
+                                                
+                                                <div className="endContactBtn">
+                                                        <button 
+                                                            type="button" 
+                                                            className="backContactBtn"
+                                                        >
+                                                            Back
+                                                        </button>
+                                                        <button 
+                                                            type="submit" 
+                                                            className="nextContactBtn" 
+                                                            onClick={contact2}
+                                                        >
+                                                            Next
+                                                        </button>
+                                                    </div>
+                                            </form>
                                         </div>
                                     ) : (
                                         <div className="contactForm">
@@ -1222,9 +1296,21 @@ const App = () => {
                                                     ></textarea>
                                                 </div>
                                                 
-                                                <button type="submit" className="submitContactBtn">
-                                                    Continue with My Case
-                                                </button>
+                                                <div className="endContactBtn">
+                                                        <button 
+                                                            type="button" 
+                                                            className="backContactBtn"
+                                                        >
+                                                            Back
+                                                        </button>
+                                                        <button 
+                                                            type="submit" 
+                                                            className="nextContactBtn" 
+                                                            onClick={contact2}
+                                                        >
+                                                            Next
+                                                        </button>
+                                                    </div>
                                             </form>
                                         </div>
                                     )}

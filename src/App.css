@@ -456,9 +456,11 @@
 .responseProgress {
     margin-top: 4rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 1.5rem;
-    justify-content: center;
+    align-items: start;
+    justify-content: start;
+    text-align: left;
     font-size: 0.95rem;
     color: #767676;
     font-weight: 300;

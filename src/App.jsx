@@ -185,6 +185,8 @@ const App = () => {
     const [isAccountRelated, setIsAccountRelated] = useState(false);
     const [isProductRelated, setIsProductRelated] = useState(false);
     const [selectedOption, setSelectedOption] = useState('');
+    const [showProgress2, setShowProgress2] = useState(false);
+    const [showProgress3, setShowProgress3] = useState(false);
 
     // Handle input change and filter suggestions
     const handleIntentChange = useCallback((e) => {
@@ -232,7 +234,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://56895061c51f.ngrok-free.app/api/chat', {
+            const response = await fetch('https://ca5266b6539d.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -280,7 +282,6 @@ const App = () => {
         }
         return () => clearInterval(intervalId);
     }, [isRunning]);
-    console.log({time});
 
 
     //Add delay for displaying AI response (older function, may not need anymore)
@@ -642,6 +643,26 @@ const App = () => {
     // Handle dropdown change
     const handleChange = useCallback((e) => {
         setSelectedOption(e.target.value);
+    }, []);
+
+    // Visual feedback progress
+
+    useEffect(() => {
+        const progressTimer1 = setTimeout(() => {
+        setShowProgress2(true); // Make the element visible after 3 seconds
+        console.log('Progress 2 started');
+        }, 6000);
+
+        return () => clearTimeout(progressTimer1);
+    }, []);
+
+    useEffect(() => {
+        const progressTimer2 = setTimeout(() => {
+        setShowProgress3(true); // Make the element visible after 3 seconds
+        console.log('Progress 3 started');
+        }, 12000);
+
+        return () => clearTimeout(progressTimer2);
     }, []);
 
     // Transition from functions to visible elements
@@ -1190,14 +1211,71 @@ const App = () => {
                             {showProgress && (
                                 <div className="responseProgress">
                                     {/* Loading animation when retrieving ADA response */}
-                                    <div className="loadingCircles">
-                                        <div className="circle"></div>
-                                        <div className="circle"></div>
-                                        <div className="circle"></div>
-                                    </div>
-                                    <p className="progressText">
-                                        Searching the Qlik Knowledge Fabric...
-                                    </p>
+                                    <h2>Curating your solution</h2>
+                                    <h3>We synthesize the information you provide with the Qlik Knowledge Fabric to generate a curated solution</h3>
+                                    {!showProgress2 && (
+                                        <div className="loadGroup">
+                                            <div className="loadingCircles">
+                                                <div className="circle"></div>
+                                                <div className="circle"></div>
+                                                <div className="circle"></div>
+                                            </div>
+                                            <p className="progressText">
+                                                Investigating
+                                            </p>
+                                        </div>
+                                    )}
+
+                                    {showProgress2 && !showProgress3 && (
+                                        <div className="responseProgress2">
+                                            <div className="loadGroup">
+                                                <p className="progressText">
+                                                    Understanding your explanation
+                                                </p>
+                                            </div>
+                                            <div className="loadGroup">
+                                                    <div className="loadingCircles">
+                                                        <div className="circle"></div>
+                                                        <div className="circle"></div>
+                                                        <div className="circle"></div>
+                                                    </div>
+                                                <p className="progressText">
+                                                    Searching the Qlik Knowledge Fabric
+                                                </p>
+                                            </div>
+                                            <div className="loadGroup">
+                                                <p className="progressText">
+                                                    Creating customized recommendations
+                                                </p>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {showProgress3 && (
+                                        <div className="responseProgress3">
+                                            <div className="loadGroup">
+                                                <p className="progressText">
+                                                    Understanding your explanation
+                                                </p>
+                                            </div>
+                                            <div className="loadGroup">
+                                                <p className="progressText">
+                                                    Searching the Qlik Knowledge Fabric
+                                                </p>
+                                            </div>
+                                            <div className="loadGroup">
+                                                <div className="loadingCircles">
+                                                    <div className="circle"></div>
+                                                    <div className="circle"></div>
+                                                    <div className="circle"></div>
+                                                </div>
+                                                <p className="progressText">
+                                                    Creating customized recommendations
+                                                </p>
+                                            </div>
+                                        </div>
+                                    )}
+
                                 </div>
                             )}
 

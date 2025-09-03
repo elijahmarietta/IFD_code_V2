@@ -496,7 +496,7 @@
 }
 
 .loadGroupLoading {
-    gap: 0.2rem;
+    gap: 0.1rem;
     justify-content: start;
     margin-left: 0.2rem;
 }
@@ -512,8 +512,8 @@
 }
 
 .loadGroupCheck img {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
 }
 
 /* Animation with loading circles */
@@ -703,17 +703,41 @@
     animation: fadeIn .8s ease-in-out;
 }
 
-.conversationLogo {
-    width: 32px;
-    height: auto;
-    flex-shrink: 0;
-}
-
 .reponseContent {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     max-width: 600px;
+}
+
+.stepsAccordion {
+    margin: 1rem 0;
+    color: #404040;
+    font-size: 0.9rem;
+    background-color: #F4F4F4;
+    padding: 0.5rem;
+    border-radius: 16px;
+    margin-bottom: 3vh;
+}
+
+.stepsAccordion summary {
+    cursor: pointer;
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+.responseProgress4 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 0.8rem 0rem 0.2rem 0rem;
+    padding: 0rem 1.5rem 0rem 0.5rem;
+}
+
+.responseProgress4 .loadGroupCheck {
+    gap: 0.45rem;
+    justify-content: start;
+    margin-left: 0.2rem;
 }
 
 .responseHeader {

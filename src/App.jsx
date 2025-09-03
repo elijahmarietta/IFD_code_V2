@@ -819,6 +819,29 @@ const App = () => {
                                             // Adding ADA's repsone to chat interface, including populating source's URL in accordion 
                                             <div key={index} className="chatResponse">
                                                 <div className='responseContent'>
+                                                    <details className="stepsAccordion">
+                                                            <summary>3 steps completed</summary>
+                                                            <div className="responseProgress4">
+                                                                <div className="loadGroupCheck">
+                                                                    <img src={checkIcon} alt="Check icon" />
+                                                                    <p className="progressText">
+                                                                        Understanding your explanation
+                                                                    </p>
+                                                                </div>
+                                                                <div className="loadGroupCheck">
+                                                                    <img src={checkIcon} alt="Check icon" />
+                                                                    <p className="progressText">
+                                                                        Searching the Qlik Knowledge Fabric
+                                                                    </p>
+                                                                </div>
+                                                                <div className="loadGroupCheck">
+                                                                    <img src={checkIcon} alt="Check icon" />
+                                                                    <p className="progressText">
+                                                                        Creating customized recommendations
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </details>
                                                     <div className="responseHeader">
                                                         <p>Your curated solution:</p>
                                                     </div>
@@ -1212,7 +1235,7 @@ const App = () => {
                                 <div className="responseProgress">
                                     {/* Loading animation when retrieving ADA response */}
                                     <h4>Curating your solution</h4>
-                                    <p className="progressSubheading">We synthesize the information you provide with the Qlik Knowledge Fabric to generate your personalized solution</p>
+                                    <p className="progressSubheading">We’re synthesizing the information you provided with the Qlik Knowledge Fabric to generate your personalized solution</p>
                                     {!showProgress2 && (
                                         <div className="loadGroupLoading">
                                             <div className="loadingCircles">

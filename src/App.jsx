@@ -185,6 +185,10 @@ const App = () => {
     const [isContact4, setIsContact4] = useState(false);
     const [isAccountRelated, setIsAccountRelated] = useState(false);
     const [isProductRelated, setIsProductRelated] = useState(false);
+    const [isAnalytics, setIsAnalytics] = useState(false);
+    const [isIntegration, setIsIntegration] = useState(false);
+    const [isCloud, setIsCloud] = useState(false);
+    const [isTalend, setIsTalend] = useState(false);
     const [selectedOption, setSelectedOption] = useState('');
     const [showProgress2, setShowProgress2] = useState(false);
     const [showProgress3, setShowProgress3] = useState(false);
@@ -653,6 +657,38 @@ const App = () => {
         setIsAccountRelated(false);
     }, []);
 
+    // Setting case as Data Analytics
+    const analyticsRelated = useCallback(() => {
+        setIsAnalytics(true);
+        setIsIntegration(false);
+        setIsCloud(false);
+        setIsTalend(false);
+    }, []);
+
+    // Setting case as Data Integration
+    const integrationRelated = useCallback(() => {
+        setIsAnalytics(false);
+        setIsIntegration(true);
+        setIsCloud(false);
+        setIsTalend(false);
+    }, []);
+
+    // Setting case as Qlik Cloud
+    const cloudRelated = useCallback(() => {
+        setIsAnalytics(false);
+        setIsIntegration(false);
+        setIsCloud(true);
+        setIsTalend(false);
+    }, []);
+
+    // Setting case as Talend
+    const talendRelated = useCallback(() => {
+        setIsAnalytics(false);
+        setIsIntegration(false);
+        setIsCloud(false);
+        setIsTalend(true);
+    }, []);
+
     // Handle dropdown change
     const handleChange = useCallback((e) => {
         setSelectedOption(e.target.value);
@@ -1041,7 +1077,10 @@ const App = () => {
                                         </div>
                                     ) : isContact3 ? (
                                         <div className="contactForm">
-                                            <h1>Contact3</h1>
+
+                                            <h3>Create a Case</h3>
+                                            <p>Tell us what's going on:</p>
+
                                             <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact4(); }}>
                                                     
                                                 <div className="formGroup">
@@ -1144,73 +1183,79 @@ const App = () => {
                                                             className="backContactBtn"
                                                             onClick={contact2}
                                                         >
-                                                            Back
+                                                            BACK
                                                         </button>
                                                         <button 
                                                             type="submit" 
                                                             className="nextContactBtn" 
                                                             onClick={contact4}
                                                         >
-                                                            Next
+                                                            NEXT
                                                         </button>
                                                 </div>
                                             </form>
                                         </div>
                                     ) : isContact2 ? (
                                         <div className="contactForm">
-                                            <h1>Contact2</h1>
+
                                             <h3>Create a Case</h3>
                                             <p>Tell us what's going on:</p>
                                             
                                             <div className="supportForm">
                                                 <div className="relatedButtons">
                                                     <button 
-                                                        type="button" 
-                                                        className="articles" 
+                                                        type="button"
                                                         onClick={accountRelated}
+                                                        className={isAccountRelated ? 'problemTypeBtnSelected' : 'problemTypeBtn'}
                                                     >
                                                         <img alt="Account Related" src={accountRelatedIcon}></img>
-                                                        <p>Account Related</p>
+                                                        <p>ACCOUNT RELATED</p>
                                                     </button>
                                                     <button 
-                                                        type="button" 
-                                                        className="articles" 
+                                                        type="button"
                                                         onClick={productRelated}
+                                                        className={isProductRelated ? 'problemTypeBtnSelected' : 'problemTypeBtn'}
                                                     >
                                                         <img alt="Product Related" src={productRelatedIcon}></img>
-                                                        <p>Product Related</p>
+                                                        <p>PRODUCT RELATED</p>
                                                     </button>
                                                 </div>
 
                                                 {isProductRelated && (
                                                     <div className="productButtons">
                                                         <button 
-                                                            type="button" 
-                                                            className="articles"
+                                                            type="button"
+                                                            onClick={analyticsRelated}
+                                                            className={isAnalytics ? 'problemTypeBtnSelected' : 'problemTypeBtn'}
                                                         >
-                                                            <img alt="Account Related" src={analyticsIcon}></img>
-                                                            <p>Data Analytics</p>
+                                                            <img alt="Data Analytics" src={analyticsIcon}></img>
+                                                            <p>DATA ANALYTICS</p>
+                                                        </button>
+                                                        <button 
+                                                            type="button"
+                                                            onClick={integrationRelated}
+                                                            className={isIntegration ? 'problemTypeBtnSelected' : 'problemTypeBtn'}
+                                                        >
+                                                            <img alt="Data Integration" src={integrationIcon}></img>
+                                                            <p>DATA INTEGRATION</p>
+                                                        </button>
+                                                        <button 
+                                                            type="button"
+                                                            onClick={cloudRelated}
+                                                            id="cloudBtn"
+                                                            className={isCloud ? 'problemTypeBtnSelected' : 'problemTypeBtn'}
+                                                        >
+                                                            <img alt="Qlik Cloud" src={cloudIcon}></img>
+                                                            <p>QLIK CLOUD</p>
                                                         </button>
                                                         <button 
                                                             type="button" 
-                                                            className="articles"
+                                                            onClick={talendRelated}
+                                                            id="talendBtn"
+                                                            className={isTalend ? 'problemTypeBtnSelected' : 'problemTypeBtn'}
                                                         >
-                                                            <img alt="Account Related" src={integrationIcon}></img>
-                                                            <p>Data Integration</p>
-                                                        </button>
-                                                        <button 
-                                                            type="button" 
-                                                            className="articles"
-                                                        >
-                                                            <img alt="Account Related" src={cloudIcon}></img>
-                                                            <p>Qlik Cloud</p>
-                                                        </button>
-                                                        <button 
-                                                            type="button" 
-                                                            className="articles"
-                                                        >
-                                                            <img alt="Account Related" src={talendIcon}></img>
-                                                            <p>Talend</p>
+                                                            <img alt="Talend" src={talendIcon}></img>
+                                                            <p>TALEND</p>
                                                         </button>
                                                     </div>
                                                 )}
@@ -1222,14 +1267,14 @@ const App = () => {
                                                             className="backContactBtn" 
                                                             onClick={contact1}
                                                         >
-                                                            Back
+                                                            BACK
                                                         </button>
                                                         <button 
                                                             type="submit" 
                                                             className="nextContactBtn" 
                                                             onClick={contact3}
                                                         >
-                                                            Next
+                                                            NEXT
                                                         </button>
                                                     </div>
                                                 )}
@@ -1237,7 +1282,6 @@ const App = () => {
                                         </div>
                                     ) : isContact1 ? (
                                         <div className="contactForm">
-                                            <h1>Contact1</h1>
                                             <h3>Create a Case</h3>
                                             <p>Tell us what's going on:</p>
                                             
@@ -1260,23 +1304,22 @@ const App = () => {
                                                 <div className="endContactBtn">
                                                         <button 
                                                             type="button" 
-                                                            className="backContactBtn"
+                                                            className="backContactBtnInactive"
                                                         >
-                                                            Back
+                                                            BACK
                                                         </button>
                                                         <button 
                                                             type="submit" 
                                                             className="nextContactBtn" 
-                                                            onClick={contact2}
+                                                            onClick={contact1}
                                                         >
-                                                            Next
+                                                            NEXT
                                                         </button>
                                                     </div>
                                             </form>
                                         </div>
                                     ) : (
                                         <div className="contactForm">
-                                            <h1>Contact1</h1>
                                             <h3>Create a Case</h3>
                                             <p>Tell us what's going on:</p>
                                             
@@ -1299,16 +1342,16 @@ const App = () => {
                                                 <div className="endContactBtn">
                                                         <button 
                                                             type="button" 
-                                                            className="backContactBtn"
+                                                            className="backContactBtnInactive"
                                                         >
-                                                            Back
+                                                            BACK
                                                         </button>
                                                         <button 
                                                             type="submit" 
                                                             className="nextContactBtn" 
                                                             onClick={contact2}
                                                         >
-                                                            Next
+                                                            NEXT
                                                         </button>
                                                     </div>
                                             </form>

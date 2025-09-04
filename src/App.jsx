@@ -1081,119 +1081,285 @@ const App = () => {
                                             <h3>Create a Case</h3>
                                             <p>Tell us what's going on:</p>
 
-                                            <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact4(); }}>
+                                            {(isAccountRelated ? (
+
+                                                <div className="accountForm">
+
+                                                <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact4(); }}>
+                                                        
+                                                    <div className="formGroup">
+                                                        <label htmlFor="contactEmail">Case Preferred Email</label>
+                                                        <input type="email" id="contactEmail" placeholder="you@example.com" required />
+                                                    </div>
+
+                                                    <div className="formGroup">
+                                                        <label htmlFor="contactRegion">Case Preferred Support Region</label>
+                                                        <input type="text" id="contactRegion" placeholder="Qlik US Eastern" />
+                                                    </div>
+
+                                                    <div className="formGroup">
+                                                        <label htmlFor="contactPhone">Case Preferred Phone</label>
+                                                        <input type="text" id="contactPhone" placeholder="(123) 456-7890" />
+                                                    </div>
+
+                                                    <div className="formGroup">
+                                                        <label htmlFor="contactPortal">Portal Account</label>
+                                                        <input type="text" id="contactPortal" placeholder="QlikTech Single Signon Hold Account" />
+                                                    </div>
+
+                                                    <div className="formGroup">
+                                                        <label htmlFor="contactIssue">Account Issue</label>
+                                                        <select id="contactIssue" value={selectedOption} onChange={handleChange} required>
+                                                            <option value="" disabled>
+                                                                --None--
+                                                            </option>
+                                                            <option value="option1">Training</option>
+                                                            <option value="option2">Partner Portal</option>
+                                                            <option value="option3">Support Portal</option>
+                                                            <option value="option4">Download Site</option>
+                                                            <option value="option5">Community</option>
+                                                            <option value="option6">Qlik.com</option>
+                                                            <option value="option7">Helpsite</option>
+                                                            <option value="option8">Sales inquiry or issue</option>
+                                                            <option value="option9">Account Administration</option>
+                                                            <option value="option10">Payment/Invoice Issue or inquiry</option>
+                                                            <option value="option11">MyQlik – Digital ONLINE payment</option>
+                                                            <option value="option12">Tenant Access Issue</option>
+                                                            <option value="option13">QSD Authentication</option>
+                                                            <option value="option14">Need guidance to start using product</option>
+                                                            <option value="option15">License related</option>
+                                                            <option value="option16">Other</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div className="formGroup">
+                                                        <label htmlFor="contactArea">Area / Component</label>
+                                                        <select id="contactArea" value={selectedOption} onChange={handleChange} required>
+                                                            <option value="" disabled>
+                                                                --None--
+                                                            </option>
+                                                            <option value="option1">Access</option>
+                                                            <option value="option2">Authentication / Authorization</option>
+                                                            <option value="option3">Browser Related</option>
+                                                            <option value="option4">Documentation</option>
+                                                            <option value="option5">General Question</option>
+                                                            <option value="option6">Feature Request</option>
+                                                            <option value="option7">File Access/Permissions</option>
+                                                            <option value="option8">File Share</option>
+                                                            <option value="option9">License Related</option>
+                                                            <option value="option10">Product Defect</option>
+                                                            <option value="option11">Security Concern</option>
+                                                            <option value="option12">Subscriptions</option>
+                                                            <option value="option13">User Access</option>
+                                                            <option value="option14">User License</option>
+                                                            <option value="option15">User Management</option>
+                                                            <option value="option16">Web Interface</option>
+                                                            <option value="option17">Other/Undetermined</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div className="formGroup">
+                                                        <label htmlFor="contactID">Contact User ID</label>
+                                                        <input type="text" id="contactID" placeholder="Mi4w_kMvjs..." />
+                                                    </div>
+
+                                                    <div className="formGroup">
+                                                        <label htmlFor="contactLicense">Affected License Number</label>
+                                                        <input type="text" id="contactLicense" placeholder="123456789123456789" />
+                                                    </div>
+
+                                                    <div className="formGroup">
+                                                        <label htmlFor="contactPriority">Priority</label>
+                                                        <select id="contactPriority" value={selectedOption} onChange={handleChange} required>
+                                                            <option value="" disabled>
+                                                                --None--
+                                                            </option>
+                                                            <option value="option1">Low/Medium</option>
+                                                            <option value="option2">High</option>
+                                                            <option value="option3">Urgent</option>
+                                                        </select>
+                                                    </div>
+
+                                                        <div className="endContactBtn">
+                                                            <button 
+                                                                type="button" 
+                                                                className="backContactBtn"
+                                                                onClick={contact2}
+                                                            >
+                                                                BACK
+                                                            </button>
+                                                            <button 
+                                                                type="submit" 
+                                                                className="nextContactBtn" 
+                                                                onClick={contact4}
+                                                            >
+                                                                NEXT
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                    </div>
+
+                                                ) : isProductRelated && isAnalytics ? (
+
+                                                    <div className="analyticsForm">
                                                     
-                                                <div className="formGroup">
-                                                    <label htmlFor="contactEmail">Case Preferred Email</label>
-                                                    <input type="email" id="contactEmail" placeholder="you@example.com" required />
-                                                </div>
+                                                    <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact4(); }}>
+                                                        
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactEmail">Case Preferred Email</label>
+                                                            <input type="email" id="contactEmail" placeholder="you@example.com" required />
+                                                        </div>
 
-                                                <div className="formGroup">
-                                                    <label htmlFor="contactRegion">Case Preferred Support Region</label>
-                                                    <input type="text" id="contactRegion" placeholder="Qlik US Eastern" />
-                                                </div>
+                                                        <div className="endContactBtn">
+                                                            <button 
+                                                                type="button" 
+                                                                className="backContactBtn"
+                                                                onClick={contact2}
+                                                            >
+                                                                BACK
+                                                            </button>
+                                                            <button 
+                                                                type="submit" 
+                                                                className="nextContactBtn" 
+                                                                onClick={contact4}
+                                                            >
+                                                                NEXT
+                                                            </button>
+                                                        </div>
 
-                                                <div className="formGroup">
-                                                    <label htmlFor="contactPhone">Case Preferred Phone</label>
-                                                    <input type="text" id="contactPhone" placeholder="(123) 456-7890" />
-                                                </div>
+                                                    </form>
 
-                                                <div className="formGroup">
-                                                    <label htmlFor="contactPortal">Portal Account</label>
-                                                    <input type="text" id="contactPortal" placeholder="QlikTech Single Signon Hold Account" />
-                                                </div>
+                                                    </div>
 
-                                                <div className="formGroup">
-                                                    <label htmlFor="contactIssue">Account Issue</label>
-                                                    <select id="contactIssue" value={selectedOption} onChange={handleChange} required>
-                                                        <option value="" disabled>
-                                                            --None--
-                                                        </option>
-                                                        <option value="option1">Training</option>
-                                                        <option value="option2">Partner Portal</option>
-                                                        <option value="option3">Support Portal</option>
-                                                        <option value="option4">Download Site</option>
-                                                        <option value="option5">Community</option>
-                                                        <option value="option6">Qlik.com</option>
-                                                        <option value="option7">Helpsite</option>
-                                                        <option value="option8">Sales inquiry or issue</option>
-                                                        <option value="option9">Account Administration</option>
-                                                        <option value="option10">Payment/Invoice Issue or inquiry</option>
-                                                        <option value="option11">MyQlik – Digital ONLINE payment</option>
-                                                        <option value="option12">Tenant Access Issue</option>
-                                                        <option value="option13">QSD Authentication</option>
-                                                        <option value="option14">Need guidance to start using product</option>
-                                                        <option value="option15">License related</option>
-                                                        <option value="option16">Other</option>
-                                                    </select>
-                                                </div>
+                                                ) : isProductRelated && isIntegration ? (
 
-                                                <div className="formGroup">
-                                                    <label htmlFor="contactArea">Area / Component</label>
-                                                    <select id="contactArea" value={selectedOption} onChange={handleChange} required>
-                                                        <option value="" disabled>
-                                                            --None--
-                                                        </option>
-                                                        <option value="option1">Access</option>
-                                                        <option value="option2">Authentication / Authorization</option>
-                                                        <option value="option3">Browser Related</option>
-                                                        <option value="option4">Documentation</option>
-                                                        <option value="option5">General Question</option>
-                                                        <option value="option6">Feature Request</option>
-                                                        <option value="option7">File Access/Permissions</option>
-                                                        <option value="option8">File Share</option>
-                                                        <option value="option9">License Related</option>
-                                                        <option value="option10">Product Defect</option>
-                                                        <option value="option11">Security Concern</option>
-                                                        <option value="option12">Subscriptions</option>
-                                                        <option value="option13">User Access</option>
-                                                        <option value="option14">User License</option>
-                                                        <option value="option15">User Management</option>
-                                                        <option value="option16">Web Interface</option>
-                                                        <option value="option17">Other/Undetermined</option>
-                                                    </select>
-                                                </div>
+                                                    <div className="integrationForm">
 
-                                                <div className="formGroup">
-                                                    <label htmlFor="contactID">Contact User ID</label>
-                                                    <input type="text" id="contactID" placeholder="Mi4w_kMvjs..." />
-                                                </div>
+                                                    <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact4(); }}>
+                                                        
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactEmail">Integration</label>
+                                                            <input type="email" id="contactEmail" placeholder="you@example.com" required />
+                                                        </div>
 
-                                                <div className="formGroup">
-                                                    <label htmlFor="contactLicense">Affected License Number</label>
-                                                    <input type="text" id="contactLicense" placeholder="123456789123456789" />
-                                                </div>
+                                                        <div className="endContactBtn">
+                                                            <button 
+                                                                type="button" 
+                                                                className="backContactBtn"
+                                                                onClick={contact2}
+                                                            >
+                                                                BACK
+                                                            </button>
+                                                            <button 
+                                                                type="submit" 
+                                                                className="nextContactBtn" 
+                                                                onClick={contact4}
+                                                            >
+                                                                NEXT
+                                                            </button>
+                                                        </div>
 
-                                                <div className="formGroup">
-                                                    <label htmlFor="contactPriority">Priority</label>
-                                                    <select id="contactPriority" value={selectedOption} onChange={handleChange} required>
-                                                        <option value="" disabled>
-                                                            --None--
-                                                        </option>
-                                                        <option value="option1">Low/Medium</option>
-                                                        <option value="option2">High</option>
-                                                        <option value="option3">Urgent</option>
-                                                    </select>
-                                                </div>
+                                                    </form>
 
-                                                
-                                                <div className="endContactBtn">
-                                                        <button 
-                                                            type="button" 
-                                                            className="backContactBtn"
-                                                            onClick={contact2}
-                                                        >
-                                                            BACK
-                                                        </button>
-                                                        <button 
-                                                            type="submit" 
-                                                            className="nextContactBtn" 
-                                                            onClick={contact4}
-                                                        >
-                                                            NEXT
-                                                        </button>
-                                                </div>
-                                            </form>
+                                                    </div>
+
+                                                ) : isProductRelated && isCloud ? (
+
+                                                    <div className="cloudForm">
+
+                                                    <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact4(); }}>
+                                                        
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactEmail">Cloud</label>
+                                                            <input type="email" id="contactEmail" placeholder="you@example.com" required />
+                                                        </div>
+
+                                                        <div className="endContactBtn">
+                                                            <button 
+                                                                type="button" 
+                                                                className="backContactBtn"
+                                                                onClick={contact2}
+                                                            >
+                                                                BACK
+                                                            </button>
+                                                            <button 
+                                                                type="submit" 
+                                                                className="nextContactBtn" 
+                                                                onClick={contact4}
+                                                            >
+                                                                NEXT
+                                                            </button>
+                                                        </div>
+
+                                                    </form>
+
+                                                    </div>
+
+                                                ) : isProductRelated && isTalend ? (
+
+                                                    <div className="talendForm">
+
+                                                    <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact4(); }}>
+                                                        
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactEmail">Talend</label>
+                                                            <input type="email" id="contactEmail" placeholder="you@example.com" required />
+                                                        </div>
+
+                                                        <div className="endContactBtn">
+                                                            <button 
+                                                                type="button" 
+                                                                className="backContactBtn"
+                                                                onClick={contact2}
+                                                            >
+                                                                BACK
+                                                            </button>
+                                                            <button 
+                                                                type="submit" 
+                                                                className="nextContactBtn" 
+                                                                onClick={contact4}
+                                                            >
+                                                                NEXT
+                                                            </button>
+                                                        </div>
+
+                                                    </form>
+
+                                                    </div>
+
+                                                ) : (
+                                                    
+                                                    <div className="accountForm">
+
+                                                    <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact4(); }}>
+                                                        
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactEmail">Case Preferred Email</label>
+                                                            <input type="email" id="contactEmail" placeholder="you@example.com" required />
+                                                        </div>
+
+                                                        <div className="endContactBtn">
+                                                            <button 
+                                                                type="button" 
+                                                                className="backContactBtn"
+                                                                onClick={contact2}
+                                                            >
+                                                                BACK
+                                                            </button>
+                                                            <button 
+                                                                type="submit" 
+                                                                className="nextContactBtn" 
+                                                                onClick={contact4}
+                                                            >
+                                                                NEXT
+                                                            </button>
+                                                        </div>
+
+                                                    </form>
+
+                                                    </div>
+
+                                                ))}
                                         </div>
                                     ) : isContact2 ? (
                                         <div className="contactForm">

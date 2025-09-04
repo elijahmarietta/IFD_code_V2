@@ -192,6 +192,22 @@ const App = () => {
     const [selectedOption, setSelectedOption] = useState('');
     const [showProgress2, setShowProgress2] = useState(false);
     const [showProgress3, setShowProgress3] = useState(false);
+    const [isTraining, setIsTraining] = useState(false);
+    const [isNprinting, setIsNprinting] = useState(false);
+    const [isQlikAlerting, setIsQlikAlerting] = useState(false);
+    const [isQlikGeoAnalyticsQlikView, setIsQlikGeoAnalyticsQlikView] = useState(false);
+    const [isQlikODBCConnector, setIsQlikODBCConnector] = useState(false);
+    const [isQlikRestConnector, setIsQlikRestConnector] = useState(false);
+    const [isQlikSAPConnector, setIsQlikSAPConnector] = useState(false);
+    const [isQlikSenseDesktop, setIsQlikSenseDesktop] = useState(false);
+    const [isQlikSenseEnterprise, setIsQlikSenseEnterprise] = useState(false);
+    const [isQlikSenseKubernetes, setIsQlikSenseKubernetes] = useState(false);
+    const [isQlikSenseGeoAnalyticsQlikSense, setIsQlikSenseGeoAnalyticsQlikSense] = useState(false);
+    const [isQlikSenseGeoAnalyticsPlus, setIsQlikSenseGeoAnalyticsPlus] = useState(false);
+    const [isQlikSenseGeoAnalyticsServer, setIsQlikSenseGeoAnalyticsServer] = useState(false);
+    const [isQlikSenseMobile, setIsQlikSenseMobile] = useState(false);
+    const [isQlikView, setIsQlikView] = useState(false);
+    const [isQlikWebConnectors, setIsQlikWebConnectors] = useState(false);
 
     // Handle input change and filter suggestions
     const handleIntentChange = useCallback((e) => {
@@ -689,6 +705,313 @@ const App = () => {
         setIsTalend(true);
     }, []);
 
+    // Changing the content of the product area based on the product
+
+    const training = useCallback(() => {
+        setIsTraining(true);
+        setIsNprinting(false);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const nprinting = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(true);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const qlikAlerting = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(false);
+        setIsQlikAlerting(true);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const qlikGeoAnalyticsQlikView = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(false);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(true);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const qlikODBCConnector = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(false);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(true);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const qlikRestConnector = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(false);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(true);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const qlikSAPConnector = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(false);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(true);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const qlikSenseDesktop = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(false);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(true);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const qlikSenseEnterprise = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(false);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(true);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const qlikSenseKubernetes = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(false);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(true);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const qlikSenseGeoAnalyticsQlikSense = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(false);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(true);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const qlikSenseGeoAnalyticsPlus = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(false);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(true);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const qlikSenseGeoAnalyticsServer = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(false);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(true);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const qlikSenseMobile = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(false);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(true);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const qlikView = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(false);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(true);
+        setIsQlikWebConnectors(false);
+    }, []);
+
+    const qlikWebConnectors = useCallback(() => {
+        setIsTraining(false);
+        setIsNprinting(false);
+        setIsQlikAlerting(false);
+        setIsQlikGeoAnalyticsQlikView(false);
+        setIsQlikODBCConnector(false);
+        setIsQlikRestConnector(false);
+        setIsQlikSAPConnector(false);
+        setIsQlikSenseDesktop(false);
+        setIsQlikSenseEnterprise(false);
+        setIsQlikSenseKubernetes(false);
+        setIsQlikSenseGeoAnalyticsQlikSense(false);
+        setIsQlikSenseGeoAnalyticsPlus(false);
+        setIsQlikSenseGeoAnalyticsServer(false);
+        setIsQlikSenseMobile(false);
+        setIsQlikView(false);
+        setIsQlikWebConnectors(true);
+    }, []);
+
+
     // Handle dropdown change
     const handleChange = useCallback((e) => {
         setSelectedOption(e.target.value);
@@ -1085,150 +1408,402 @@ const App = () => {
 
                                                 <div className="accountForm">
 
-                                                <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact4(); }}>
-                                                        
-                                                    <div className="formGroup">
-                                                        <label htmlFor="contactEmail">Case Preferred Email</label>
-                                                        <input type="email" id="contactEmail" placeholder="you@example.com" required />
-                                                    </div>
-
-                                                    <div className="formGroup">
-                                                        <label htmlFor="contactRegion">Case Preferred Support Region</label>
-                                                        <input type="text" id="contactRegion" placeholder="Qlik US Eastern" />
-                                                    </div>
-
-                                                    <div className="formGroup">
-                                                        <label htmlFor="contactPhone">Case Preferred Phone</label>
-                                                        <input type="text" id="contactPhone" placeholder="(123) 456-7890" />
-                                                    </div>
-
-                                                    <div className="formGroup">
-                                                        <label htmlFor="contactPortal">Portal Account</label>
-                                                        <input type="text" id="contactPortal" placeholder="QlikTech Single Signon Hold Account" />
-                                                    </div>
-
-                                                    <div className="formGroup">
-                                                        <label htmlFor="contactIssue">Account Issue</label>
-                                                        <select id="contactIssue" value={selectedOption} onChange={handleChange} required>
-                                                            <option value="" disabled>
-                                                                --None--
-                                                            </option>
-                                                            <option value="option1">Training</option>
-                                                            <option value="option2">Partner Portal</option>
-                                                            <option value="option3">Support Portal</option>
-                                                            <option value="option4">Download Site</option>
-                                                            <option value="option5">Community</option>
-                                                            <option value="option6">Qlik.com</option>
-                                                            <option value="option7">Helpsite</option>
-                                                            <option value="option8">Sales inquiry or issue</option>
-                                                            <option value="option9">Account Administration</option>
-                                                            <option value="option10">Payment/Invoice Issue or inquiry</option>
-                                                            <option value="option11">MyQlik – Digital ONLINE payment</option>
-                                                            <option value="option12">Tenant Access Issue</option>
-                                                            <option value="option13">QSD Authentication</option>
-                                                            <option value="option14">Need guidance to start using product</option>
-                                                            <option value="option15">License related</option>
-                                                            <option value="option16">Other</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div className="formGroup">
-                                                        <label htmlFor="contactArea">Area / Component</label>
-                                                        <select id="contactArea" value={selectedOption} onChange={handleChange} required>
-                                                            <option value="" disabled>
-                                                                --None--
-                                                            </option>
-                                                            <option value="option1">Access</option>
-                                                            <option value="option2">Authentication / Authorization</option>
-                                                            <option value="option3">Browser Related</option>
-                                                            <option value="option4">Documentation</option>
-                                                            <option value="option5">General Question</option>
-                                                            <option value="option6">Feature Request</option>
-                                                            <option value="option7">File Access/Permissions</option>
-                                                            <option value="option8">File Share</option>
-                                                            <option value="option9">License Related</option>
-                                                            <option value="option10">Product Defect</option>
-                                                            <option value="option11">Security Concern</option>
-                                                            <option value="option12">Subscriptions</option>
-                                                            <option value="option13">User Access</option>
-                                                            <option value="option14">User License</option>
-                                                            <option value="option15">User Management</option>
-                                                            <option value="option16">Web Interface</option>
-                                                            <option value="option17">Other/Undetermined</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div className="formGroup">
-                                                        <label htmlFor="contactID">Contact User ID</label>
-                                                        <input type="text" id="contactID" placeholder="Mi4w_kMvjs..." />
-                                                    </div>
-
-                                                    <div className="formGroup">
-                                                        <label htmlFor="contactLicense">Affected License Number</label>
-                                                        <input type="text" id="contactLicense" placeholder="123456789123456789" />
-                                                    </div>
-
-                                                    <div className="formGroup">
-                                                        <label htmlFor="contactPriority">Priority</label>
-                                                        <select id="contactPriority" value={selectedOption} onChange={handleChange} required>
-                                                            <option value="" disabled>
-                                                                --None--
-                                                            </option>
-                                                            <option value="option1">Low/Medium</option>
-                                                            <option value="option2">High</option>
-                                                            <option value="option3">Urgent</option>
-                                                        </select>
-                                                    </div>
-
-                                                        <div className="endContactBtn">
-                                                            <button 
-                                                                type="button" 
-                                                                className="backContactBtn"
-                                                                onClick={contact2}
-                                                            >
-                                                                BACK
-                                                            </button>
-                                                            <button 
-                                                                type="submit" 
-                                                                className="nextContactBtn" 
-                                                                onClick={contact4}
-                                                            >
-                                                                NEXT
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                    </div>
-
-                                                ) : isProductRelated && isAnalytics ? (
-
-                                                    <div className="analyticsForm">
-                                                    
                                                     <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact4(); }}>
-                                                        
+                                                            
                                                         <div className="formGroup">
                                                             <label htmlFor="contactEmail">Case Preferred Email</label>
                                                             <input type="email" id="contactEmail" placeholder="you@example.com" required />
                                                         </div>
 
-                                                        <div className="endContactBtn">
-                                                            <button 
-                                                                type="button" 
-                                                                className="backContactBtn"
-                                                                onClick={contact2}
-                                                            >
-                                                                BACK
-                                                            </button>
-                                                            <button 
-                                                                type="submit" 
-                                                                className="nextContactBtn" 
-                                                                onClick={contact4}
-                                                            >
-                                                                NEXT
-                                                            </button>
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactRegion">Case Preferred Support Region</label>
+                                                            <input type="text" id="contactRegion" placeholder="Qlik US Eastern" />
                                                         </div>
 
-                                                    </form>
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactPhone">Case Preferred Phone</label>
+                                                            <input type="text" id="contactPhone" placeholder="(123) 456-7890" />
+                                                        </div>
 
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactPortal">Portal Account</label>
+                                                            <input type="text" id="contactPortal" placeholder="QlikTech Single Signon Hold Account" />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactIssue">Account Issue</label>
+                                                            <select id="contactIssue" value={selectedOption} onChange={handleChange} required>
+                                                                <option value="" disabled>
+                                                                    --None--
+                                                                </option>
+                                                                <option value="option1">Training</option>
+                                                                <option value="option2">Partner Portal</option>
+                                                                <option value="option3">Support Portal</option>
+                                                                <option value="option4">Download Site</option>
+                                                                <option value="option5">Community</option>
+                                                                <option value="option6">Qlik.com</option>
+                                                                <option value="option7">Helpsite</option>
+                                                                <option value="option8">Sales inquiry or issue</option>
+                                                                <option value="option9">Account Administration</option>
+                                                                <option value="option10">Payment/Invoice Issue or inquiry</option>
+                                                                <option value="option11">MyQlik – Digital ONLINE payment</option>
+                                                                <option value="option12">Tenant Access Issue</option>
+                                                                <option value="option13">QSD Authentication</option>
+                                                                <option value="option14">Need guidance to start using product</option>
+                                                                <option value="option15">License related</option>
+                                                                <option value="option16">Other</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactArea">Area / Component</label>
+                                                            <select id="contactArea" value={selectedOption} onChange={handleChange} required>
+                                                                <option value="" disabled>
+                                                                    --None--
+                                                                </option>
+                                                                <option value="option1">Access</option>
+                                                                <option value="option2">Authentication / Authorization</option>
+                                                                <option value="option3">Browser Related</option>
+                                                                <option value="option4">Documentation</option>
+                                                                <option value="option5">General Question</option>
+                                                                <option value="option6">Feature Request</option>
+                                                                <option value="option7">File Access/Permissions</option>
+                                                                <option value="option8">File Share</option>
+                                                                <option value="option9">License Related</option>
+                                                                <option value="option10">Product Defect</option>
+                                                                <option value="option11">Security Concern</option>
+                                                                <option value="option12">Subscriptions</option>
+                                                                <option value="option13">User Access</option>
+                                                                <option value="option14">User License</option>
+                                                                <option value="option15">User Management</option>
+                                                                <option value="option16">Web Interface</option>
+                                                                <option value="option17">Other/Undetermined</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactID">Contact User ID</label>
+                                                            <input type="text" id="contactID" placeholder="Mi4w_kMvjs..." />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactLicense">Affected License Number</label>
+                                                            <input type="text" id="contactLicense" placeholder="123456789123456789" />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactPriority">Priority</label>
+                                                            <select id="contactPriority" value={selectedOption} onChange={handleChange} required>
+                                                                <option value="" disabled>
+                                                                    --None--
+                                                                </option>
+                                                                <option value="option1">Low/Medium</option>
+                                                                <option value="option2">High</option>
+                                                                <option value="option3">Urgent</option>
+                                                            </select>
+                                                        </div>
+
+                                                            <div className="endContactBtn">
+                                                                <button 
+                                                                    type="button" 
+                                                                    className="backContactBtn"
+                                                                    onClick={contact2}
+                                                                >
+                                                                    BACK
+                                                                </button>
+                                                                <button 
+                                                                    type="submit" 
+                                                                    className="nextContactBtn" 
+                                                                    onClick={contact4}
+                                                                >
+                                                                    NEXT
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
+                                                ) : isProductRelated && isAnalytics ? (
+
+                                                    <div className="accountForm">
+
+                                                    <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact4(); }}>
+                                                            
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactEmail">Case Preferred Email</label>
+                                                            <input type="email" id="contactEmail" placeholder="you@example.com" required />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactRegion">Case Preferred Support Region</label>
+                                                            <input type="text" id="contactRegion" placeholder="Qlik US Eastern" />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactPhone">Case Preferred Phone</label>
+                                                            <input type="text" id="contactPhone" placeholder="(123) 456-7890" />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactPortal">Portal Account</label>
+                                                            <input type="text" id="contactPortal" placeholder="QlikTech Single Signon Hold Account" />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactProduct">Product</label>
+                                                            <select id="contactProduct" value={selectedOption} onChange={handleChange} required>
+                                                                <option value="" disabled>
+                                                                    Select an Option
+                                                                </option>
+                                                                <option value="option1">Training</option>
+                                                                <option value="option2">Nprinting</option>
+                                                                <option value="option3">QlikAlerting – Client Managed</option>
+                                                                <option value="option4">Qlik GeoAnalytics for QlikView</option>
+                                                                <option value="option5">Qlik ODBC Connector Package</option>
+                                                                <option value="option6">Qlik Rest Connector - Client Managed</option>
+                                                                <option value="option7">Qlik SAP Connector - Client Managed</option>
+                                                                <option value="option8">Qlik Sense Desktop</option>
+                                                                <option value="option9">Qlik Sense Enterprise</option>
+                                                                <option value="option10">Qlik Sense Enterprise on Kubernetes</option>
+                                                                <option value="option11">Qlik Sense GeoAnalytics for Qlik Sense</option>
+                                                                <option value="option12">Qlik Sense GeoAnalytics Plus</option>
+                                                                <option value="option13">Qlik Sense GeoAnalytics Server</option>
+                                                                <option value="option14">Qlik Sense Mobile - Client Managed</option>
+                                                                <option value="option15">QlikView</option>
+                                                                <option value="option16">Qlik Web Connectors - Client Managed</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactArea">Product Area</label>
+                                                            <select id="contactArea" value={selectedOption} onChange={handleChange} required>
+                                                                <option value="" disabled>
+                                                                    Select an Option
+                                                                </option>
+                                                                <option value="option1">Access</option>
+                                                                <option value="option2">Authentication / Authorization</option>
+                                                                <option value="option3">Browser Related</option>
+                                                                <option value="option4">Documentation</option>
+                                                                <option value="option5">General Question</option>
+                                                                <option value="option6">Feature Request</option>
+                                                                <option value="option7">File Access/Permissions</option>
+                                                                <option value="option8">File Share</option>
+                                                                <option value="option9">License Related</option>
+                                                                <option value="option10">Product Defect</option>
+                                                                <option value="option11">Security Concern</option>
+                                                                <option value="option12">Subscriptions</option>
+                                                                <option value="option13">User Access</option>
+                                                                <option value="option14">User License</option>
+                                                                <option value="option15">User Management</option>
+                                                                <option value="option16">Web Interface</option>
+                                                                <option value="option17">Other/Undetermined</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactSeverity">Severity</label>
+                                                            <select id="contactSeverity" value={selectedOption} onChange={handleChange} required>
+                                                                <option value="" disabled>
+                                                                    --None--
+                                                                </option>
+                                                                <option value="option1">3</option>
+                                                                <option value="option2">2</option>
+                                                                <option value="option3">1</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactSeverity">Operating System</label>
+                                                            <select id="contactSeverity" value={selectedOption} onChange={handleChange} required>
+                                                                <option value="" disabled>
+                                                                    Select an Option
+                                                                </option>
+                                                                <option value="option1">Linux</option>
+                                                                <option value="option2">Unix</option>
+                                                                <option value="option3">Windows</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactVersion">Operating System Version</label>
+                                                            <input type="text" id="contactVersion" placeholder="Mi4w_kMvjs..." />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactRelease">Product Release</label>
+                                                            <input type="text" id="contactRelease" placeholder="Mi4w_kMvjs..." />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactSeverity">Environment Type</label>
+                                                            <select id="contactSeverity" value={selectedOption} onChange={handleChange} required>
+                                                                <option value="" disabled>
+                                                                    Select an Option
+                                                                </option>
+                                                                <option value="option1">Production</option>
+                                                                <option value="option2">Development</option>
+                                                                <option value="option3">Test</option>
+                                                                <option value="option4">QA</option>
+                                                                <option value="option5">Migration</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactLicense">Affected User ID</label>
+                                                            <input type="text" id="contactLicense" placeholder="123456789123456789" />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactRole">Affected User Role</label>
+                                                            <input type="text" id="contactRole" placeholder="123456789123456789" />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactLicense">Connector Type</label>
+                                                            <input type="text" id="contactLicense" placeholder="123456789123456789" />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactSeverity">Connector Endpoint</label>
+                                                            <select id="contactSeverity" value={selectedOption} onChange={handleChange} required>
+                                                                <option value="" disabled>
+                                                                    --None--
+                                                                </option>
+                                                                <option value="option1">Amazon Athena</option>
+                                                                <option value="option2">Amazon DynamoDB</option>
+                                                                <option value="option3">Amazon Redshift</option>
+                                                                <option value="option4">Amazon S3</option>
+                                                                <option value="option5">Amazon S3 V2</option>
+                                                                <option value="option6">Amazon S3 (QWC)</option>
+                                                                <option value="option7">Amazon S3 V2 (QWC)</option>
+                                                                <option value="option8">Amazon S3 Metadata</option>
+                                                                <option value="option9">Amazon S3 Metadata S3</option>
+                                                                <option value="option10">Apache Drill</option>
+                                                                <option value="option11">Apache Hive</option>
+                                                                <option value="option12">Apache Phoenix</option>
+                                                                <option value="option13">Apache Spark</option>
+                                                                <option value="option14">AYLEIN New v2</option>
+                                                                <option value="option15">AYLEIN New v2 (QWC)</option>
+                                                                <option value="option16">Azure Storage</option>
+                                                                <option value="option17">Azure Storage (QWC)</option>
+                                                                <option value="option18">Azure Storage Metadata</option>
+                                                                <option value="option19">Azure SQL Database</option>
+                                                                <option value="option20">Azure Synapse Analytics</option>
+                                                                <option value="option21">Box (QWC)</option>
+                                                                <option value="option22">Cassandra</option>
+                                                                <option value="option23">Cloudera Impala</option>
+                                                                <option value="option24">Couchbase</option>
+                                                                <option value="option25">Databricks</option>
+                                                                <option value="option26">Dropbox</option>
+                                                                <option value="option27">Dropbox (QWC)</option>
+                                                                <option value="option28">Dropbox Metadata</option>
+                                                                <option value="option29">Essbase</option>
+                                                                <option value="option30">Facebook Insights</option>
+                                                                <option value="option31">Facebook Insights (QWC)</option>
+                                                                <option value="option32">FTP/SFTP (QWC)</option>
+                                                                <option value="option33">General Web Connector (QWC)</option>
+                                                                <option value="option34">Github</option>
+                                                                <option value="option35">Github (QWC)</option>
+                                                                <option value="option36">Google Ads</option>
+                                                                <option value="option37">Google Ads (QWC)</option>
+                                                                <option value="option38">Google Ads Manager</option>
+                                                                <option value="option39">Google Analytics</option>
+                                                                <option value="option40">Google Analytics (QWC)</option>
+                                                                <option value="option41">Google Analytics 4</option>
+                                                                <option value="option42">Google BigQuery</option>
+                                                                <option value="option43">Google Calendar</option>
+                                                                <option value="option44">Google Calendar (QWC)</option>
+                                                                <option value="option45">Google Cloud Storage</option>
+                                                                <option value="option46">Google Cloud Storage Metadata</option>
+                                                                <option value="option47">Google Drive</option>
+                                                                <option value="option48">Google Drive and Spreadsheets Metadata</option>
+                                                                <option value="option49">Google Drive and Spreadsheets Metadata (QWC)</option>
+                                                                <option value="option50">Google Search Console</option>
+                                                                <option value="option51">Google Search Console (QWC)</option>
+                                                                <option value="option52">Helper Connector (QWC)</option>
+                                                                <option value="option53">IBM DB2</option>
+                                                                <option value="option54">JIRA</option>
+                                                                <option value="option55">JIRA (QWC)</option>
+                                                                <option value="option56">Mailbox IMAP</option>
+                                                                <option value="option57">Mailbox IMAP (QWC)</option>
+                                                                <option value="option58">MailChimp</option>
+                                                                <option value="option59">MailChimp (QWC)</option>
+                                                                <option value="option60">Marketo</option>
+                                                                <option value="option61">MeaningCloud</option>
+                                                                <option value="option62">MeaningCloud (QWC)</option>
+                                                                <option value="option63">Microsoft Dynamics CRM V2</option>
+                                                                <option value="option64">Microsoft Dynamics CRM V2 (QWC)</option>
+                                                                <option value="option65">Microsoft SQL Server</option>
+                                                                <option value="option66">MongoDB</option>
+                                                                <option value="option67">MySQL Enterprise Edition</option>
+                                                                <option value="option68">Odata</option>
+                                                                <option value="option69">Odata (QWC)</option>
+                                                                <option value="option70">ODBC Connector Package</option>
+                                                                <option value="option71">Office 365 Sharepoint</option>
+                                                                <option value="option72">Office 365 Sharepoint Metadata</option>
+                                                                <option value="option73">Office 365 Sharepoint Metadata (QWC)</option>
+                                                                <option value="option74">Outlook 365</option>
+                                                                <option value="option75">Outlook 365 (QWC)</option>
+                                                                <option value="option76">OneDrive</option>
+                                                                <option value="option77">OneDrive V2 (QWC)</option>
+                                                                <option value="option78">OneDrive Metadata</option>
+                                                                <option value="option79">Oracle</option>
+                                                                <option value="option80">PostgreSQL</option>
+                                                                <option value="option81">Presto</option>
+                                                                <option value="option82">Qualtrics</option>
+                                                                <option value="option83">Qualtrics Connector (QWC)</option>
+                                                                <option value="option84">RegEx Connector (QWC)</option>
+                                                                <option value="option85">REST</option>
+                                                                <option value="option86">Salesforce</option>
+                                                                <option value="option87">SAP</option>
+                                                                <option value="option88">SAP Hana</option>
+                                                                <option value="option89">Sentiment140</option>
+                                                                <option value="option90">ServiceNow</option>
+                                                                <option value="option91">Slack V2</option>
+                                                                <option value="option92">Slack V2 (QWC)</option>
+                                                                <option value="option93">SMTP</option>
+                                                                <option value="option94">SMTP (QWC)</option>
+                                                                <option value="option95">Snowflake</option>
+                                                                <option value="option96">Strava</option>
+                                                                <option value="option97">Strava (QWC)</option>
+                                                                <option value="option98">SugarCRM</option>
+                                                                <option value="option99">SugarCRM (QWC)</option>
+                                                                <option value="option100">SurveyMonkey</option>
+                                                                <option value="option101">SurveyMonkey (QWC)</option>
+                                                                <option value="option102">Sybase ASE</option>
+                                                                <option value="option103">Teradata</option>
+                                                                <option value="option104">Teradata (TPT)</option>
+                                                                <option value="option105">Twitter</option>
+                                                                <option value="option106">Twitter (QWC)</option>
+                                                                <option value="option107">Watson Natural Understanding</option>
+                                                                <option value="option108">Watson Natural Understanding (QWC)</option>
+                                                                <option value="option109">Youtube Analytics</option>
+                                                                <option value="option110">Youtube Analytics (QWC)</option>
+                                                            </select>
+                                                        </div>
+     
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactLicense">Affected License Number</label>
+                                                            <input type="text" id="contactLicense" placeholder="123456789123456789" />
+                                                        </div>
+
+                                                            <div className="endContactBtn">
+                                                                <button 
+                                                                    type="button" 
+                                                                    className="backContactBtn"
+                                                                    onClick={contact2}
+                                                                >
+                                                                    BACK
+                                                                </button>
+                                                                <button 
+                                                                    type="submit" 
+                                                                    className="nextContactBtn" 
+                                                                    onClick={contact4}
+                                                                >
+                                                                    NEXT
+                                                                </button>
+                                                            </div>
+                                                        </form>
                                                     </div>
 
                                                 ) : isProductRelated && isIntegration ? (
@@ -1332,31 +1907,117 @@ const App = () => {
                                                     <div className="accountForm">
 
                                                     <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact4(); }}>
-                                                        
+                                                            
                                                         <div className="formGroup">
                                                             <label htmlFor="contactEmail">Case Preferred Email</label>
                                                             <input type="email" id="contactEmail" placeholder="you@example.com" required />
                                                         </div>
 
-                                                        <div className="endContactBtn">
-                                                            <button 
-                                                                type="button" 
-                                                                className="backContactBtn"
-                                                                onClick={contact2}
-                                                            >
-                                                                BACK
-                                                            </button>
-                                                            <button 
-                                                                type="submit" 
-                                                                className="nextContactBtn" 
-                                                                onClick={contact4}
-                                                            >
-                                                                NEXT
-                                                            </button>
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactRegion">Case Preferred Support Region</label>
+                                                            <input type="text" id="contactRegion" placeholder="Qlik US Eastern" />
                                                         </div>
 
-                                                    </form>
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactPhone">Case Preferred Phone</label>
+                                                            <input type="text" id="contactPhone" placeholder="(123) 456-7890" />
+                                                        </div>
 
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactPortal">Portal Account</label>
+                                                            <input type="text" id="contactPortal" placeholder="QlikTech Single Signon Hold Account" />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactIssue">Account Issue</label>
+                                                            <select id="contactIssue" value={selectedOption} onChange={handleChange} required>
+                                                                <option value="" disabled>
+                                                                    --None--
+                                                                </option>
+                                                                <option value="option1">Training</option>
+                                                                <option value="option2">Partner Portal</option>
+                                                                <option value="option3">Support Portal</option>
+                                                                <option value="option4">Download Site</option>
+                                                                <option value="option5">Community</option>
+                                                                <option value="option6">Qlik.com</option>
+                                                                <option value="option7">Helpsite</option>
+                                                                <option value="option8">Sales inquiry or issue</option>
+                                                                <option value="option9">Account Administration</option>
+                                                                <option value="option10">Payment/Invoice Issue or inquiry</option>
+                                                                <option value="option11">MyQlik – Digital ONLINE payment</option>
+                                                                <option value="option12">Tenant Access Issue</option>
+                                                                <option value="option13">QSD Authentication</option>
+                                                                <option value="option14">Need guidance to start using product</option>
+                                                                <option value="option15">License related</option>
+                                                                <option value="option16">Other</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactArea">Area / Component</label>
+                                                            <select id="contactArea" value={selectedOption} onChange={handleChange} required>
+                                                                <option value="" disabled>
+                                                                    --None--
+                                                                </option>
+                                                                <option value="option1">Access</option>
+                                                                <option value="option2">Authentication / Authorization</option>
+                                                                <option value="option3">Browser Related</option>
+                                                                <option value="option4">Documentation</option>
+                                                                <option value="option5">General Question</option>
+                                                                <option value="option6">Feature Request</option>
+                                                                <option value="option7">File Access/Permissions</option>
+                                                                <option value="option8">File Share</option>
+                                                                <option value="option9">License Related</option>
+                                                                <option value="option10">Product Defect</option>
+                                                                <option value="option11">Security Concern</option>
+                                                                <option value="option12">Subscriptions</option>
+                                                                <option value="option13">User Access</option>
+                                                                <option value="option14">User License</option>
+                                                                <option value="option15">User Management</option>
+                                                                <option value="option16">Web Interface</option>
+                                                                <option value="option17">Other/Undetermined</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactID">Contact User ID</label>
+                                                            <input type="text" id="contactID" placeholder="Mi4w_kMvjs..." />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactLicense">Affected License Number</label>
+                                                            <input type="text" id="contactLicense" placeholder="123456789123456789" />
+                                                        </div>
+
+                                                        <div className="formGroup">
+                                                            <label htmlFor="contactPriority">Priority</label>
+                                                            <select id="contactPriority" value={selectedOption} onChange={handleChange} required>
+                                                                <option value="" disabled>
+                                                                    --None--
+                                                                </option>
+                                                                <option value="option1">Low/Medium</option>
+                                                                <option value="option2">High</option>
+                                                                <option value="option3">Urgent</option>
+                                                            </select>
+                                                        </div>
+
+                                                            <div className="endContactBtn">
+                                                                <button 
+                                                                    type="button" 
+                                                                    className="backContactBtn"
+                                                                    onClick={contact2}
+                                                                >
+                                                                    BACK
+                                                                </button>
+                                                                <button 
+                                                                    type="submit" 
+                                                                    className="nextContactBtn" 
+                                                                    onClick={contact4}
+                                                                >
+                                                                    NEXT
+                                                                </button>
+                                                            </div>
+                                                        </form>
                                                     </div>
 
                                                 ))}

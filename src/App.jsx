@@ -255,7 +255,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://ca5266b6539d.ngrok-free.app/api/chat', {
+            const response = await fetch('https://983d04cae69d.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -310,6 +310,8 @@ const App = () => {
         let delayTimer;
         if (isAwaitingAI) {
             delayTimer = setTimeout(() => setShowProgress(true), 300);
+            setShowProgress2(false);
+            setShowProgress3(false);
         } else{
             setShowProgress(false);
         }

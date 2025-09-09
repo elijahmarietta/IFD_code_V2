@@ -164,7 +164,7 @@ const App = () => {
         "What types of questions are asked during QlikSense interviews?",
         "How can I explain or get explanations for specific interview-style questions in the community?",
         "What factors influence community responsiveness—like posting in the right forum or familiarity with terminology?",
-        "Where can I find archived Q&A or knowledge bases for troubleshooting latency or performance issues? (",
+        "Where can I find archived Q&A or knowledge bases for troubleshooting latency or performance issues?",
         "What are common pitfalls customers face when posting questions?",
         "How can I ask “great questions” that are more likely to receive helpful responses?",
         "What makes a strong question—should I include screenshots, code, and what I've already tried?",
@@ -208,25 +208,26 @@ const App = () => {
     const [isQlikSenseMobile, setIsQlikSenseMobile] = useState(false);
     const [isQlikView, setIsQlikView] = useState(false);
     const [isQlikWebConnectors, setIsQlikWebConnectors] = useState(false);
-    const [showQuery2, setShowQuery2] = useState(false);
-    const [showQuery3, setShowQuery3] = useState(false);
-    const [showQuery4, setShowQuery4] = useState(false);
-    const [showQuery5, setShowQuery5] = useState(false);
-    const [showQuery6, setShowQuery6] = useState(false);
-    const [showQuery7, setShowQuery7] = useState(false);
-    const [showQuery8, setShowQuery8] = useState(false);
-    const [showQuery9, setShowQuery9] = useState(false);
-    const [showQuery10, setShowQuery10] = useState(false);
-    const [showQuery11, setShowQuery11] = useState(false);
-    const [showQuery12, setShowQuery12] = useState(false);
-    const [showQuery13, setShowQuery13] = useState(false);
-    const [showQuery14, setShowQuery14] = useState(false);
-    const [showQuery15, setShowQuery15] = useState(false);
-    const [showQuery16, setShowQuery16] = useState(false);
-    const [showQuery17, setShowQuery17] = useState(false);
-    const [showQuery18, setShowQuery18] = useState(false);
-    const [showQuery19, setShowQuery19] = useState(false);
-    const [showQuery20, setShowQuery20] = useState(false);
+    const [showIntentBox1, setShowIntentBox1] = useState(false);
+    const [showIntentBox2, setShowIntentBox2] = useState(false);
+    const [showIntentBox3, setShowIntentBox3] = useState(false);
+    const [showIntentBox4, setShowIntentBox4] = useState(false);
+    const [showIntentBox5, setShowIntentBox5] = useState(false);
+    const [showIntentBox6, setShowIntentBox6] = useState(false);
+    const [showIntentBox7, setShowIntentBox7] = useState(false);
+    const [showIntentBox8, setShowIntentBox8] = useState(false);
+    const [showIntentBox9, setShowIntentBox9] = useState(false);
+    const [showIntentBox10, setShowIntentBox10] = useState(false);
+    const [showIntentBox11, setShowIntentBox11] = useState(false);
+    const [showIntentBox12, setShowIntentBox12] = useState(false);
+    const [showIntentBox13, setShowIntentBox13] = useState(false);
+    const [showIntentBox14, setShowIntentBox14] = useState(false);
+    const [showIntentBox15, setShowIntentBox15] = useState(false);
+    const [showIntentBox16, setShowIntentBox16] = useState(false);
+    const [showIntentBox17, setShowIntentBox17] = useState(false);
+    const [showIntentBox18, setShowIntentBox18] = useState(false);
+    const [showIntentBox19, setShowIntentBox19] = useState(false);
+    const [showIntentBox20, setShowIntentBox20] = useState(false);
 
     // Handle input change and filter suggestions
     const handleIntentChange = useCallback((e) => {
@@ -363,6 +364,33 @@ const App = () => {
             if (isSoundEnabled) {
                     audioRef.play().catch(e => console.log('Audio play failed:', e));
                 }
+            if (!showIntentBox1 && !showIntentBox2 && !showIntentBox3 && !showIntentBox4 && !showIntentBox5 && !showIntentBox6 && !showIntentBox7 && !showIntentBox8 && !showIntentBox9 && !showIntentBox10 && !showIntentBox11 && !showIntentBox12 && !showIntentBox13 && !showIntentBox14 && !showIntentBox15 && !showIntentBox16 && !showIntentBox17 && !showIntentBox18 && !showIntentBox19 && !showIntentBox20) {
+                setShowIntentBox1(true);
+                console.log("Intent Box 0 to 1");
+            }
+            else if (showIntentBox1) {
+                setShowIntentBox1(false);
+                setShowIntentBox2(true);
+                setShowIntentBox3(false);
+                setShowIntentBox4(false);
+                setShowIntentBox5(false);  
+                setShowIntentBox6(false);
+                setShowIntentBox7(false);
+                setShowIntentBox8(false);
+                setShowIntentBox9(false);
+                setShowIntentBox10(false);
+                setShowIntentBox11(false);
+                setShowIntentBox12(false);
+                setShowIntentBox13(false);
+                setShowIntentBox14(true);
+                setShowIntentBox15(false);
+                setShowIntentBox16(false);
+                setShowIntentBox17(false);  
+                setShowIntentBox18(false);
+                setShowIntentBox19(false);
+                setShowIntentBox20(false);
+                console.log("Intent Box 1 to 2");
+            }
         }
     }, [intent, resetTimer, startTimer, stopTimer, audioRef, isSoundEnabled, sendIntentToAPI]);
     
@@ -1058,6 +1086,35 @@ const App = () => {
         return () => clearTimeout(progressTimer2);
     }, []);
 
+    // Showing and hiding the intent box
+
+    const showIntent2 = useCallback(() => {
+        setShowIntentBox1(false);
+        setShowIntentBox2(true);
+        setShowIntentBox3(false);
+        setShowIntentBox4(false);
+        setShowIntentBox5(false);
+        setShowIntentBox6(false);
+        setShowIntentBox7(false);
+        setShowIntentBox8(false);
+        setShowIntentBox9(false);
+        setShowIntentBox10(false);
+        setShowIntentBox11(false);
+        setShowIntentBox12(false);
+        setShowIntentBox13(false);
+        setShowIntentBox14(false);
+        setShowIntentBox15(false);
+        setShowIntentBox16(false);
+        setShowIntentBox17(true);
+        setShowIntentBox18(false);
+        setShowIntentBox19(false);
+        setShowIntentBox20(false);
+    }, []);
+
+    const hiddenStyle = {
+        display: 'none'
+    };
+
     // Transition from functions to visible elements
 
     return (
@@ -1266,7 +1323,7 @@ const App = () => {
                                                             </div>
                                                         </details>
                                                     )}
-                                                    {console.log('questionLines:', getQuestionLines(msg.text))}
+                                                    {/* {console.log('questionLines:', getQuestionLines(msg.text))} */}
                                                     {/* Formatting ADA's response on front end by bolding text based on starting with a number or ending with a colon for  instructions */}
                                                     {getQuestionLines(msg.text).length > 0 && (
                                                         <div className="questionLines">
@@ -1414,20 +1471,44 @@ const App = () => {
                                                     </button>
                                                 </div>
 
-                                                <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`}>
-                                                    <textarea 
-                                                        id='intent' 
-                                                        value={intent} 
-                                                        placeholder='Ask a question or provide additional details...' 
-                                                        onChange={(e) => setIntent(e.target.value)} 
-                                                        onKeyDown={handleKeyPress}
-                                                        className='intentTextareaChat' 
-                                                        rows={3}
-                                                    ></textarea>
-                                                    <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxClick} disabled={!enableSend}>
-                                                        <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
-                                                    </button>
-                                                </div>
+                                                {showIntentBox1 ? (
+
+                                                    <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`} style={hiddenStyle}>
+                                                        <textarea 
+                                                            id='intent' 
+                                                            value={intent} 
+                                                            placeholder='Ask a question or provide additional details...' 
+                                                            onChange={(e) => setIntent(e.target.value)} 
+                                                            onKeyDown={handleKeyPress}
+                                                            className='intentTextareaChat' 
+                                                            rows={3}
+                                                        ></textarea>
+                                                        <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxClick} disabled={!enableSend}>
+                                                            <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
+                                                        </button>
+                                                    </div>
+
+                                                ) : showIntentBox2 ? (
+                                                    
+                                                    <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`}>
+                                                        <textarea 
+                                                            id='intent' 
+                                                            value={intent} 
+                                                            placeholder='Ask a question or provide additional details...' 
+                                                            onChange={(e) => setIntent(e.target.value)} 
+                                                            onKeyDown={handleKeyPress}
+                                                            className='intentTextareaChat' 
+                                                            rows={3}
+                                                        ></textarea>
+                                                        <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxClick} disabled={!enableSend}>
+                                                            <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
+                                                        </button>
+                                                    </div>
+
+                                                ) : (
+                                                    <div className="filler">
+                                                    </div>
+                                                )}
 
                                                 </div>
                                         </div>

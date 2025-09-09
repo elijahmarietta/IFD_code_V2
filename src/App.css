@@ -426,17 +426,19 @@
 
 .chatMessage {
     align-self: flex-start;
-    margin: 0rem 0rem 1rem 0rem;
+    /* margin: 0rem 0rem 1rem 0rem; */
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
     background-color: #bffdd5;;
     color: rgb(0, 0, 0);
-    padding: 1rem 1rem;
-    border-radius: 20px 20px 20px 20px;
+    padding: 1rem 1.1rem;
+    border-radius: 30px;
     font-size: 0.9rem;
     /* max-width: 60%; */
     word-break: break-word;
     font-family: Inter;
     /* Animation */
-    animation: fadeIn2 0.5s ease-in-out;
+    animation: fadeAcross 0.5s ease-in-out;
 }
 
 .chatMessage:nth-child(1) {

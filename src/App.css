@@ -424,6 +424,25 @@
     padding-left: 0.5rem;
 }
 
+.chatMessage {
+    align-self: flex-start;
+    margin: 0rem 0rem 1rem 0rem;
+    background-color: #bffdd5;;
+    color: rgb(0, 0, 0);
+    padding: 1rem 1rem;
+    border-radius: 20px 20px 20px 20px;
+    font-size: 0.9rem;
+    /* max-width: 60%; */
+    word-break: break-word;
+    font-family: Inter;
+    /* Animation */
+    animation: fadeIn2 0.5s ease-in-out;
+}
+
+.chatMessage:nth-child(1) {
+    display: none;
+}
+
 @keyframes fadeIn {
     0% { opacity: 0; 
         transform: translateY(20px); 
@@ -696,6 +715,7 @@
     gap: 1rem;
     margin-left: 1%;
     margin-right: 1%;
+    margin-bottom: 2rem;
     flex-direction: row;
     text-align: left;
 
@@ -755,16 +775,12 @@
     font-size: 0.9rem;
     color: #404040;
     font-family: Inter;
-    width: 125%;
+    /* width: 125%; */
     white-space: normal;
     line-height: 1.5;
     word-break:break-word;
     margin-top: 0.4rem;
     margin-bottom: 1.1rem;
-}
-
-.questionLines {
-    display: none;
 }
 
 .endStatement {
@@ -1091,6 +1107,57 @@
 #talendBtn {
     padding: 2.5rem 6rem 0.5rem 6rem;
 }
+
+.landingIntentBoxChat {
+    display: flex;
+    align-items: center;
+    margin: 0rem;
+    height: 3rem;
+    width: 140vh;
+    border: 2px solid #939393;
+    font-family: Inter;
+    background-color: #fff;
+    border-radius: 35px;
+    box-sizing: border-box;
+    overflow: hidden;
+    gap: 0rem;
+}
+
+.intentTextareaChat{
+    margin-left: 0.5rem;
+    margin-top: 2rem;
+    flex: 1;
+    resize: none;
+    width: 100%;
+    font-size: 0.85rem;
+    padding: 1rem 0.5rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #333;
+    font-family: inherit;
+    max-height: 50px;
+}
+
+.sendBtnChat {
+    background: none;
+    border: none;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: bottom;
+    justify-content: right;
+    padding: 1rem 0.2rem;
+    transition: transform 0.2s ease;
+}
+
+.sendBtnChat img{
+    width: 32px;
+    height: 32px;
+    transition: filter 0.2s ease;
+}
+
+
 
 /* Optimizing for larger screens */
 @media (min-width: 1400px) {

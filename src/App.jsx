@@ -208,6 +208,25 @@ const App = () => {
     const [isQlikSenseMobile, setIsQlikSenseMobile] = useState(false);
     const [isQlikView, setIsQlikView] = useState(false);
     const [isQlikWebConnectors, setIsQlikWebConnectors] = useState(false);
+    const [showQuery2, setShowQuery2] = useState(false);
+    const [showQuery3, setShowQuery3] = useState(false);
+    const [showQuery4, setShowQuery4] = useState(false);
+    const [showQuery5, setShowQuery5] = useState(false);
+    const [showQuery6, setShowQuery6] = useState(false);
+    const [showQuery7, setShowQuery7] = useState(false);
+    const [showQuery8, setShowQuery8] = useState(false);
+    const [showQuery9, setShowQuery9] = useState(false);
+    const [showQuery10, setShowQuery10] = useState(false);
+    const [showQuery11, setShowQuery11] = useState(false);
+    const [showQuery12, setShowQuery12] = useState(false);
+    const [showQuery13, setShowQuery13] = useState(false);
+    const [showQuery14, setShowQuery14] = useState(false);
+    const [showQuery15, setShowQuery15] = useState(false);
+    const [showQuery16, setShowQuery16] = useState(false);
+    const [showQuery17, setShowQuery17] = useState(false);
+    const [showQuery18, setShowQuery18] = useState(false);
+    const [showQuery19, setShowQuery19] = useState(false);
+    const [showQuery20, setShowQuery20] = useState(false);
 
     // Handle input change and filter suggestions
     const handleIntentChange = useCallback((e) => {
@@ -255,7 +274,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://983d04cae69d.ngrok-free.app/api/chat', {
+            const response = await fetch('https://0b1a208b326d.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -1183,12 +1202,17 @@ const App = () => {
                             {/* Tab content */}
                             {activeTab === 'solve' ? (
                                 <div className="chatMessages">
-                                    {/* Adding user's repsone to chat interface as a message box */}
-                                    {chatMessages.map((msg, index) => 
-                                        msg.from ==='user' ? (
-                                            <div key={index} className={`chatMessage ${msg.from}`}>
-                                                {/* {msg.text} */}
-                                            </div>
+                                    {/* Adding user's response to chat interface as a message box */}
+                                    {chatMessages.map((msg, index) =>
+                                            msg.from ==='user' ? (
+                                                chatMessages.length > 2 ? (
+                                                    <div key={index} className={`chatMessage ${msg.from}`}>
+                                                        {msg.text}
+                                                    </div>
+                                                ) : (
+                                                    <div className="errorMessage">
+                                                    </div>
+                                            )
                                         ) : (
                                             // Adding ADA's repsone to chat interface, including populating source's URL in accordion 
                                             <div key={index} className="chatResponse">
@@ -1242,6 +1266,7 @@ const App = () => {
                                                             </div>
                                                         </details>
                                                     )}
+                                                    {console.log('questionLines:', getQuestionLines(msg.text))}
                                                     {/* Formatting ADA's response on front end by bolding text based on starting with a number or ending with a colon for  instructions */}
                                                     {getQuestionLines(msg.text).length > 0 && (
                                                         <div className="questionLines">
@@ -1366,9 +1391,9 @@ const App = () => {
                                                         </div>
                                                     )}
                                                 {/* Hard-coded ending statement */}
-                                                <div className="endStatement">
+                                                {/* <div className="endStatement">
                                                     <p>If you need further assistance or have any questions, feel free to ask!</p>
-                                                </div>
+                                                </div> */}
                                                 {/* Icons under ADA's response to copy , like, dislike, and make ADA reponse txt-to-speech */}
                                                 <div className="postResponseIcons">
                                                     <button className='copyBtn' onClick={() => copyClick(msg)}>
@@ -1388,8 +1413,27 @@ const App = () => {
                                                         <img className="Read" alt="Read" src={isReading[msg.id] ? stopIcon : speakerIcon} />
                                                     </button>
                                                 </div>
+
+                                                <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`}>
+                                                    <textarea 
+                                                        id='intent' 
+                                                        value={intent} 
+                                                        placeholder='Ask a question or provide additional details...' 
+                                                        onChange={(e) => setIntent(e.target.value)} 
+                                                        onKeyDown={handleKeyPress}
+                                                        className='intentTextareaChat' 
+                                                        rows={3}
+                                                    ></textarea>
+                                                    <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxClick} disabled={!enableSend}>
+                                                        <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
+                                                    </button>
+                                                </div>
+
                                                 </div>
                                         </div>
+
+                                        
+                                        
                                         )
                                     )}
                                 </div>
@@ -2257,8 +2301,6 @@ const App = () => {
 
                                 </div>
                             )}
-
-                            
 
                         </div>
 

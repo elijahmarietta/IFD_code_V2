@@ -415,6 +415,7 @@
 /* Chat message styling */
 
 .chatMessages{
+    position: relative;
     display: flex;
     align-self: flex-end;
     flex-direction: column;
@@ -696,7 +697,7 @@
 /* Chat response styling */
 .chatBody{
     position: relative;
-    overflow-y: visible;
+    /* overflow-y: scroll; */
     padding: 0rem 1rem;
     font-family: Inter;
     width: 150vh;
@@ -712,6 +713,7 @@
 }
 
 .chatResponse{
+    position: relative;
     display: flex;
     align-items: flex-start;
     gap: 1rem;
@@ -730,6 +732,7 @@
     flex-direction: column;
     gap: 0.5rem;
     max-width: 600px;
+    position: relative;
 }
 
 .stepsAccordion {
@@ -845,7 +848,7 @@
     display: flex;
     gap: 0.5rem;
     margin-top: 0.5rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 0rem;
 }
 
 .Copy, .Like, .Dislike{
@@ -1111,9 +1114,13 @@
 }
 
 .landingIntentBoxChat {
+    position: sticky;
+    top: 60rem;
+    left: 0rem;
+    right: 50rem;
     display: flex;
     align-items: center;
-    margin: 0rem;
+    margin: 0rem 0rem 2.5rem 0rem;
     height: 3rem;
     width: 140vh;
     border: 2px solid #939393;
@@ -1121,7 +1128,7 @@
     background-color: #fff;
     border-radius: 35px;
     box-sizing: border-box;
-    overflow: hidden;
+    /* overflow: hidden; */
     gap: 0rem;
 }
 

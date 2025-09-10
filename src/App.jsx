@@ -275,7 +275,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://0b1a208b326d.ngrok-free.app/api/chat', {
+            const response = await fetch('https://b508e65777bb.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -352,6 +352,62 @@ const App = () => {
             resetTimer();
             startTimer();
             setIsAwaitingAI(true);
+            setShowProgress(true);
+
+            // Currently used now, to retrieve ADA responses and display
+            const adaReply = await sendIntentToAPI(intent);
+            const adaResponse = {text: adaReply, from: 'ai', id: Date.now() + 1};
+            setchatMessages(prev => [...prev, adaResponse]);
+            stopTimer();
+            setIsAwaitingAI(false);
+
+            //Catching error for audio capabilitites
+            if (isSoundEnabled) {
+                    audioRef.play().catch(e => console.log('Audio play failed:', e));
+                }
+            if (!showIntentBox1 && !showIntentBox2 && !showIntentBox3 && !showIntentBox4 && !showIntentBox5 && !showIntentBox6 && !showIntentBox7 && !showIntentBox8 && !showIntentBox9 && !showIntentBox10 && !showIntentBox11 && !showIntentBox12 && !showIntentBox13 && !showIntentBox14 && !showIntentBox15 && !showIntentBox16 && !showIntentBox17 && !showIntentBox18 && !showIntentBox19 && !showIntentBox20) {
+                setShowIntentBox1(true);
+                console.log("Intent Box 0 to 1");
+            }
+            else if (showIntentBox1) {
+                setShowIntentBox1(false);
+                setShowIntentBox2(true);
+                setShowIntentBox3(false);
+                setShowIntentBox4(false);
+                setShowIntentBox5(false);  
+                setShowIntentBox6(false);
+                setShowIntentBox7(false);
+                setShowIntentBox8(false);
+                setShowIntentBox9(false);
+                setShowIntentBox10(false);
+                setShowIntentBox11(false);
+                setShowIntentBox12(false);
+                setShowIntentBox13(false);
+                setShowIntentBox14(true);
+                setShowIntentBox15(false);
+                setShowIntentBox16(false);
+                setShowIntentBox17(false);  
+                setShowIntentBox18(false);
+                setShowIntentBox19(false);
+                setShowIntentBox20(false);
+                console.log("Intent Box 1 to 2");
+            }
+        }
+    }, [intent, resetTimer, startTimer, stopTimer, audioRef, isSoundEnabled, sendIntentToAPI]);
+
+    const onLandingIntentBoxChatClick = useCallback(async() => {
+        if (intent.trim() === '') {
+            alert('Please input a request');
+        } else {
+            const userMsg = {text: intent, from: 'user', id: Date.now()};
+            // Simulating AI response after a delay (used for early prototyping....)
+            setchatMessages(prev => [...prev, userMsg]);
+            setIsChatStarted(true);
+            setIntent('');
+            resetTimer();
+            startTimer();
+            setIsAwaitingAI(true);
+            setShowProgress(true);
 
             // Currently used now, to retrieve ADA responses and display
             const adaReply = await sendIntentToAPI(intent);
@@ -1259,6 +1315,7 @@ const App = () => {
                             {/* Tab content */}
                             {activeTab === 'solve' ? (
                                 <div className="chatMessages">
+
                                     {/* Adding user's response to chat interface as a message box */}
                                     {chatMessages.map((msg, index) =>
                                             msg.from ==='user' ? (
@@ -1471,52 +1528,37 @@ const App = () => {
                                                     </button>
                                                 </div>
 
-                                                {showIntentBox1 ? (
-
-                                                    <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`} style={hiddenStyle}>
-                                                        <textarea 
-                                                            id='intent' 
-                                                            value={intent} 
-                                                            placeholder='Ask a question or provide additional details...' 
-                                                            onChange={(e) => setIntent(e.target.value)} 
-                                                            onKeyDown={handleKeyPress}
-                                                            className='intentTextareaChat' 
-                                                            rows={3}
-                                                        ></textarea>
-                                                        <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxClick} disabled={!enableSend}>
-                                                            <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
-                                                        </button>
-                                                    </div>
-
-                                                ) : showIntentBox2 ? (
-                                                    
-                                                    <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`}>
-                                                        <textarea 
-                                                            id='intent' 
-                                                            value={intent} 
-                                                            placeholder='Ask a question or provide additional details...' 
-                                                            onChange={(e) => setIntent(e.target.value)} 
-                                                            onKeyDown={handleKeyPress}
-                                                            className='intentTextareaChat' 
-                                                            rows={3}
-                                                        ></textarea>
-                                                        <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxClick} disabled={!enableSend}>
-                                                            <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
-                                                        </button>
-                                                    </div>
-
-                                                ) : (
-                                                    <div className="filler">
-                                                    </div>
-                                                )}
+                                                
 
                                                 </div>
+
+
+                                                    
+                                                
                                         </div>
 
                                         
                                         
                                         )
+
+                                        
                                     )}
+
+                                    <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`} style={showProgress ? {display: 'none'} : {display: 'flex'}}>
+                                                        <textarea 
+                                                            id='intent' 
+                                                            value={intent} 
+                                                            placeholder='Ask a question or provide additional details...' 
+                                                            onChange={(e) => setIntent(e.target.value)} 
+                                                            onKeyDown={handleKeyPress}
+                                                            className='intentTextareaChat' 
+                                                            rows={3}
+                                                        ></textarea>
+                                                        <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxChatClick} disabled={!enableSend}>
+                                                            <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
+                                                        </button>
+                                                </div>
+
                                 </div>
                             ) : (
                                 <div className="contactUsContent">

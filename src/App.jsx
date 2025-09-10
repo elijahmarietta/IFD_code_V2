@@ -211,6 +211,9 @@ const App = () => {
     const [showProgressChat1, setShowProgressChat1] = useState(false);
     const [showProgressChat2, setShowProgressChat2] = useState(false);
     const [showProgressChat3, setShowProgressChat3] = useState(false);
+    const [subject, setSubject] = useState('');
+    const [description, setDescription] = useState('');
+    const canSubmit = subject.trim().length > 0 && description.trim().length > 0;
 
     // Handle input change and filter suggestions
     const handleIntentChange = useCallback((e) => {
@@ -674,12 +677,20 @@ const App = () => {
             setIsContact2(false);
             setIsContact3(false);
     }, []);
+
+    const contactDisabled = useCallback(() => {
+        if (!canSubmit) {
+                alert('Please fill in all required fields before proceeding.');
+                return;
+            }
+    }, []);
     
     // Going to Page 2 of the Contact Form
     const contact2 = useCallback(() => {
             setIsContact1(false);
             setIsContact2(true);
             setIsContact3(false);
+            
     }, []);
 
     // Going to Page 3 of the Contact Form
@@ -2198,34 +2209,42 @@ const App = () => {
                                             <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact2(); }}>
                                                 <div className="formGroup">
                                                     <label htmlFor="contactSubject">Subject</label>
-                                                    <input type="text" id="contactSubject" placeholder="Brief description of your issue" required />
+                                                    <input
+                                                        type="text"
+                                                        id="contactSubject"
+                                                        placeholder="Brief description of your issue"
+                                                        required
+                                                        value={subject}
+                                                        onChange={e => setSubject(e.target.value)}
+                                                    />
                                                 </div>
-                                                
                                                 <div className="formGroup">
                                                     <label htmlFor="contactMessage">Description</label>
-                                                    <textarea 
-                                                        id="contactMessage" 
-                                                        rows="4" 
+                                                    <textarea
+                                                        id="contactMessage"
+                                                        rows="4"
                                                         placeholder="Please provide detailed information about your issue..."
                                                         required
+                                                        value={description}
+                                                        onChange={e => setDescription(e.target.value)}
                                                     ></textarea>
                                                 </div>
-                                                
                                                 <div className="endContactBtn">
-                                                        <button 
-                                                            type="button" 
-                                                            className="backContactBtnInactive"
-                                                        >
-                                                            BACK
-                                                        </button>
-                                                        <button 
-                                                            type="submit" 
-                                                            className="nextContactBtn" 
-                                                            onClick={contact1}
-                                                        >
-                                                            NEXT
-                                                        </button>
-                                                    </div>
+                                                    <button
+                                                        type="button"
+                                                        className="backContactBtnInactive"
+                                                    >
+                                                        BACK
+                                                    </button>
+                                                    <button
+                                                        type="submit"
+                                                        className="nextContactBtn"
+                                                        onClick={contact2}
+                                                        disabled={contactDisabled}
+                                                    >
+                                                        NEXT
+                                                    </button>
+                                                </div>
                                             </form>
                                         </div>
                                     ) : (
@@ -2236,34 +2255,42 @@ const App = () => {
                                             <form className="supportForm" onSubmit={(e) => { e.preventDefault(); contact2(); }}>
                                                 <div className="formGroup">
                                                     <label htmlFor="contactSubject">Subject</label>
-                                                    <input type="text" id="contactSubject" placeholder="Brief description of your issue" required />
+                                                    <input
+                                                        type="text"
+                                                        id="contactSubject"
+                                                        placeholder="Brief description of your issue"
+                                                        required
+                                                        value={subject}
+                                                        onChange={e => setSubject(e.target.value)}
+                                                    />
                                                 </div>
-                                                
                                                 <div className="formGroup">
                                                     <label htmlFor="contactMessage">Description</label>
-                                                    <textarea 
-                                                        id="contactMessage" 
-                                                        rows="4" 
+                                                    <textarea
+                                                        id="contactMessage"
+                                                        rows="4"
                                                         placeholder="Please provide detailed information about your issue..."
                                                         required
+                                                        value={description}
+                                                        onChange={e => setDescription(e.target.value)}
                                                     ></textarea>
                                                 </div>
-                                                
                                                 <div className="endContactBtn">
-                                                        <button 
-                                                            type="button" 
-                                                            className="backContactBtnInactive"
-                                                        >
-                                                            BACK
-                                                        </button>
-                                                        <button 
-                                                            type="submit" 
-                                                            className="nextContactBtn" 
-                                                            onClick={contact2}
-                                                        >
-                                                            NEXT
-                                                        </button>
-                                                    </div>
+                                                    <button
+                                                        type="button"
+                                                        className="backContactBtnInactive"
+                                                    >
+                                                        BACK
+                                                    </button>
+                                                    <button
+                                                        type="submit"
+                                                        className="nextContactBtn"
+                                                        onClick={contact2}
+                                                        disabled={contactDisabled}
+                                                    >
+                                                        NEXT
+                                                    </button>
+                                                </div>
                                             </form>
                                         </div>
                                     )}

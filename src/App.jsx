@@ -208,26 +208,9 @@ const App = () => {
     const [isQlikSenseMobile, setIsQlikSenseMobile] = useState(false);
     const [isQlikView, setIsQlikView] = useState(false);
     const [isQlikWebConnectors, setIsQlikWebConnectors] = useState(false);
-    const [showIntentBox1, setShowIntentBox1] = useState(false);
-    const [showIntentBox2, setShowIntentBox2] = useState(false);
-    const [showIntentBox3, setShowIntentBox3] = useState(false);
-    const [showIntentBox4, setShowIntentBox4] = useState(false);
-    const [showIntentBox5, setShowIntentBox5] = useState(false);
-    const [showIntentBox6, setShowIntentBox6] = useState(false);
-    const [showIntentBox7, setShowIntentBox7] = useState(false);
-    const [showIntentBox8, setShowIntentBox8] = useState(false);
-    const [showIntentBox9, setShowIntentBox9] = useState(false);
-    const [showIntentBox10, setShowIntentBox10] = useState(false);
-    const [showIntentBox11, setShowIntentBox11] = useState(false);
-    const [showIntentBox12, setShowIntentBox12] = useState(false);
-    const [showIntentBox13, setShowIntentBox13] = useState(false);
-    const [showIntentBox14, setShowIntentBox14] = useState(false);
-    const [showIntentBox15, setShowIntentBox15] = useState(false);
-    const [showIntentBox16, setShowIntentBox16] = useState(false);
-    const [showIntentBox17, setShowIntentBox17] = useState(false);
-    const [showIntentBox18, setShowIntentBox18] = useState(false);
-    const [showIntentBox19, setShowIntentBox19] = useState(false);
-    const [showIntentBox20, setShowIntentBox20] = useState(false);
+    const [showProgressChat1, setShowProgressChat1] = useState(false);
+    const [showProgressChat2, setShowProgressChat2] = useState(false);
+    const [showProgressChat3, setShowProgressChat3] = useState(false);
 
     // Handle input change and filter suggestions
     const handleIntentChange = useCallback((e) => {
@@ -365,33 +348,6 @@ const App = () => {
             if (isSoundEnabled) {
                     audioRef.play().catch(e => console.log('Audio play failed:', e));
                 }
-            if (!showIntentBox1 && !showIntentBox2 && !showIntentBox3 && !showIntentBox4 && !showIntentBox5 && !showIntentBox6 && !showIntentBox7 && !showIntentBox8 && !showIntentBox9 && !showIntentBox10 && !showIntentBox11 && !showIntentBox12 && !showIntentBox13 && !showIntentBox14 && !showIntentBox15 && !showIntentBox16 && !showIntentBox17 && !showIntentBox18 && !showIntentBox19 && !showIntentBox20) {
-                setShowIntentBox1(true);
-                console.log("Intent Box 0 to 1");
-            }
-            else if (showIntentBox1) {
-                setShowIntentBox1(false);
-                setShowIntentBox2(true);
-                setShowIntentBox3(false);
-                setShowIntentBox4(false);
-                setShowIntentBox5(false);  
-                setShowIntentBox6(false);
-                setShowIntentBox7(false);
-                setShowIntentBox8(false);
-                setShowIntentBox9(false);
-                setShowIntentBox10(false);
-                setShowIntentBox11(false);
-                setShowIntentBox12(false);
-                setShowIntentBox13(false);
-                setShowIntentBox14(true);
-                setShowIntentBox15(false);
-                setShowIntentBox16(false);
-                setShowIntentBox17(false);  
-                setShowIntentBox18(false);
-                setShowIntentBox19(false);
-                setShowIntentBox20(false);
-                console.log("Intent Box 1 to 2");
-            }
         }
     }, [intent, resetTimer, startTimer, stopTimer, audioRef, isSoundEnabled, sendIntentToAPI]);
 
@@ -420,33 +376,6 @@ const App = () => {
             if (isSoundEnabled) {
                     audioRef.play().catch(e => console.log('Audio play failed:', e));
                 }
-            if (!showIntentBox1 && !showIntentBox2 && !showIntentBox3 && !showIntentBox4 && !showIntentBox5 && !showIntentBox6 && !showIntentBox7 && !showIntentBox8 && !showIntentBox9 && !showIntentBox10 && !showIntentBox11 && !showIntentBox12 && !showIntentBox13 && !showIntentBox14 && !showIntentBox15 && !showIntentBox16 && !showIntentBox17 && !showIntentBox18 && !showIntentBox19 && !showIntentBox20) {
-                setShowIntentBox1(true);
-                console.log("Intent Box 0 to 1");
-            }
-            else if (showIntentBox1) {
-                setShowIntentBox1(false);
-                setShowIntentBox2(true);
-                setShowIntentBox3(false);
-                setShowIntentBox4(false);
-                setShowIntentBox5(false);  
-                setShowIntentBox6(false);
-                setShowIntentBox7(false);
-                setShowIntentBox8(false);
-                setShowIntentBox9(false);
-                setShowIntentBox10(false);
-                setShowIntentBox11(false);
-                setShowIntentBox12(false);
-                setShowIntentBox13(false);
-                setShowIntentBox14(true);
-                setShowIntentBox15(false);
-                setShowIntentBox16(false);
-                setShowIntentBox17(false);  
-                setShowIntentBox18(false);
-                setShowIntentBox19(false);
-                setShowIntentBox20(false);
-                console.log("Intent Box 1 to 2");
-            }
         }
     }, [intent, resetTimer, startTimer, stopTimer, audioRef, isSoundEnabled, sendIntentToAPI]);
     
@@ -1125,47 +1054,32 @@ const App = () => {
     // Visual feedback progress
 
     useEffect(() => {
-        const progressTimer1 = setTimeout(() => {
-        setShowProgress2(true);
-        console.log('Progress 2 started');
+    let progressTimer1;
+    if (showProgress) {
+        setShowProgress2(false);
+        progressTimer1 = setTimeout(() => {
+            setShowProgress2(true);
+            console.log('Progress 2 started');
         }, 10000);
-
-        return () => clearTimeout(progressTimer1);
-    }, []);
+    } else {
+        setShowProgress2(false);
+    }
+    return () => clearTimeout(progressTimer1);
+    }, [showProgress]);
 
     useEffect(() => {
-        const progressTimer2 = setTimeout(() => {
-        setShowProgress3(true);
-        console.log('Progress 3 started');
-        }, 18000);
-
+        let progressTimer2;
+        if (showProgress) {
+            setShowProgress3(false);
+            progressTimer2 = setTimeout(() => {
+                setShowProgress3(true);
+                console.log('Progress 3 started');
+            }, 18000);
+        } else {
+            setShowProgress3(false);
+        }
         return () => clearTimeout(progressTimer2);
-    }, []);
-
-    // Showing and hiding the intent box
-
-    const showIntent2 = useCallback(() => {
-        setShowIntentBox1(false);
-        setShowIntentBox2(true);
-        setShowIntentBox3(false);
-        setShowIntentBox4(false);
-        setShowIntentBox5(false);
-        setShowIntentBox6(false);
-        setShowIntentBox7(false);
-        setShowIntentBox8(false);
-        setShowIntentBox9(false);
-        setShowIntentBox10(false);
-        setShowIntentBox11(false);
-        setShowIntentBox12(false);
-        setShowIntentBox13(false);
-        setShowIntentBox14(false);
-        setShowIntentBox15(false);
-        setShowIntentBox16(false);
-        setShowIntentBox17(true);
-        setShowIntentBox18(false);
-        setShowIntentBox19(false);
-        setShowIntentBox20(false);
-    }, []);
+    }, [showProgress]);
 
     const hiddenStyle = {
         display: 'none'

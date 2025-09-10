@@ -439,7 +439,7 @@
     word-break: break-word;
     font-family: Inter;
     /* Animation */
-    animation: fadeAcross 0.5s ease-in-out;
+    animation: fadeIn3 0.5s ease-in-out;
 }
 
 .chatMessage:nth-child(1) {
@@ -464,6 +464,13 @@
     }
 }
 
+@keyframes fadeIn3 {
+    0% { opacity: 0;
+    }
+    100% { opacity: 1;
+    }
+}
+
 @keyframes fadeAcross {
     0% { opacity: 0; 
         transform: translateX(-20px); 
@@ -478,7 +485,7 @@
 .responseProgress {
     margin-top: 1rem;
     margin-bottom: 2.5rem;
-    margin-left: 2rem;
+    margin-left: 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;

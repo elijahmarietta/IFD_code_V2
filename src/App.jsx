@@ -215,6 +215,7 @@ const App = () => {
     const [subject, setSubject] = useState('');
     const [description, setDescription] = useState('');
     const canSubmit = subject.trim().length > 0 && description.trim().length > 0;
+    const [feedbackMarginTop, setFeedbackMarginTop] = useState(false);
 
     // Handle input change and filter suggestions
     const handleIntentChange = useCallback((e) => {
@@ -262,7 +263,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://b508e65777bb.ngrok-free.app/api/chat', {
+            const response = await fetch('https://472dedab18c2.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -1115,6 +1116,14 @@ const App = () => {
         display: 'none'
     };
 
+    useEffect(() => {
+        if (showProgress && chatMessages.length < 2) {
+            setFeedbackMarginTop(true);
+        } else {
+            setFeedbackMarginTop(false);
+        }
+    }, [showProgress]);
+
     // Transition from functions to visible elements
 
     return (
@@ -1250,7 +1259,7 @@ const App = () => {
                                             onClick={() => setActiveTab('contact')}
                                         >
                                             <img src={activeTab === 'contact' ? contactActiveIcon : contactIcon} alt="Contact Us" />
-                                            Contact Us
+                                            Create a Case
                                         </button>
                                     </div>
                                 </div>
@@ -2589,7 +2598,7 @@ const App = () => {
                             )}
 
                             {showProgress && (
-                                <div className="responseProgress">
+                                <div className="responseProgress" style={{marginTop: feedbackMarginTop ? '0.9rem' : '0rem'}}>
                                     {/* Loading animation when retrieving ADA response */}
                                     <h4>Curating your solution</h4>
                                     <p className="progressSubheading">We’re synthesizing the information you provided with the Qlik Knowledge Fabric to generate your personalized solution</p>

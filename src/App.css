@@ -721,29 +721,27 @@
 
 .chatResponse{
     position: relative;
-    display: flex;
+    /* display: flex;
     align-items: flex-start;
-    gap: 1rem;
-    margin-left: 1%;
-    margin-right: 1%;
-    margin-bottom: 2rem;
+    gap: 1rem; */
+    /* margin-left: 1%;
+    margin-right: 1%; */
+    margin-bottom: 5rem;
     flex-direction: row;
     text-align: left;
+    width: calc(100% - 4rem);
 
     /* Animation for ai message */
     animation: fadeIn .8s ease-in-out;
 }
 
-.reponseContent {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    max-width: 600px;
-    position: relative;
+.responseContent {
+    margin-top: -6rem;
+    margin-bottom: 3rem;
 }
 
 .stepsAccordion {
-    margin: 1rem 0;
+    margin: 0rem;
     color: #404040;
     font-size: 0.9rem;
     background-color: #F4F4F4;
@@ -793,6 +791,7 @@
     word-break:break-word;
     margin-top: 0.4rem;
     margin-bottom: 1.1rem;
+    width: auto;
 }
 
 .endStatement {
@@ -1120,14 +1119,21 @@
     padding: 2.5rem 6rem 0.5rem 6rem;
 }
 
-.landingIntentBoxChat {
+.landingIntentBoxChatContainer {
     position: sticky;
-    top: 60rem;
+    top: 31rem;
     left: 0rem;
     right: 50rem;
+    padding: 2rem 0rem;
+    z-index: 900;
+    margin: 0rem 0rem -4rem 0rem;
+    background-color: #ffff;
+}
+
+.landingIntentBoxChat {
+    
     display: flex;
     align-items: center;
-    margin: 0rem 0rem 2.5rem 0rem;
     height: 3rem;
     width: 140vh;
     border: 2px solid #939393;

@@ -1281,8 +1281,26 @@ const App = () => {
                                                     </div>
                                             )
                                         ) : (
-                                            // Adding ADA's repsone to chat interface, including populating source's URL in accordion 
+                                            // Adding ADA's response to chat interface, including populating source's URL in accordion
                                             <div key={index} className="chatResponse">
+
+                                                <div className="landingIntentBoxChatContainer">
+                                                    <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`} style={showProgress ? {display: 'none'} : {display: 'flex'}}>
+                                                                <textarea 
+                                                                    id='intent' 
+                                                                    value={intent} 
+                                                                    placeholder='Ask a question or provide additional details...' 
+                                                                    onChange={(e) => setIntent(e.target.value)} 
+                                                                    onKeyDown={handleKeyPress}
+                                                                    className='intentTextareaChat' 
+                                                                    rows={3}
+                                                                ></textarea>
+                                                                <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxChatClick} disabled={!enableSend}>
+                                                                    <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
+                                                                </button>
+                                                    </div>
+                                                </div>
+
                                                 <div className='responseContent'>
                                                     <details className="stepsAccordion">
                                                             <summary>3 steps completed</summary>
@@ -1496,21 +1514,6 @@ const App = () => {
 
                                         
                                     )}
-
-                                    <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`} style={showProgress ? {display: 'none'} : {display: 'flex'}}>
-                                                        <textarea 
-                                                            id='intent' 
-                                                            value={intent} 
-                                                            placeholder='Ask a question or provide additional details...' 
-                                                            onChange={(e) => setIntent(e.target.value)} 
-                                                            onKeyDown={handleKeyPress}
-                                                            className='intentTextareaChat' 
-                                                            rows={3}
-                                                        ></textarea>
-                                                        <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxChatClick} disabled={!enableSend}>
-                                                            <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
-                                                        </button>
-                                                </div>
 
                                 </div>
                             ) : (

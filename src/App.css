@@ -417,7 +417,7 @@
 .chatMessages{
     position: relative;
     display: flex;
-    align-self: flex-end;
+    /* align-self: flex-end; */
     flex-direction: column;
     /* gap: 1rem; */
     width: 80%;
@@ -726,7 +726,7 @@
     gap: 1rem; */
     /* margin-left: 1%;
     margin-right: 1%; */
-    margin-bottom: 5rem;
+    margin-bottom: 0rem;
     flex-direction: row;
     text-align: left;
     width: calc(100% - 4rem);
@@ -736,7 +736,7 @@
 }
 
 .responseContent {
-    margin-top: -6rem;
+    margin-top: 1rem;
     margin-bottom: 3rem;
 }
 
@@ -1119,23 +1119,29 @@
     padding: 2.5rem 6rem 0.5rem 6rem;
 }
 
+.solve {
+    display: flex;
+    flex-direction: column;
+}
+
 .landingIntentBoxChatContainer {
-    position: sticky;
+    /* position: sticky; */
+    position: fixed;
     top: 31rem;
-    left: 0rem;
-    right: 50rem;
+    /* left: 20rem;
+    right: 50rem; */
     padding: 2rem 0rem;
     z-index: 900;
-    margin: 0rem 0rem -4rem 0rem;
-    background-color: #ffff;
+    background-color: #fff;
+    transition: opacity 0.3s ease;
+    opacity: 1;
 }
 
 .landingIntentBoxChat {
-    
     display: flex;
     align-items: center;
     height: 3rem;
-    width: 140vh;
+    width: 144vh;
     border: 2px solid #939393;
     font-family: Inter;
     background-color: #fff;
@@ -1143,6 +1149,11 @@
     box-sizing: border-box;
     /* overflow: hidden; */
     gap: 0rem;
+}
+
+.landingIntentBoxChatContainer.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .intentTextareaChat{

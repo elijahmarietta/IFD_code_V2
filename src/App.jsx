@@ -216,6 +216,7 @@ const App = () => {
     const [description, setDescription] = useState('');
     const canSubmit = subject.trim().length > 0 && description.trim().length > 0;
     const [feedbackMarginTop, setFeedbackMarginTop] = useState(false);
+    const [showIntentBoxChat, setShowIntentBoxChat] = useState(true);
 
     // Handle input change and filter suggestions
     const handleIntentChange = useCallback((e) => {
@@ -1116,6 +1117,8 @@ const App = () => {
         display: 'none'
     };
 
+    // Function to change the margin-top for the visual feedback
+
     useEffect(() => {
         if (showProgress && chatMessages.length < 2) {
             setFeedbackMarginTop(true);
@@ -1123,6 +1126,35 @@ const App = () => {
             setFeedbackMarginTop(false);
         }
     }, [showProgress]);
+
+    useEffect(() => {
+        const chatBody = chatBodyRef.current;
+        if (chatBody) {
+            const isAtBottom =
+                chatBody.scrollHeight - chatBody.scrollTop <= chatBody.clientHeight + 100; // +100px threshold
+
+            setShowIntentBoxChat(!isAtBottom);
+        }
+    }, [showIntentBoxChat]);
+
+//     useEffect(() => {
+//     const chatBody = chatBodyRef.current;
+    
+//     const handleScroll = () => {
+//         if (!chatBody) return;
+        
+//         const isAtBottom = 
+//             chatBody.scrollHeight - chatBody.scrollTop <= chatBody.clientHeight + 100; // +100px threshold
+        
+//         setShowIntentBox(!isAtBottom);
+//     };
+
+//     chatBody?.addEventListener('scroll', handleScroll);
+    
+//     return () => {
+//         chatBody?.removeEventListener('scroll', handleScroll);
+//     };
+// }, []);
 
     // Transition from functions to visible elements
 
@@ -1267,6 +1299,9 @@ const App = () => {
 
                             {/* Tab content */}
                             {activeTab === 'solve' ? (
+
+                                <div className="solve">
+
                                 <div className="chatMessages">
 
                                     {/* Adding user's response to chat interface as a message box */}
@@ -1283,23 +1318,6 @@ const App = () => {
                                         ) : (
                                             // Adding ADA's response to chat interface, including populating source's URL in accordion
                                             <div key={index} className="chatResponse">
-
-                                                <div className="landingIntentBoxChatContainer">
-                                                    <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`} style={showProgress ? {display: 'none'} : {display: 'flex'}}>
-                                                                <textarea 
-                                                                    id='intent' 
-                                                                    value={intent} 
-                                                                    placeholder='Ask a question or provide additional details...' 
-                                                                    onChange={(e) => setIntent(e.target.value)} 
-                                                                    onKeyDown={handleKeyPress}
-                                                                    className='intentTextareaChat' 
-                                                                    rows={3}
-                                                                ></textarea>
-                                                                <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxChatClick} disabled={!enableSend}>
-                                                                    <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
-                                                                </button>
-                                                    </div>
-                                                </div>
 
                                                 <div className='responseContent'>
                                                     <details className="stepsAccordion">
@@ -1515,7 +1533,34 @@ const App = () => {
                                         
                                     )}
 
+                                    
+
                                 </div>
+
+                                {!showProgress && (
+
+                                <div className={`landingIntentBoxChatContainer ${!showIntentBoxChat ? 'hidden' : ''}`}>
+                                                    <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`}>
+                                                                <textarea 
+                                                                    id='intent' 
+                                                                    value={intent} 
+                                                                    placeholder='Ask a question or provide additional details...' 
+                                                                    onChange={(e) => setIntent(e.target.value)} 
+                                                                    onKeyDown={handleKeyPress}
+                                                                    className='intentTextareaChat' 
+                                                                    rows={3}
+                                                                ></textarea>
+                                                                <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxChatClick} disabled={!enableSend}>
+                                                                    <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
+                                                                </button>
+                                                    </div>
+                                                </div>
+
+                               
+                                )}
+
+                                </div>
+
                             ) : (
                                 <div className="contactUsContent">
                                     {isContact5 ? (

@@ -264,7 +264,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://472dedab18c2.ngrok-free.app/api/chat', {
+            const response = await fetch('https://2e1c744b4be9.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -1091,7 +1091,7 @@ const App = () => {
         setShowProgress2(false);
         progressTimer1 = setTimeout(() => {
             setShowProgress2(true);
-            console.log('Progress 2 started');
+            // console.log('Progress 2 started');
         }, 10000);
     } else {
         setShowProgress2(false);
@@ -1105,7 +1105,7 @@ const App = () => {
             setShowProgress3(false);
             progressTimer2 = setTimeout(() => {
                 setShowProgress3(true);
-                console.log('Progress 3 started');
+                // console.log('Progress 3 started');
             }, 18000);
         } else {
             setShowProgress3(false);
@@ -1127,41 +1127,14 @@ const App = () => {
         }
     }, [showProgress]);
 
-    useEffect(() => {
-        const chatBody = chatBodyRef.current;
-        if (chatBody) {
-            const isAtBottom =
-                chatBody.scrollHeight - chatBody.scrollTop <= chatBody.clientHeight + 100; // +100px threshold
-
-            setShowIntentBoxChat(!isAtBottom);
-        }
-    }, [showIntentBoxChat]);
-
-//     useEffect(() => {
-//     const chatBody = chatBodyRef.current;
-    
-//     const handleScroll = () => {
-//         if (!chatBody) return;
-        
-//         const isAtBottom = 
-//             chatBody.scrollHeight - chatBody.scrollTop <= chatBody.clientHeight + 100; // +100px threshold
-        
-//         setShowIntentBox(!isAtBottom);
-//     };
-
-//     chatBody?.addEventListener('scroll', handleScroll);
-    
-//     return () => {
-//         chatBody?.removeEventListener('scroll', handleScroll);
-//     };
-// }, []);
 
     // Transition from functions to visible elements
 
     return (
         //Home Landing page
+
         <div className="homeStatic">
-            
+    
             {!isChatStarted ? (
                 <>
                     {/* Decorative AI curls that fade in and out of landing interface */}
@@ -1274,7 +1247,7 @@ const App = () => {
                         </div>
                         <b className={`invitationToConverse ${chatMessages.length > 1 ? 'chatStarted' : ''}`}>How can we help you?</b>
                         <p className="landingSubheading">Please provide detailed information in the form below:</p>
-                        <div className='chatBody' ref={chatBodyRef}>
+                        <div className='chatBody'>
                             {/* Tab navigation - only show after AI response */}
                             {chatMessages.some(msg => msg.from === 'ai') && (
                                 <div className="tabNavigationContainer">
@@ -1499,6 +1472,7 @@ const App = () => {
                                                 </div> */}
                                                 {/* Icons under ADA's response to copy , like, dislike, and make ADA reponse txt-to-speech */}
                                                 <div className="postResponseIcons">
+
                                                     <button className='copyBtn' onClick={() => copyClick(msg)}>
                                                         <img className="Copy" alt="Copy" src={copiedStates[msg.id] ? copyCheckIcon : copyIcon} />
                                                     </button>

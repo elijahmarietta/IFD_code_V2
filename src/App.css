@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* overflow-y: auto; */
     height: 90vh;
     background-color: #fff;
     text-align: left;
@@ -73,7 +74,7 @@
 @keyframes fadeInOut4 {
   0% { width: 430px; opacity: 0; }
   20% { width: 430px; }
-  50% { width: 490px, opacity: 1; }
+  50% { width: 490px; opacity: 1; }
   80% { width: 430px; }
   100% { width: 430px; opacity: 0; }
 }
@@ -355,7 +356,7 @@
 
 .existingButtons {
     margin-top: 3.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 9rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1122,15 +1123,17 @@
 .solve {
     display: flex;
     flex-direction: column;
+    /* height: 50vh;
+    overflow-y: auto; */
 }
 
 .landingIntentBoxChatContainer {
     /* position: sticky; */
     position: fixed;
-    top: 31rem;
+    top: 32.5rem;
     /* left: 20rem;
     right: 50rem; */
-    padding: 2rem 0rem;
+    padding: 1rem 0rem 1rem 0rem;
     z-index: 900;
     background-color: #fff;
     transition: opacity 0.3s ease;
@@ -1204,7 +1207,7 @@
     @keyframes fadeInOut2 {
     0% { width: 740px; opacity: 0; }
     20% { width: 740px; }
-    50% { width: 800px, opacity: 1; }
+    50% { width: 800px; opacity: 1; }
     80% { width: 740px; }
     100% { width: 740px; opacity: 0; }
     }
@@ -1222,7 +1225,7 @@
     @keyframes fadeInOut4 {
     0% { width: 780px; opacity: 0; }
     20% { width: 780px; }
-    50% { width: 740px, opacity: 1; }
+    50% { width: 740px; opacity: 1; }
     80% { width: 780px; }
     100% { width: 780px; opacity: 0; }
     }

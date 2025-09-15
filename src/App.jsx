@@ -216,7 +216,6 @@ const App = () => {
     const [description, setDescription] = useState('');
     const canSubmit = subject.trim().length > 0 && description.trim().length > 0;
     const [feedbackMarginTop, setFeedbackMarginTop] = useState(false);
-    const [showIntentBoxChat, setShowIntentBoxChat] = useState(true);
 
     // Handle input change and filter suggestions
     const handleIntentChange = useCallback((e) => {
@@ -264,7 +263,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://2e1c744b4be9.ngrok-free.app/api/chat', {
+            const response = await fetch('https://1da28e816314.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -1256,14 +1255,14 @@ const App = () => {
                                             className={`tab ${activeTab === 'solve' ? 'active' : ''}`}
                                             onClick={() => setActiveTab('solve')}
                                         >
-                                            <img src={activeTab === 'solve' ? questionActiveIcon : questionIcon} alt="Solve Now" />
+                                            <img src={activeTab === 'solve' ? questionActiveIcon : questionIcon} alt="Solve Now" id="solveImage"/>
                                             Solve Now
                                         </button>
                                         <button 
                                             className={`tab ${activeTab === 'contact' ? 'active' : ''}`}
                                             onClick={() => setActiveTab('contact')}
                                         >
-                                            <img src={activeTab === 'contact' ? contactActiveIcon : contactIcon} alt="Contact Us" />
+                                            <img src={activeTab === 'contact' ? contactActiveIcon : contactIcon} alt="Contact Us" id="contactImage"/>
                                             Create a Case
                                         </button>
                                     </div>
@@ -1511,9 +1510,9 @@ const App = () => {
 
                                 </div>
 
-                                {!showProgress && (
+                                {chatMessages.length > 1 && (
 
-                                <div className={`landingIntentBoxChatContainer ${!showIntentBoxChat ? 'hidden' : ''}`}>
+                                <div className={`landingIntentBoxChatContainer`}>
                                                     <div className={`landingIntentBoxChat ${enableSend ? 'active' : ''}`}>
                                                                 <textarea 
                                                                     id='intent' 
@@ -1536,7 +1535,7 @@ const App = () => {
                                 </div>
 
                             ) : (
-                                <div className="contactUsContent">
+                                <div className="createCaseContent">
                                     {isContact5 ? (
                                         <div className="contactForm">
                                             <h3>Case Submitted Successfully!</h3>

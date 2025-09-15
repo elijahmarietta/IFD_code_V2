@@ -424,6 +424,8 @@
     width: 80%;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
+
+    animation: fadeIn .8s ease-in-out;
 }
 
 .chatMessage {
@@ -484,7 +486,6 @@
 /* Visual feedback styling */
 
 .responseProgress {
-    /* margin-top: 0.4rem; */
     margin-bottom: 2.5rem;
     margin-left: 1rem;
     display: flex;
@@ -946,9 +947,9 @@
     color: #10B64C;
 }
 
-/* Contact us content */
+/* Create a case content */
 
-.contactUsContent {
+.createCaseContent {
     padding: 2rem;
     /* background-color: #f9f9f9; */
     border-radius: 0 0 12px 12px;
@@ -991,7 +992,7 @@
     font-weight: 500;
     color: #333;
     margin-bottom: 0.5rem;
-    font-size: 14px;
+    font-size: 0.85rem;
 }
 
 .formGroup input,
@@ -1000,7 +1001,7 @@
     padding: 1rem;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
-    font-size: 14px;
+    font-size: 0.85rem;
     font-family: inherit;
     transition: border-color 0.3s ease;
 }
@@ -1053,6 +1054,18 @@
     margin-top: 1rem;
 }
 
+.backContactBtnInactive {
+    background-color: #cecece;
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    margin-top: 1rem;
+    cursor: not-allowed;
+}
+
 .relatedButtons, .productButtons {
     display: flex;
     flex-direction: row;
@@ -1065,18 +1078,6 @@
 
 .productButtons {
     margin-top: 2rem;
-}
-
-.backContactBtnInactive {
-    background-color: #cecece;
-    color: white;
-    cursor: pointer;
-    border: none;
-    padding: 15px 25px;
-    border-radius: 25px;
-    font-weight: 600;
-    margin-top: 1rem;
-    cursor: not-allowed;
 }
 
 .problemTypeBtn {
@@ -1120,6 +1121,8 @@
     padding: 2.5rem 6rem 0.5rem 6rem;
 }
 
+/* Solve tab */
+
 .solve {
     display: flex;
     flex-direction: column;
@@ -1150,7 +1153,7 @@
     background-color: #fff;
     border-radius: 35px;
     box-sizing: border-box;
-    /* overflow: hidden; */
+    overflow-y: hidden;
     gap: 0rem;
 }
 
@@ -1199,48 +1202,53 @@
 @media (min-width: 1400px) {
 
     @keyframes fadeInOut {
-    0% { width: 750px; opacity: 0;}
-    50% { width: 800px; opacity: 1;}
-    100% { width: 750px; opacity: 0; }
+    0% { width: 550px; opacity: 0;}
+    50% { width: 600px; opacity: 1;}
+    100% { width: 550px; opacity: 0; }
     }
 
     @keyframes fadeInOut2 {
-    0% { width: 740px; opacity: 0; }
-    20% { width: 740px; }
-    50% { width: 800px; opacity: 1; }
-    80% { width: 740px; }
-    100% { width: 740px; opacity: 0; }
+    0% { width: 540px; opacity: 0; }
+    20% { width: 540px; }
+    50% { width: 600px; opacity: 1; }
+    80% { width: 540px; }
+    100% { width: 540px; opacity: 0; }
     }
 
     @keyframes fadeInOut3 {
-    0% { width: 790px; opacity: 0;}
-    50% { width: 840px; opacity: 1;}
-    100% { width: 790px; opacity: 0; }
+    0% { width: 590px; opacity: 0;}
+    50% { width: 640px; opacity: 1;}
+    100% { width: 590px; opacity: 0; }
     }
 
     .rightAICurls {
-        width: 790px;
+        width: 490px;
     }
 
     @keyframes fadeInOut4 {
-    0% { width: 780px; opacity: 0; }
-    20% { width: 780px; }
-    50% { width: 740px; opacity: 1; }
-    80% { width: 780px; }
-    100% { width: 780px; opacity: 0; }
+    0% { width: 580px; opacity: 0; }
+    20% { width: 580px; }
+    50% { width: 540px; opacity: 1; }
+    80% { width: 580px; }
+    100% { width: 580px; opacity: 0; }
     }
 
     .grayRightAICurls {
-        width: 780px;
+        width: 580px;
     }
 
     .invitationToConverse {
-        margin-bottom: 3rem;
+        margin-bottom: 1.2rem;
         font-size: 2.8rem;
     }
 
+    .landingSubheading {
+        font-size: 1.1rem;
+        margin-bottom: 3.5rem;
+    }
 
-    /*Intent box styling*/
+
+    /* Intent box styling*/
 
     .landingIntentBox {
         height: 15rem;
@@ -1248,18 +1256,18 @@
     }
 
     .intentTextarea{
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         padding-left: 20px;
         padding-top: 20px;
     }
 
     .sendBtn {
-        margin-top: 10rem;
+        margin-top: 10.7rem;
     }
 
     .sendBtn img{
-        width: 48px;
-        height: 48px;
+        width: 40px;
+        height: 40px;
     }
 
     .chatMessage {
@@ -1267,20 +1275,90 @@
         margin-right: -11rem;
     }
 
+    .attachBtn {
+        top: 31.6rem;
+        left: 15.9rem;
+    }
+
+    .attachBtn img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .landingIntentBox.expanded {
+        min-height: 18rem;
+    }
+
+    /* Autocomplete dropdown styling */
+
+    .autocompleteDropdown {
+        top: 35rem;
+        max-height: 400px;
+    }
+
+    .suggestionItem {
+        padding: 2.5vh 3.5vh;
+        gap: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .suggestionItem img {
+        width: 22px;
+        height: 22px;
+    }
+
     /* Visual feedback styling */
 
     .responseProgress {
-        margin-left: 15rem;
+        margin-left: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .progressSubheading {
+        font-size: 1.1rem;
+        margin-bottom: 1.8rem;
+    }
+
+    .loadGroupLoading {
+        gap: 0.3rem;
+    }
+
+    .loadGroupCheck {
+        gap: 0.8rem;
+    }
+
+    .loadGroupCheck img {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Chat response styling */
+
+    .chatResponse{
+        margin-left: 1rem;
+    }
+
+    .stepsAccordion {
+        font-size: 1rem;
+        margin-bottom: 2vh;
+    }
+
+    .stepsAccordion summary {
         font-size: 1rem;
     }
 
-    .chatResponse{
-        margin-left: 13%;
+    .stepsAccordion img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .responseHeader {
+        font-size: 1rem;
     }
 
     .responseText, .questionLines {
         font-size: 1rem;
-        max-width: 700px;
+        max-width: 1300px;
         margin-top: 0.55rem;
     }
 
@@ -1314,6 +1392,119 @@
     .Read {
         width: 18px;
         height: 18px;
+    }
+
+    /* Intent box chat styling */
+
+    .landingIntentBoxChatContainer {
+        top: 54rem;
+    }
+
+    .landingIntentBoxChat {
+        height: 3.5rem;
+    }
+
+    .intentTextareaChat{
+        margin-left: 0.7rem;
+        font-size: 1rem;
+    }
+
+    .sendBtnChat img{
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Tab Navigation */
+
+    .tabNavigationContainer {
+        border-bottom: 1px solid #e0e0e0;
+        margin: 0.5rem 0rem 0.5rem 0rem;
+    }
+
+    .tabNavigation {
+        width: 31%;
+    }
+
+    #solveImage {
+        width: 36px;
+        height: 36px;
+    }
+
+    #contactImage {
+        width: 30px;
+        height: 30px;
+    }
+
+    .tab {
+        font-size: 1.2rem;
+    }
+
+    /* Existing buttons styling */
+
+    .articles {
+        font-size: 1.1rem;
+    }
+
+    .articles img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .criticalIssues {
+        gap: 0.9rem;
+        font-size: 1.1rem;
+    }
+
+    .criticalIssues img {
+        width: 26px;
+        height: 26px;
+    }
+
+    /* Create a case content */
+
+    .contactForm h3 {
+        color: #19426c;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+    }
+
+    .contactForm p {
+        font-size: 1.1rem;
+    }
+
+    .formGroup label {
+        font-size: 1rem;
+    }
+
+    .formGroup input,
+    .formGroup textarea,
+    .formGroup select {
+        font-size: 1rem;
+    }
+
+    .nextContactBtn, .backContactBtn {
+        font-size: 1rem;
+        background-color: #009845;
+        color: white;
+        cursor: pointer;
+        border: none;
+        padding: 15px 25px;
+        border-radius: 25px;
+        font-weight: 600;
+        margin-top: 1rem;
+    }
+
+    .backContactBtnInactive {
+        font-size: 1rem;
+        background-color: #cecece;
+        color: white;
+        cursor: pointer;
+        border: none;
+        padding: 15px 25px;
+        border-radius: 25px;
+        font-weight: 600;
+        margin-top: 1rem;
+        cursor: not-allowed;
     }
 }
 

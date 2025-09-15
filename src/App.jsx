@@ -47,7 +47,6 @@ import checkIcon from './assets/Check.svg'
 
 //  App variables to keep track of state changes
 const App = () => {
-    const chatBodyRef = useRef(null);
     const [time, setTime] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
     const [isChatStarted, setIsChatStarted] = useState(false);
@@ -313,7 +312,7 @@ const App = () => {
     }, [isRunning]);
 
 
-    //Add delay for displaying AI response (older function, may not need anymore)
+    // Add delay for displaying AI response (older function, may not need anymore)
     useEffect(() => {
         let delayTimer;
         if (isAwaitingAI) {
@@ -622,21 +621,6 @@ const App = () => {
         speechSynthesis.speak(utterance);
     }, [isReading, extractTextFromResponse]);
 
-    // Auto scroll effect after new messages are posted to chat interface
-    useEffect(() => {
-        if (chatBodyRef.current) {
-            const scrollOptions = {
-                top: isMinimized 
-                    ? chatBodyRef.current.scrollHeight - 100  // Scroll closer to bottom when minimized
-                    : chatBodyRef.current.scrollHeight - 530, // Leave 530px from bottom when full view
-                behavior: 'smooth'
-            };
-            setTimeout(() => {
-                chatBodyRef.current.scrollTo(scrollOptions);
-            }, 100); // Small delay to ensure content is rendered
-        }
-    }, [chatMessages, isMinimized]);
-
     // Press Enter key to send message
     const handleKeyPress = useCallback((e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
@@ -674,12 +658,11 @@ const App = () => {
 
     // Going to Page 1 of the Contact Form
     const contact1 = useCallback(() => {
-            console.log("Contact 1");
-            setIsContact1(true);
-            setIsContact2(false);
-            setIsContact3(false);
-            setIsContact4(false);
-            setIsContact5(false);
+        setIsContact1(true);
+        setIsContact2(false);
+        setIsContact3(false);
+        setIsContact4(false);
+        setIsContact5(false);
     }, []);
 
     const contactDisabled = useCallback(() => {
@@ -691,20 +674,20 @@ const App = () => {
     
     // Going to Page 2 of the Contact Form
     const contact2 = useCallback(() => {
-            setIsContact1(false);
-            setIsContact2(true);
-            setIsContact3(false);
-            setIsContact4(false);
-            setIsContact5(false);
+        setIsContact1(false);
+        setIsContact2(true);
+        setIsContact3(false);
+        setIsContact4(false);
+        setIsContact5(false);
     }, []);
 
     // Going to Page 3 of the Contact Form
     const contact3 = useCallback(() => {
-            setIsContact1(false);
-            setIsContact2(false);
-            setIsContact3(true);
-            setIsContact4(false);
-            setIsContact5(false);
+        setIsContact1(false);
+        setIsContact2(false);
+        setIsContact3(true);
+        setIsContact4(false);
+        setIsContact5(false);
     }, []);
 
     // Going to Page 4 of the Contact Form
@@ -1112,10 +1095,6 @@ const App = () => {
         return () => clearTimeout(progressTimer2);
     }, [showProgress]);
 
-    const hiddenStyle = {
-        display: 'none'
-    };
-
     // Function to change the margin-top for the visual feedback
 
     useEffect(() => {
@@ -1148,7 +1127,7 @@ const App = () => {
                         <b className="invitationToConverse">How can we help you?</b>
                         <p className="landingSubheading">Please provide detailed information in the form below:</p>
 
-                        {/* Landing page intention box */}
+                        {/* Landing page intent box */}
                         <div className={`landingIntentBox ${enableSend ? 'active' : ''} ${showSuggestions ? 'expanded' : ''}`}>
                             <textarea 
                                 id='intent' 
@@ -1247,7 +1226,7 @@ const App = () => {
                         <b className={`invitationToConverse ${chatMessages.length > 1 ? 'chatStarted' : ''}`}>How can we help you?</b>
                         <p className="landingSubheading">Please provide detailed information in the form below:</p>
                         <div className='chatBody'>
-                            {/* Tab navigation - only show after AI response */}
+                            {/* Tab navigation (only show after AI response) */}
                             {chatMessages.some(msg => msg.from === 'ai') && (
                                 <div className="tabNavigationContainer">
                                     <div className="tabNavigation">
@@ -1288,7 +1267,7 @@ const App = () => {
                                                     </div>
                                             )
                                         ) : (
-                                            // Adding ADA's response to chat interface, including populating source's URL in accordion
+                                            // Adding ADA's response to chat interface, including populating citations in accordion
                                             <div key={index} className="chatResponse">
 
                                                 <div className='responseContent'>
@@ -1341,7 +1320,6 @@ const App = () => {
                                                             </div>
                                                         </details>
                                                     )}
-                                                    {/* {console.log('questionLines:', getQuestionLines(msg.text))} */}
                                                     {/* Formatting ADA's response on front end by bolding text based on starting with a number or ending with a colon for  instructions */}
                                                     {getQuestionLines(msg.text).length > 0 && (
                                                         <div className="questionLines">
@@ -1465,10 +1443,6 @@ const App = () => {
                                                             ))}
                                                         </div>
                                                     )}
-                                                {/* Hard-coded ending statement */}
-                                                {/* <div className="endStatement">
-                                                    <p>If you need further assistance or have any questions, feel free to ask!</p>
-                                                </div> */}
                                                 {/* Icons under ADA's response to copy , like, dislike, and make ADA reponse txt-to-speech */}
                                                 <div className="postResponseIcons">
 

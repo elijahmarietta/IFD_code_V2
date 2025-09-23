@@ -445,6 +445,7 @@
     font-family: Inter;
     /* Animation */
     animation: fadeIn3 0.5s ease-in-out;
+    text-align: left;
 }
 
 .chatMessage:nth-child(1) {

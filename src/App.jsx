@@ -44,6 +44,9 @@ import integrationIcon from './assets/Data Integration.svg'
 import cloudIcon from './assets/Qlik Cloud.svg'
 import talendIcon from './assets/Talend.svg'
 import checkIcon from './assets/Check.svg'
+import caseBtnIcon from './assets/createCase.svg'
+import articlesBtnIcon from './assets/exploreArticles.svg'
+import issuesBtnIcon from './assets/criticalIssues.svg'
 
 //  App variables to keep track of state changes
 const App = () => {
@@ -82,9 +85,11 @@ const App = () => {
         "What types of organizations typically use Qlik Cloud Analytics?",
         "What are the main benefits of using Qlik Cloud over traditional BI tools?",
         "How can I get started with Qlik Cloud Analytics?",
+        "I don’t see my personal workspace for Qlik Cloud Analytics after logging in",
         "What data sources can Qlik Cloud Analytics connect to?",
         "How does the Qlik cognitive engine work in the cloud?",
         "Can I create dashboards and visualizations directly in Qlik Cloud?",
+        "Why do some users not see the same visualizations I see?",
         "Does Qlik Cloud support real-time data analytics?",
         "What AI or machine learning features are available in Qlik Cloud Analytics?",
         "How do I load and transform data in Qlik Cloud?",
@@ -102,6 +107,22 @@ const App = () => {
         "Can Qlik Cloud visualizations be embedded into other applications or websites?",
         "Is it possible to schedule and distribute reports in Qlik Cloud Analytics?",
         "What options are available for exporting or downloading Qlik Cloud dashboards and data?",
+        "Can I schedule automatic reloads of my data in Qlik Cloud?",
+        "How do I troubleshoot slow data reload times in Qlik Cloud?",
+        "How do I import an app from Qlik Sense Enterprise into Qlik Cloud?",
+        "Can I restrict access to certain sheets within an app?",
+        "I’m getting an error that says “App size limit exceeded”",
+        "I’m not seeing any of my apps in Qlik Cloud after logging in",
+        "How do I create custom themes for apps in Qlik Cloud?",
+        "How do I restore an app that I accidentally deleted?",
+        "How do I move an app from one space to another?",
+        "How do I back up my Qlik Cloud apps?",
+        "Why are my visualizations not showing updated data after a reload?",
+        "How do I set up alternate states for comparative analysis?",
+        "Why is my dashboard loading so slowly?",
+        "Why can’t I upload my Excel file into Qlik Cloud?",
+        "Why do my bar chart labels get cut off on the dashboard?",
+        "Why is my KPI object showing “-” instead of numbers?",
         "What's the difference between Qlik Cloud Analytics and Qlik Talend Cloud?",
         "What is Qlik Talend Cloud?",
         "How does Qlik Talend Cloud differ from on-premise Talend solutions?",
@@ -128,14 +149,25 @@ const App = () => {
         "Does Qlik Talend Cloud encrypt data in transit and at rest?",
         "How can administrators manage user access and roles for Qlik Talend Cloud?",
         "How does Qlik Talend Cloud ensure high availability and reliability?",
+        "Why is my data connection to Snowflake failing with an authentication error?",
+        "My reload script is throwing syntax errors in Qlik Sense Enterprise",
+        "How do I install Qlik Sense Desktop on my computer?",
+        "How do I handle scenario-based transformations in Qlik Sense?",
+        "How do I configure email alerts for reload failures?",
+        "Why does my pivot table lose formatting every time I reload data?",
+        "Why does my mashup integration show blank charts?",
         "How do I create a Qlik account?",
         "What should I do if I forget my Qlik account password?",
+        "I can’t log in to my Qlik Cloud account, what should I do?",
         "How do I update my email address or contact details on my Qlik account?",
         "Can I use single sign-on (SSO) to log in to my Qlik account?",
         "How do I activate my Qlik Cloud subscription after purchase?",
         "How can I view my current Qlik subscription or license details?",
         "How do I upgrade or downgrade my Qlik subscription plan?",
+        "How do I invite new users to my Qlik Cloud tenant?",
         "How can tenant administrators manage user entitlements?",
+        "Can I change my tenant region after I create it?",
+        "I keep getting “insufficient privileges” when I try to create a space",
         "What happens if my subscription expires?",
         "How can I view and download my invoices?",
         "What payment methods does Qlik accept?",
@@ -158,7 +190,6 @@ const App = () => {
         "What is the Qlik Multi-Cloud?",
         "What resources exist within Qlik Help for Multi-Cloud deployment guidance?",
         "How do I identify common customers between two years in QlikView?",
-        "How do I handle scenario-based transformations in Qlik Sense?",
         "How can I troubleshoot latency or performance issues with Qlik Replicate?",
         "What is the purpose of the Qlik Community and who participates?",
         "What is the role of Qlik Answers within product innovation discussions?",
@@ -250,7 +281,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://7e3d1d028695.ngrok-free.app/api/chat', {
+            const response = await fetch('https://00a7f06c861b.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -564,50 +595,6 @@ const App = () => {
             }));
         }, 2000);
     };
-
-    // Function for Text-to-Speech
-    const readAloud = useCallback((msg) => {
-        const text = extractTextFromResponse(msg);
-        
-        if (isReading[msg.id]) {
-            // Stop reading if already reading
-            speechSynthesis.cancel();
-            setIsReading(prev => ({
-                ...prev,
-                [msg.id]: false
-            }));
-            return;
-        }
-
-        // Start reading
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 1;
-        utterance.pitch = 1;
-        utterance.volume = 1;
-        
-        utterance.onstart = () => {
-            setIsReading(prev => ({
-                ...prev,
-                [msg.id]: true
-            }));
-        };
-        
-        utterance.onend = () => {
-            setIsReading(prev => ({
-                ...prev,
-                [msg.id]: false
-            }));
-        };
-        
-        utterance.onerror = () => {
-            setIsReading(prev => ({
-                ...prev,
-                [msg.id]: false
-            }));
-        };
-
-        speechSynthesis.speak(utterance);
-    }, [isReading, extractTextFromResponse]);
 
     // Press Enter key to send message
     const handleKeyPress = useCallback((e) => {
@@ -1143,6 +1130,26 @@ const App = () => {
                             >
                                 <img alt="Attachment" src={attachment}/>
                             </button>
+                            <div className="intentBtnsDiv">
+                                <button
+                                    className="intentBtns" id="caseBtn"
+                                >
+                                    <img alt="Create a Case" src={caseBtnIcon}/>
+                                    <p>Create a Case</p>
+                                </button>
+                                <button
+                                    className="intentBtns" id="articleBtn"
+                                >
+                                    <img alt="Explore Articles" src={articlesBtnIcon}/>
+                                    <p>Explore Articles</p>
+                                </button>
+                                <button
+                                    className="intentBtns" id="issuesBtn"
+                                >
+                                    <img alt="Critical Issues" src={issuesBtnIcon}/>
+                                    <p>Critical Issues</p>
+                                </button>
+                            </div>
                             <button className={ `sendBtn ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxClick} disabled={!enableSend}>
                                 <img alt="Send" src={enableSend ? sendIcon_green : sendIcon}></img>
                             </button>
@@ -1191,7 +1198,7 @@ const App = () => {
                         )}
 
                         {/* Explore article and critical issues buttons */}
-                            <div className="existingButtons">
+                            {/* <div className="existingButtons">
                                 <button className="articles">
                                     <img alt="Articles" src={articleIcon}></img>
                                     <p>EXPLORE ARTICLES</p>
@@ -1200,7 +1207,7 @@ const App = () => {
                                     <img alt="Critical Issues" src={criticalIcon}></img>
                                     <p>CRITICAL ISSUES</p>
                                 </button>
-                            </div>
+                            </div> */}
                         </div>
                 </>
             ) : (
@@ -1215,7 +1222,7 @@ const App = () => {
                         <p className="landingSubheading">Please provide detailed information in the form below:</p>
                         <div className='chatBody'>
                             {/* Tab navigation (only show after AI response) */}
-                            {chatMessages.some(msg => msg.from === 'ai') && (
+                            {/* {chatMessages.some(msg => msg.from === 'ai') && (
                                 <div className="tabNavigationContainer">
                                     <div className="tabNavigation">
                                         <button 
@@ -1233,8 +1240,8 @@ const App = () => {
                                             Create a Case
                                         </button>
                                     </div>
-                                </div>
-                            )}
+                                </div> 
+                            )} */}
 
                             {/* Tab content */}
                             {activeTab === 'solve' ? (
@@ -1485,6 +1492,26 @@ const App = () => {
                                                                     className='intentTextareaChat' 
                                                                     rows={3}
                                                                 ></textarea>
+                                                                <div className="intentBtnsChatDiv">
+                                                                    <button
+                                                                        className="intentBtnsChat" id="caseBtn"
+                                                                    >
+                                                                        <img alt="Create a Case" src={caseBtnIcon}/>
+                                                                        <p>Create a Case</p>
+                                                                    </button>
+                                                                    <button
+                                                                        className="intentBtns" id="articleBtn"
+                                                                    >
+                                                                        <img alt="Explore Articles" src={articlesBtnIcon}/>
+                                                                        <p>Explore Articles</p>
+                                                                    </button>
+                                                                    <button
+                                                                        className="intentBtns" id="issuesBtn"
+                                                                    >
+                                                                        <img alt="Critical Issues" src={issuesBtnIcon}/>
+                                                                        <p>Critical Issues</p>
+                                                                    </button>
+                                                                </div>
                                                                 <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxChatClick} disabled={!enableSend}>
                                                                     <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
                                                                 </button>
@@ -2652,7 +2679,7 @@ const App = () => {
                         </div>
 
                         {/* Explore article and critical issues buttons */}
-                        <div className="existingButtons">
+                        {/* <div className="existingButtons">
                             <button className="articles">
                                 <img alt="Articles" src={articleIcon}></img>
                                 <p>EXPLORE ARTICLES</p>
@@ -2661,7 +2688,7 @@ const App = () => {
                                 <img alt="Critical Issues" src={criticalIcon}></img>
                                 <p>CRITICAL ISSUES</p>
                             </button>
-                        </div>
+                        </div> */}
                    
                 </div>
             )}

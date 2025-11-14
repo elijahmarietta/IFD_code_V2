@@ -44,9 +44,6 @@ import integrationIcon from './assets/Data Integration.svg'
 import cloudIcon from './assets/Qlik Cloud.svg'
 import talendIcon from './assets/Talend.svg'
 import checkIcon from './assets/Check.svg'
-import caseBtnIcon from './assets/createCase.svg'
-import articlesBtnIcon from './assets/exploreArticles.svg'
-import issuesBtnIcon from './assets/criticalIssues.svg'
 
 //  App variables to keep track of state changes
 const App = () => {
@@ -230,8 +227,8 @@ const App = () => {
     const [showProgressChat1, setShowProgressChat1] = useState(false);
     const [showProgressChat2, setShowProgressChat2] = useState(false);
     const [showProgressChat3, setShowProgressChat3] = useState(false);
-    const [subject, setSubject] = useState('');
-    const [description, setDescription] = useState('');
+    const [subject, setSubject] = useState('Forgotten Password');
+    const [description, setDescription] = useState('I’m having trouble figuring out how to reset my password');
     const canSubmit = subject.trim().length > 0 && description.trim().length > 0;
     const [feedbackMarginTop, setFeedbackMarginTop] = useState(false);
 
@@ -281,7 +278,7 @@ const App = () => {
     // Getting API Call from backend via fecthing from public ngrok link
     const sendIntentToAPI = useCallback(async (intent) => {
         try {
-            const response = await fetch('https://00a7f06c861b.ngrok-free.app/api/chat', {
+            const response = await fetch('https://cfa58bfecf84.ngrok-free.app/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({  
@@ -595,6 +592,50 @@ const App = () => {
             }));
         }, 2000);
     };
+
+    // Function for Text-to-Speech
+    const readAloud = useCallback((msg) => {
+        const text = extractTextFromResponse(msg);
+        
+        if (isReading[msg.id]) {
+            // Stop reading if already reading
+            speechSynthesis.cancel();
+            setIsReading(prev => ({
+                ...prev,
+                [msg.id]: false
+            }));
+            return;
+        }
+
+        // Start reading
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 1;
+        utterance.pitch = 1;
+        utterance.volume = 1;
+        
+        utterance.onstart = () => {
+            setIsReading(prev => ({
+                ...prev,
+                [msg.id]: true
+            }));
+        };
+        
+        utterance.onend = () => {
+            setIsReading(prev => ({
+                ...prev,
+                [msg.id]: false
+            }));
+        };
+        
+        utterance.onerror = () => {
+            setIsReading(prev => ({
+                ...prev,
+                [msg.id]: false
+            }));
+        };
+
+        speechSynthesis.speak(utterance);
+    }, [isReading, extractTextFromResponse]);
 
     // Press Enter key to send message
     const handleKeyPress = useCallback((e) => {
@@ -1130,26 +1171,6 @@ const App = () => {
                             >
                                 <img alt="Attachment" src={attachment}/>
                             </button>
-                            <div className="intentBtnsDiv">
-                                <button
-                                    className="intentBtns" id="caseBtn"
-                                >
-                                    <img alt="Create a Case" src={caseBtnIcon}/>
-                                    <p>Create a Case</p>
-                                </button>
-                                <button
-                                    className="intentBtns" id="articleBtn"
-                                >
-                                    <img alt="Explore Articles" src={articlesBtnIcon}/>
-                                    <p>Explore Articles</p>
-                                </button>
-                                <button
-                                    className="intentBtns" id="issuesBtn"
-                                >
-                                    <img alt="Critical Issues" src={issuesBtnIcon}/>
-                                    <p>Critical Issues</p>
-                                </button>
-                            </div>
                             <button className={ `sendBtn ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxClick} disabled={!enableSend}>
                                 <img alt="Send" src={enableSend ? sendIcon_green : sendIcon}></img>
                             </button>
@@ -1222,7 +1243,7 @@ const App = () => {
                         <p className="landingSubheading">Please provide detailed information in the form below:</p>
                         <div className='chatBody'>
                             {/* Tab navigation (only show after AI response) */}
-                            {/* {chatMessages.some(msg => msg.from === 'ai') && (
+                            {chatMessages.some(msg => msg.from === 'ai') && (
                                 <div className="tabNavigationContainer">
                                     <div className="tabNavigation">
                                         <button 
@@ -1240,8 +1261,8 @@ const App = () => {
                                             Create a Case
                                         </button>
                                     </div>
-                                </div> 
-                            )} */}
+                                </div>
+                            )}
 
                             {/* Tab content */}
                             {activeTab === 'solve' ? (
@@ -1492,26 +1513,6 @@ const App = () => {
                                                                     className='intentTextareaChat' 
                                                                     rows={3}
                                                                 ></textarea>
-                                                                <div className="intentBtnsChatDiv">
-                                                                    <button
-                                                                        className="intentBtnsChat" id="caseBtn"
-                                                                    >
-                                                                        <img alt="Create a Case" src={caseBtnIcon}/>
-                                                                        <p>Create a Case</p>
-                                                                    </button>
-                                                                    <button
-                                                                        className="intentBtns" id="articleBtn"
-                                                                    >
-                                                                        <img alt="Explore Articles" src={articlesBtnIcon}/>
-                                                                        <p>Explore Articles</p>
-                                                                    </button>
-                                                                    <button
-                                                                        className="intentBtns" id="issuesBtn"
-                                                                    >
-                                                                        <img alt="Critical Issues" src={issuesBtnIcon}/>
-                                                                        <p>Critical Issues</p>
-                                                                    </button>
-                                                                </div>
                                                                 <button className={ `sendBtnChat ${enableSend ? 'active' : 'inactive'}`} onClick={onLandingIntentBoxChatClick} disabled={!enableSend}>
                                                                     <img className="sendBtnChat" alt="Send" src={enableSend ? sendIcon_green : sendIcon} />
                                                                 </button>

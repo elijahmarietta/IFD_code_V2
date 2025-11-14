@@ -1129,7 +1129,7 @@
 
 .landingIntentBoxChatContainer {
     position: fixed;
-    top: 28rem;
+    top: 32.5rem;
     padding: 1rem 0rem 1rem 0rem;
     z-index: 900;
     background-color: #fff;
@@ -1140,13 +1140,13 @@
 
 .landingIntentBoxChat {
     display: flex;
-    /* align-items: center; */
-    height: 7.5rem;
+    align-items: center;
+    height: 3rem;
     width: 144vh;
-    border: 1.5px solid #C8C8C8;
+    border: 2px solid #939393;
     font-family: Inter;
     background-color: #fff;
-    border-radius: 30px;
+    border-radius: 35px;
     box-sizing: border-box;
     overflow-y: hidden;
     gap: 0rem;
@@ -1158,8 +1158,8 @@
 }
 
 .intentTextareaChat{
-    margin-left: 1rem;
-    margin-top: 0.2rem;
+    margin-left: 0.5rem;
+    margin-top: 2rem;
     flex: 1;
     resize: none;
     width: 100%;
@@ -1170,7 +1170,25 @@
     background-color: transparent;
     color: #333;
     font-family: inherit;
-    max-height: 18px;
+    max-height: 50px;
+}
+
+.sendBtnChat {
+    background: none;
+    border: none;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: bottom;
+    justify-content: right;
+    padding: 1rem 0.2rem;
+    transition: transform 0.2s ease;
+}
+
+.sendBtnChat img{
+    width: 32px;
+    height: 32px;
+    transition: filter 0.2s ease;
 }
 
 .intentBtnsChatDiv {
@@ -1196,26 +1214,6 @@
     color: #808080;
     border: 1px solid #c5c5c5;
     border-radius: 15rem;
-}
-
-.sendBtnChat {
-    background: none;
-    border: none;
-    padding:0;
-    cursor: pointer;
-    display: flex;
-    align-items: bottom;
-    justify-content: center;
-    padding: 1rem 0.2rem;
-    transition: transform 0.2s ease;
-    margin-top: 1.4rem;
-    margin-right: 4px;
-}
-
-.sendBtnChat img{
-    width: 32px;
-    height: 32px;
-    transition: filter 0.2s ease;
 }
 
 /* Optimizing for larger screens */
